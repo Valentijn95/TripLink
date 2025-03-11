@@ -67,7 +67,8 @@ arg_locations = [
   { location_name: "La Boca", address: "La Boca, Buenos Aires, Argentina", latitude: -34.6345, longitude: -58.3635 },
   { location_name: "Puerto Madryn", address: "Puerto Madryn, Argentina", latitude: -42.7731, longitude: -65.0360 },
   { location_name: "Salinas Grandes", address: "Salinas Grandes, Argentina", latitude: -23.5650, longitude: -65.8466 },
-  { location_name: "Mar del Plata Beach", address: "Mar del Plata Beach, Argentina", latitude: -38.0055, longitude: -57.5426 }
+  { location_name: "Mar del Plata Beach", address: "Mar del Plata Beach, Argentina", latitude: -38.0055, longitude: -57.5426 },
+  { location_name: "Tafi del Valle", address: "Tafi del Valle, Argentina", latitude: -26.8517, longitude: -65.7098 }
 ]
 
 

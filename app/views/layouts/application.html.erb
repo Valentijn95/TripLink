@@ -11,14 +11,21 @@
   </head>
 
   <body>
+
     <header class="main-header">
       <div class="header-container">
         <img src="<%= asset_path('TripLink.png') %>" alt="Logo" class="logo">
       </div>
     </header>
-    <div class="container">
-      <%= render "shared/flashes" %>
-      <%= yield %>
-    </div>
+
+
+    <%= render "shared/flashes" %>
+    <%= yield %>
+
+
+    <% if !current_page?(no_footer_path)%>
+      <div class="footer"><%= render "shared/footer" %></div>
+    <% end%>
+  
   </body>
 </html>

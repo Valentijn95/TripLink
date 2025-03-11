@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :matches, only: [:show] do
     member do
       get 'chat'
-      post 'send_message', to: 'matches#send_message'
+      post 'send_message'
     end
   end
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

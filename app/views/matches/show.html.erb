@@ -1,10 +1,7 @@
 <h1>Send a Message to <%= @match.guide.first_name %> <%= @match.guide.last_name %></h1>
 
 <p><strong>Guide:</strong> <%= @match.guide.name %></p>
-<p><strong>Tourist:</strong> <%= @match.tourist.name %></p>
 <p><strong>Status:</strong> <%= @match.status.capitalize %></p>
-
-<h3>Send a Message to <%= @match.guide.name %></h3>
 
 <%= form_with(model: @message, url: send_message_match_path(@match), method: :post) do |form| %>
   <div>

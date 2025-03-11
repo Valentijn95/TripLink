@@ -1,0 +1,25 @@
+/* _header.scss */
+.main-header {
+  background-color: $secondary-blue;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.header-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.logo {
+  max-width: 170px;
+  height: auto;
+  margin: 0 auto;
+}

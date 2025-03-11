@@ -4,14 +4,25 @@
 // 2. These variables are defined with default value (see https://robots.thoughtbot.com/sass-default)
 // 3. You can override them below!
 
+// Override default Bootstrap variables
+
+// Define the $gray variable
+$red: #FD1015;
+$blue: #0D6EFD;
+$yellow: #FFC65A;
+$orange: #E67E22;
+$green: #1EDD88;
+$gray: #0E0000;
+$light-gray: #F4F4F4;
+
 // General style
 $font-family-sans-serif: $body-font;
 $headings-font-family:   $headers-font;
-$body-bg:                $light-gray;
+$body-bg:                $light-gray;  // Now using the previously defined $light-gray
 $font-size-base:         1rem;
 
 // Colors
-$body-color: $gray;
+$body-color: $gray;  // Now this works because $gray is defined
 $primary:    $blue;
 $success:    $green;
 $info:       $yellow;

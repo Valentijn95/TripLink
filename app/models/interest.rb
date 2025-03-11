@@ -1,3 +1,4 @@
 class Interest < ApplicationRecord
-  has_many :guides, through: :user_interests, source: :user, if: :user.guide == true
+  has_many :user_interests
+  has_many :users, through: :user_interests
 end

@@ -12,12 +12,32 @@ puts "Seeding TripLink ->"
 puts " ---------------------------------------"
 puts "Make users"
 User.delete_all
-viti = User.new(name: "Viti", email: "viti@tl.com", password: "password")
-viti.rate = 42
-viti.guide_description = "I'l show you the meaning of life"
-viti.guide = true
 
-timo = User.new(name: "Timo", email: "timo@tl.com", password: "password")
-timo.rate = 11
-timo.guide_description = "I like big birds and i cannot lie"
-timo.guide = true
+viti = User.create!(
+  name: "Viti",
+  email: "viti@tl.com",
+  password: "password",
+  rate: 42,
+  guide_description: "I'll show you the meaning of life",
+  guide: true
+)
+
+timo = User.create!(
+  name: "Timo",
+  email: "timo@tl.com",
+  password: "password",
+  rate: 11,
+  guide_description: "I like big birds and I cannot lie",
+  guide: true
+)
+
+denise = User.create!(
+  name: "Denise",
+  email: "denise@tl.com",
+  password: "password",
+  rate: 20,
+  guide_description: "I can show you some terrible places",
+  guide: true
+)
+
+puts "Seed finished"

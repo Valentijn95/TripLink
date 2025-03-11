@@ -5,11 +5,12 @@
 <p><strong>Status:</strong> <%= @match.status.capitalize %></p>
 
 <h3>Send a Message to <%= @match.guide.name %></h3>
-<%= form_with(url: '#', method: 'post') do |form| %>
+
+<%= form_with(model: @message, url: send_message_match_path(@match), method: :post) do |form| %>
   <div>
     <%= form.text_area :content, placeholder: "Type your message here...", rows: 4 %>
   </div>
   <div>
-    <%= form.submit "Chat" %>
+    <%= form.submit "Send Message" %>
   </div>
 <% end %>

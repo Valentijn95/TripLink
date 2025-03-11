@@ -11,9 +11,14 @@
   </head>
 
   <body>
-    <div class="container">
-      <%= render "shared/flashes" %>
-      <%= yield %>
-    </div>
+
+    <%= render "shared/flashes" %>
+    <%= yield %>
+
+
+    <% if !current_page?(no_footer_path)%>
+      <div class="footer"><%= render "shared/footer" %></div>
+    <% end%>
+  
   </body>
 </html>

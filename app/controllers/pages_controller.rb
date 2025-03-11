@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+
   def home
     @default_locations = Location.joins(:guide_locations).distinct
     @markers = get_markers(@default_locations)
@@ -13,4 +14,5 @@ class PagesController < ApplicationController
     end
     return markers
   end
+
 end

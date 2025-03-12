@@ -81,6 +81,7 @@ file = URI.parse("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-
 
 puts " ---------------------------------------"
 puts "Making users"
+# Match.destroy_all
 Interest.destroy_all
 User.destroy_all
 viti = User.new(name: "Viti", email: "viti@tl.com", password: "password")
@@ -150,8 +151,4 @@ end
 puts "#{GuideLocation.count} user locations created"
 puts " ---------------------------------------"
 
-puts "Making matches"
-Match.create!(guide: User.first, tourist: User.last, location: User.first.locations.sample, status: "pending")
-Match.create!(guide: User.all[1], tourist: User.last, location: User.all[1].locations.sample, status: "accepted")
-puts "#{Match.count} matches created"
-puts " ---------------------------------------"
+# rails 

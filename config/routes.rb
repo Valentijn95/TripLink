@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  get 'users', to: 'users#index'
+  resources :users, only: [:index, :show]
 
   resources :matches, only: [:show] do
     member do

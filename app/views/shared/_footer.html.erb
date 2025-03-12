@@ -1,13 +1,15 @@
 <div class="footer bg-warning">
-  <div class="footer-icons d-flex justify-content-between align-items-center pt-2 footer-container">
+  <%# positions relative %>
+  <div class="footer-icons d-flex justify-content-around align-items-center pt-2">
 
     <%= link_to :root, class: "text-dark text-center" do %>
     <i class="fa fa-users fa-2x  mx-8"></i>
     <% end %>
 
-    <div class="search-option">
-      <%= link_to :root, class: "text-dark text-center" do %>
-      <i class="fa fa-search"></i>
+    <div class="search-icon border rounded-circle">
+      <%# position absolute %>
+      <%= link_to :root, class: "text-dark mb-4" do %>
+      <i class="fa fa-search fa-3x"></i>
       <% end %>
     </div>
 

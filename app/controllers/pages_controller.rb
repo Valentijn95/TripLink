@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   def home
-    @default_locations = Location.joins(:guide_locations).distinct
+    @default_locations = Location.near("amsterdam", 300)
     @markers = get_markers(@default_locations)
   end
 
@@ -9,7 +9,8 @@ class PagesController < ApplicationController
     markers = locations.geocoded.map do |location|
       {
         lat: location.lat,
-        lng: location.lng
+        lng: location.lng,
+        location_id: location.id
       }
     end
     return markers

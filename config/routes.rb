@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
+  get "/search", to: "pages#render_location_info", as: :render_location_info
+  get "/search/delete", to: "pages#remove_location_info", as: :remove_location_info
+
   resources :users, only: [:index, :show]
 
   resources :matches, only: [:show] do

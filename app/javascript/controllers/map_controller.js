@@ -29,12 +29,7 @@ export default class extends Controller {
       );
       const pin = new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
-        //.setPopup(popup)
         .addTo(this.map)
-      pin.getElement().addEventListener("click", () => {
-        this.getInfoForLocationModal(marker.location_id);
-        this.openModal()
-      });
     });
   }
 

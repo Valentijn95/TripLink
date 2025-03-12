@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   def home
-    @default_locations = Location.near("amsterdam", 300)
+    @default_locations = Location.all
     @markers = get_markers(@default_locations)
   end
 

@@ -6,8 +6,8 @@ class User < ApplicationRecord
   has_many :guide_locations, dependent: :destroy
   has_many :locations, through: :guide_locations
 
-  # has_many :guide_matches, class_name: 'Match', foreign_key: 'guide_id', dependent: :destroy
-  # has_many :tourist_matches, class_name: 'Match', foreign_key: 'tourist_id', dependent: :destroy
+  has_many :guide_matches, class_name: 'Match', foreign_key: 'guide_id', dependent: :destroy
+  has_many :tourist_matches, class_name: 'Match', foreign_key: 'tourist_id', dependent: :destroy
 
   has_many :reviews, dependent: :destroy
   # Include default devise modules. Others available are:

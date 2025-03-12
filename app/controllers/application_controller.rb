@@ -4,5 +4,4 @@ class ApplicationController < ActionController::Base
   def no_footer_path
     [:root]
   end
-
 end

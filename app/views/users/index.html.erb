@@ -4,9 +4,12 @@
     <div class="d-flex border w-100 mt-4 rounded" style="height: 100px;">
       <%= image_tag 'profile-picture.webp', alt: 'guide' %>
       <div class="justify-content-start text-start ms-2 mt-1">
-        <h2><%= user.name %></h2>
+        <h2><%= link_to user.name, user_path(user) %></h2>
         <p><%= user.guide_description %></p>
       </div>
     </div>
     <% end %>
+  <% if @user.photo.key != nil %>
+    <%= cl_image_tag @user.photo.key, width: 400, crop: :fill %>
+  <% end %>
 </div>

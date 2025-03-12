@@ -77,14 +77,17 @@ arg_locations = [
 
 
 puts "Seeding TripLink ->"
+file = URI.parse("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg").open
 
 puts " ---------------------------------------"
 puts "Making users"
+Interest.destroy_all
 User.destroy_all
 viti = User.new(name: "Viti", email: "viti@tl.com", password: "password")
 viti.rate = 42
 viti.guide_description = "I'l show you the meaning of life"
 viti.guide = true
+viti.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
 timo = User.new(name: "Timo", email: "timo@tl.com", password: "password")
 timo.rate = 11
@@ -101,7 +104,6 @@ puts "#{User.count} users created"
 puts " ---------------------------------------"
 
 puts "Making interests"
-Interest.destroy_all
 interests.each do |interest|
   Interest.create!(interest: interest)
 end
@@ -149,7 +151,6 @@ puts "#{GuideLocation.count} user locations created"
 puts " ---------------------------------------"
 
 puts "Making matches"
-Match.destroy_all
 Match.create!(guide: User.first, tourist: User.last, location: User.first.locations.sample, status: "pending")
 Match.create!(guide: User.all[1], tourist: User.last, location: User.all[1].locations.sample, status: "accepted")
 puts "#{Match.count} matches created"

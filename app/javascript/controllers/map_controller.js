@@ -16,21 +16,10 @@ export default class extends Controller {
       container: this.element,
       style: 'mapbox://styles/mapbox/satellite-streets-v12',
       center: [0, 0],
-      zoom: 1
+      zoom: 0.9
     })
     this.#addMarkersToMap();
-    this.#fitMapToMarkers();
-  }
-
-  getInfoForLocationModal(locationId) {
-    fetch(`api/locations/${locationId}`)
-      .then(response => response.json())
-      .then((data) => {
-        console.log(data);
-      });
-  }
-  openModal() {
-    console.log("open modal");
+    // this.#fitMapToMarkers();
   }
 
   #addMarkersToMap() {
@@ -52,6 +41,6 @@ export default class extends Controller {
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 4000 })
+    this.map.fitBounds(bounds, { padding: 70, maxZoom: 10, duration: 4000 })
   }
 }

@@ -5,6 +5,10 @@ class PagesController < ApplicationController
     @markers = get_markers(@default_locations)
   end
 
+  def profile
+    @user = current_user
+  end
+  
   def render_location_partial
     @location = Location.find(params[:id])
     @guides = User.where(id: params[:guide_ids])

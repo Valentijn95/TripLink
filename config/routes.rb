@@ -2,12 +2,15 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
+
+  get "profile", to: "pages#profile", as: 'profile'
+
   get "/search", to: "pages#render_location_partial", as: :location_partial
   get "/search/delete", to: "pages#render_empty_location_partial", as: :empty_loacation_partial
 
   resources :users, only: [:index, :show]
 
-  resources :matches, only: [:show] do
+  resources :matches, only: [:index, :show, :new, :create] do
     member do
       get 'chat'
       post 'send_message'

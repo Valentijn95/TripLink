@@ -6,11 +6,9 @@
       <i class="fa fa-users fa-2x"></i>
     <% end %>
 
-    <div class="search-option">
-      <%= link_to users_path, class: "text-grey text-center" do %>
-        <i class="fa fa-search"></i>
-
-      <% end %>
+    <div class="search-option" data-controller="search-form">
+        <%= render "shared/search_form_main" %>
+        <i class="fa fa-search text-grey text-center" data-action="click->search-form#showSearchForm:prevent"></i>
     </div>
 
     <%= link_to profile_path, class: "text-grey text-center" do %>

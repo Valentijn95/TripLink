@@ -5,8 +5,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @guide = User.find(params[:id])
-    @interests = @guide.interests.pluck(:interest)
+    @user = User.find(params[:id])
+    @interests = @user.interests.pluck(:interest)
   end
 
   private

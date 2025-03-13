@@ -1,0 +1,14 @@
+.interests-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.interest {
+  padding: 0px 10px;
+  border: 1px solid $secondary-blue;
+  border-radius: 5px;
+  background-color: #ffffff;
+  cursor: pointer;
+}

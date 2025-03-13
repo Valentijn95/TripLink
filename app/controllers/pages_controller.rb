@@ -5,14 +5,14 @@ class PagesController < ApplicationController
     @markers = get_markers(@default_locations)
   end
 
-  def render_location_info
+  def render_location_partial
     @location = Location.find(params[:id])
     @guides = User.where(id: params[:guide_ids])
 
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: turbo_stream.replace(
-          "location_details",
+          "location-info",
           partial: "pages/location_information_window",
           locals: { location: @location, guides: @guides }
         )
@@ -20,11 +20,11 @@ class PagesController < ApplicationController
     end
   end
 
-  def remove_location_info
+  def render_empty_location_partial
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: turbo_stream.replace(
-          "location_details",
+          "location-info",
           partial: "pages/location_information_window",
           locals: { location: nil, guides: nil }
         )

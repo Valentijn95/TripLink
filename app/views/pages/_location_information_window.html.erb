@@ -1,18 +1,20 @@
-<% if location == nil %>
-  <%# <div class="location-info-wrapper">empty window</div> %>
-<% else %>
+<div id="location-info">
+  <% if location == nil %>
+    <%# <div class="location-info-wrapper">empty window</div> %>
+  <% else %>
 
-  <div class="location-info-wrapper" data-controller="location_details">
-    <span data-action="click->location_details#closeLocationDetails">close</span>
-    <% if defined?(location) %>
-    <h1><%= location.name %></h1>
-    <% end %>
-    <% if defined?(guides) && guides.any? %>
-      <h2>Guides</h2>
-      <% guides.each do |guide| %>
-        <h2><%= guide.name %></h2>
+    <div class="location-info-wrapper" data-controller="map-partial">
+      <span data-action="click->map-partial#close">close</span>
+      <% if defined?(location) %>
+      <h1><%= location.name %></h1>
       <% end %>
-    <% end %>
-  </div>
+      <% if defined?(guides) && guides.any? %>
+        <h2>Guides</h2>
+        <% guides.each do |guide| %>
+          <h2><%= guide.name %></h2>
+        <% end %>
+      <% end %>
+    </div>
 
-<% end %>
+  <% end %>
+</div>

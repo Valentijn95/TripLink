@@ -22,11 +22,12 @@ export default class extends Controller {
     // this.#fitMapToMarkers();
   }
 
-  async loadLocationDetails(location, guides) {
-    console.log("loadlocationdetails");
+
+
+  async loadPartial(location, guides) {
     const guideIds = guides.map(g => g.id).join(",");
     const url = `search?id=${location.id}&guide_ids=${guideIds}`;
-    //const url = "search"
+    console.log(url);
     const response = await fetch(url, {
       headers: { "Accept": "text/vnd.turbo-stream.html" }
     });
@@ -39,12 +40,11 @@ export default class extends Controller {
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
-      console.log(marker.marker_data)
       const pin = new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(this.map)
       pin.getElement().addEventListener('click', () => {
-        this.loadLocationDetails(marker.marker_data.location, marker.marker_data.guides);
+        this.loadPartial(marker.marker_data.location, marker.marker_data.guides);
       });
     });
   }

@@ -5,6 +5,10 @@ class PagesController < ApplicationController
     @markers = get_markers(@default_locations)
   end
 
+  def profile
+    @user = current_user
+  end
+
   def get_markers(locations)
     markers = locations.geocoded.map do |location|
       {

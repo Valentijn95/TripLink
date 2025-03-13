@@ -1,12 +1,3 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
 interests = [
   "Hiking",
   "Adventure",
@@ -71,26 +62,24 @@ arg_locations = [
   { location_name: "Tafi del Valle", address: "Tafi del Valle, Argentina", latitude: -26.8517, longitude: -65.7098 }
 ]
 
-
-
-
-
-
 puts "Seeding TripLink ->"
-file = URI.parse("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg").open
-
 puts " ---------------------------------------"
-puts "Making users"
+
+puts "Destroying all records"
+Review.destroy_all
 Match.destroy_all
 Location.destroy_all
 GuideLocation.destroy_all
 UserInterest.destroy_all
 Interest.destroy_all
 User.destroy_all
+puts "All existing records destroyed"
+puts " ---------------------------------------"
 
+puts "Making users"
 viti = User.new(name: "Viti", email: "viti@tl.com", password: "password")
 viti.rate = 42
-viti.guide_description = "I'l show you the meaning of life"
+viti.guide_description = "I'll show you the meaning of life"
 viti.guide = true
 
 timo = User.new(name: "Timo", email: "timo@tl.com", password: "password")
@@ -156,4 +145,9 @@ Match.create!(guide: User.first, tourist: User.last, location: User.first.locati
 Match.create!(guide: User.all[1], tourist: User.last, location: User.all[1].locations.sample, status: "accepted")
 puts "#{Match.count} matches created"
 puts " ---------------------------------------"
-# rails
+
+puts "Making reviews"
+Review.create!(user: User.first, match: Match.first, content: "This review is about a bird and it is awesome")
+Review.create!(user: User.all[1], match: Match.last, content: "This review is about a terrible bird")
+puts "#{Review.count} reviews created"
+puts " ---------------------------------------"

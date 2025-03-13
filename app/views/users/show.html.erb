@@ -1,20 +1,28 @@
 <div class="container">
   <div class="mt-3">
     <h1>Guide show page</h1>
-    <h2><%= @guide.name %></h2>
+    <h2><%= @user.name %></h2>
     <div class="text-center">
-      <% if @guide.photo.key != nil %>
-        <%= cl_image_tag @guide.photo.key, width: 300, crop: :fill, class: "justify-content-center my-3" %>
+      <% if @user.photo.key != nil %>
+        <%= cl_image_tag @user.photo.key, width: 300, crop: :fill, class: "justify-content-center my-3" %>
       <% end %>
     </div>
-    <p><%= @guide.guide_description %></p>
+    <p><%= @user.guide_description %></p>
     <button class="btn-connect">connect</button>
     <p><strong>Interests</strong></p>
-    <ul>
+    <div class="interests-container">
       <% @interests.each do |interest|%>
-        <li><%= interest %></li>
+      <div class="interest">
+        <%= interest %>
+      </div>
       <% end %>
-    </ul>
+    </div>
+    <p><strong>Languages</strong></p>
+    <p>.....</p>
+    <p><strong>Reviews</strong></p>
+    <% @user.reviews.each do |review| %>
+      <p><%= review.content %></p>
+    <% end %>
     <p><%= link_to "Go back to /users", users_path %></p>
   </div>
 </div>

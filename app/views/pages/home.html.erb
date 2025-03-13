@@ -1,11 +1,11 @@
-
-
+<%# this is the map on the homepage %>
 <div  style="width: 100vw; height: 87.2vh; position: absolute; top: 7vh;"
       class="map-canvas"
       data-controller="map"
       data-map-markers-value="<%= @markers.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
+<%# this is the search bar being rendered on the homepage %>
 <%= render "shared/search_form_main" %>
 
 <%= turbo_frame_tag :location_details do %>

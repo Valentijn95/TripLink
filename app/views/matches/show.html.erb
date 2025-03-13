@@ -1,13 +1,22 @@
-<h1>Send a Message to <%= @match.guide.first_name %> <%= @match.guide.last_name %></h1>
+<div class="container message-container">
+  <h1>Send a Message to <strong><%= @match.guide.name %></strong></h1>
 
-<p><strong><%= @match.guide.name %></p>
-<p><strong>Status:</strong> <%= @match.status.capitalize %></p>
+  <%= turbo_stream_from "match_#{@match.id}_messages" %>
 
-<%= form_with(model: @message, url: send_message_match_path(@match), method: :post) do |form| %>
-  <div>
-    <%= form.text_area :content, placeholder: "Type your message here...", rows: 8 %>
+  <div id="messages" class="messages">
+
+    <% @match.messages.each do |message| %>
+      <div id="message-<%= message.id %>"
+           class="message <%= 'sent' if message.user == @match.tourist %> <%= 'received' if message.user == @match.guide %>">
+        <p><%= message.content %></p>
+      </div>
+    <% end %>
   </div>
-  <div>
-    <%= form.submit "Send Message" %>
+
+  <div id="new_message">
+    <%= simple_form_for [@match, @message], html: { class: "d-flex", data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }} do |f| %>
+      <%= f.input :content, label: false, placeholder: "Type your message here...", input_html: { rows: 3, class: "form-control" } %>
+      <%= f.submit "Send", class: "btn btn-primary" %>
+    <% end %>
   </div>
-<% end %>
+</div>

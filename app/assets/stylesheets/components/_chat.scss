@@ -1,9 +1,9 @@
-.message-container {
+.chat {
+  width: 100vw;
+  margin-bottom: 10vh;
   .message {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1rem;
-    width: 100%;
   }
 
   .message-info {

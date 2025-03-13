@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
-    @user = User.first
+    @guides = User.where(guide: true)
   end
 
   def show
-    @user = User.find(params[:id])
+    @guide = User.find(params[:id])
+    @interests = @guide.interests.pluck(:interest)
   end
 
   private

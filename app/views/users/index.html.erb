@@ -1,5 +1,6 @@
 <div class="align-items-center text-center mt-5">
-  <h1>Guides found in 'search location'</h1>
+
+  <h1>Users found</h1>
     <% @users.each do |user| %>
     <div class="d-flex border w-100 mt-4 rounded" style="height: 100px;">
       <%= image_tag 'profile-picture.webp', alt: 'guide' %>
@@ -9,4 +10,16 @@
       </div>
     </div>
     <% end %>
+
+    <h1>Guides found</h1>
+    <% @guides.each do |guide| %>
+    <div class="d-flex border w-100 mt-4 rounded" style="height: 100px;">
+      <%= image_tag 'profile-picture.webp', alt: 'guide' %>
+      <div class="justify-content-start text-start ms-2 mt-1">
+        <h2><%= link_to guide.name, user_path(guide) %></h2>
+        <p><%= guide.guide_description %></p>
+      </div>
+    </div>
+    <% end %>
+
 </div>

@@ -16,7 +16,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, :email, :password, presence: true
+  validates :name, :email, presence: true
+  validates :password, presence: true, unless: -> { password.blank? }
   validates :guide_description, :rate, presence: true, if: :guide?
 
   def users_with_shared_interests

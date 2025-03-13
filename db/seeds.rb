@@ -81,14 +81,17 @@ file = URI.parse("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-
 
 puts " ---------------------------------------"
 puts "Making users"
-# Match.destroy_all
+Match.destroy_all
+Location.destroy_all
+GuideLocation.destroy_all
+UserInterest.destroy_all
 Interest.destroy_all
 User.destroy_all
+
 viti = User.new(name: "Viti", email: "viti@tl.com", password: "password")
 viti.rate = 42
 viti.guide_description = "I'l show you the meaning of life"
 viti.guide = true
-viti.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
 timo = User.new(name: "Timo", email: "timo@tl.com", password: "password")
 timo.rate = 11
@@ -112,7 +115,6 @@ puts "#{Interest.count} intersts created"
 puts " ---------------------------------------"
 
 puts "Making user_interests"
-UserInterest.destroy_all
 User.all.each do |user|
   random_interests = Interest.all.sample(6)
   UserInterest.create!(interest: random_interests[0], user: user)
@@ -125,7 +127,6 @@ puts "#{UserInterest.count} user interests created"
 puts " ---------------------------------------"
 
 puts "Making locations"
-Location.destroy_all
 ned_locations.each do |location|
   Location.create!(name: location[:location_name], address: location[:address], lat: location[:latitude], lng: location[:longitude])
 end
@@ -139,7 +140,6 @@ puts "#{Location.count} locations created"
 puts " ---------------------------------------"
 
 puts "Making user_locations"
-GuideLocation.destroy_all
 random_locations = Location.all.sample(3)
 random_locations.each do |location|
   GuideLocation.create!(user: User.first, location: location)
@@ -152,9 +152,8 @@ puts "#{GuideLocation.count} user locations created"
 puts " ---------------------------------------"
 
 puts "Making matches"
-Match.destroy_all
 Match.create!(guide: User.first, tourist: User.last, location: User.first.locations.sample, status: "pending")
 Match.create!(guide: User.all[1], tourist: User.last, location: User.all[1].locations.sample, status: "accepted")
 puts "#{Match.count} matches created"
 puts " ---------------------------------------"
-# rails 
+# rails

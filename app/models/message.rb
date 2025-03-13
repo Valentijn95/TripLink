@@ -8,7 +8,7 @@ class Message < ApplicationRecord
 
   private
 
-  after_create_commit do
-    broadcast_append_to "match_#{match.id}_messages", target: "messages", partial: "messages/message", locals: { message: self }
+  def broadcast_message
+    broadcast_append_to "match_#{self.match.id}_messages", target: "messages", partial: "messages/message", locals: { message: self, target: "messages" }
   end
 end

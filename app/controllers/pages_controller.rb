@@ -5,15 +5,16 @@ class PagesController < ApplicationController
       @default_locations = Location.all
       @markers = get_markers(@default_locations)
     else
-      @default_locations = Location.all
+      @markers = session[:markers]
     end
-    @markers = get_markers(@default_locations)
+    session.delete(:markers)
   end
 
-  # def home_search
-  #   raise
-  #   redirect_to root_path
-  # end
+  def home_search
+    @default_locations = Location.near(params[:location_search], 50)
+    session[:markers] = get_markers(@default_locations)
+    redirect_to root_path
+  end
 
   def profile
     @user = current_user

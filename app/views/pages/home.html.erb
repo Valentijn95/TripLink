@@ -5,8 +5,6 @@
       data-map-markers-value="<%= @markers.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
-<%# this is the search bar being rendered on the homepage %>
-<%= render "shared/search_form_main" %>
 
 <%= turbo_frame_tag :location_details do %>
   <%= render "location_information_window", location: nil, guides: nil %>

@@ -77,3 +77,5 @@ group :test do
 end
 
 gem 'ostruct'
+gem "solid_cable"
+

@@ -1,7 +1,10 @@
-<div class="container message-container">
+<div class="visually-hidden" id="match_id" data-match-id="<%= @match.id %>"></div>
+<div class="container message-container chat">
   <h1>Send a Message to <strong><%= @matched_user.name %></strong></h1>
 
-  <%= turbo_stream_from "match_#{@match.id}_messages" %>
+  <%# <%= turbo_stream_from "match_#{@match.id}_messages" %>
+
+  <%= turbo_stream_from @match %>
 
   <div id="messages" class="messages">
     <% @match.messages.each do |message| %>
@@ -9,10 +12,14 @@
     <% end %>
   </div>
 
-  <div id="new_message">
-    <%= simple_form_for [@match, @message], html: { class: "d-flex", data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }} do |f| %>
-      <%= f.input :content, label: false, placeholder: "Type your message here...", input_html: { rows: 3, class: "form-control" } %>
-      <%= f.submit "Send", class: "btn btn-primary" %>
+
+
+  <div id="new_message mb-8">
+    <%= turbo_frame_tag "messages" do %>
+      <%= simple_form_for [@match, @message], html: { class: "d-flex", data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }} do |f| %>
+        <%= f.input :content, label: false, placeholder: "Message #{@matched_user.name}", wrapper_html: { class: "flex-grow-1" } %>
+        <%= f.submit "Send", class: "btn btn-primary" %>
+      <% end %>
     <% end %>
   </div>
 </div>

@@ -1,6 +1,7 @@
 /* _header.scss */
 .main-header {
   background-color: $secondary-blue;
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +16,6 @@
 .header-container {
   z-index: 10;
   width: 100vw;
-  height: vh;
   border-bottom-right-radius: 2vh;
   border-bottom-left-radius: 2vh;
   display: flex;

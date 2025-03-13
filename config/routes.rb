@@ -2,8 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  post "/", to: "pages#home"
-  post "/home", to: "pages#home_search", as: :home_search
+  post "/", to: "pages#home_search", as: :home_search
 
   get "profile", to: "pages#profile", as: 'profile'
 

@@ -1,9 +1,18 @@
 class PagesController < ApplicationController
 
   def home
-    @default_locations = Location.near("keukenhof, lisse", 50)
+    if params[:location_search].present?
+      @default_locations = Location.near(params[:location_search], 50)
+    else
+      @default_locations = Location.all
+    end
     @markers = get_markers(@default_locations)
   end
+
+  # def home_search
+  #   raise
+  #   redirect_to root_path
+  # end
 
   def profile
     @user = current_user

@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def no_footer_path
-    [:root]
+    # array of paths that should not display the footer
   end
 
   def configure_permitted_parameters

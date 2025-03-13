@@ -1,12 +1,4 @@
-<%
-if message.user == current_user
-  message_class = "send"
-else
-  message_class = "received"
-end
-%>
-
-<div id="message-<%= message.id %>" class="message <%=message_class%>">
+<div id="message-<%= message.id %>" class="message">
 
   <small>
     <p><strong><%= message.user.name %></strong></p>

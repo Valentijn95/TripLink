@@ -7,20 +7,15 @@ class MessagesController < ApplicationController
     @message.match = @match
 
     if @message.save
-      puts "Message saved"
       respond_to do |format|
         format.turbo_stream do
-          render turbo_stream: turbo_stream.append(
-            :messages,
-            partial: "messages/message",
+          render turbo_stream: turbo_stream.append(:messages, partial: "messages/message",
             target: "messages",
-            locals: { message: @message }
-          )
+            locals: { message: @message })
         end
-        format.html { redirect_to match_path(@match) }
       end
     else
-      render 'matches/show', status: :unprocessable_entity
+      render "matches/show", status: :unprocessable_entity
     end
   end
 

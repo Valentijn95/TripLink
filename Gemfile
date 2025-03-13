@@ -78,4 +78,3 @@ end
 
 gem 'ostruct'
 gem "solid_cable"
-

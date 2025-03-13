@@ -3,7 +3,12 @@ class GuideLocation < ApplicationRecord
   belongs_to :location
   alias_attribute :guide, :user
 
+  validates :location_id, presence: true
   validate :guide_is_valid
+
+  validates :user_id, uniqueness: { scope: :location_id }
+
+
 
   private
 

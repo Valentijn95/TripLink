@@ -25,8 +25,8 @@ export default class extends Controller {
 
 
   async loadPartial(location, guides) {
-    const guideIds = guides.map(g => g.id).join(",");
-    const url = `search?id=${location.id}&guide_ids=${guideIds}`;
+    const guideIds = guides.join(",");
+    const url = `search?id=${location}&guide_ids=${guideIds}`;
     console.log(url);
     const response = await fetch(url, {
       headers: { "Accept": "text/vnd.turbo-stream.html" }
@@ -44,6 +44,7 @@ export default class extends Controller {
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(this.map)
       pin.getElement().addEventListener('click', () => {
+        console.log(marker.marker_data.guides);
         this.loadPartial(marker.marker_data.location, marker.marker_data.guides);
       });
     });

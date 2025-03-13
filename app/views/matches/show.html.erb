@@ -1,15 +1,11 @@
 <div class="container message-container">
-  <h1>Send a Message to <strong><%= @match.guide.name %></strong></h1>
+  <h1>Send a Message to <strong><%= @matched_user.name %></strong></h1>
 
   <%= turbo_stream_from "match_#{@match.id}_messages" %>
 
   <div id="messages" class="messages">
-
     <% @match.messages.each do |message| %>
-      <div id="message-<%= message.id %>"
-           class="message <%= 'sent' if message.user == @match.tourist %> <%= 'received' if message.user == @match.guide %>">
-        <p><%= message.content %></p>
-      </div>
+      <%= render "messages/message", message: message, user: current_user %>
     <% end %>
   </div>
 

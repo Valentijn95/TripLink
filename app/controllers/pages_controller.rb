@@ -39,11 +39,11 @@ class PagesController < ApplicationController
   def get_markers(locations)
 
     markers = locations.geocoded.map do |location|
-      guides = User.joins(:guide_locations).where("guide_locations.location_id = ?", location.id)
+      guides = User.joins(:guide_locations).where("guide_locations.location_id = ?", location.id).map { |user| user.id }
       {
         lat: location.lat,
         lng: location.lng,
-        marker_data: { location: location, guides: guides },
+        marker_data: { location: location.id, guides: guides },
       }
     end
     return markers

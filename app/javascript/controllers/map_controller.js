@@ -22,18 +22,29 @@ export default class extends Controller {
     // this.#fitMapToMarkers();
   }
 
+
+
+  async loadPartial(location, guides) {
+    const guideIds = guides.map(g => g.id).join(",");
+    const url = `search?id=${location.id}&guide_ids=${guideIds}`;
+    console.log(url);
+    const response = await fetch(url, {
+      headers: { "Accept": "text/vnd.turbo-stream.html" }
+    });
+
+    if (response.ok) {
+      const html = await response.text();
+      Turbo.renderStreamMessage(html);
+    }
+  }
+
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
-      const popup = new mapboxgl.Popup({ offset: 25 }).setText(
-        `This location has and id of: ${marker.location_id}`
-      );
       const pin = new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
-        //.setPopup(popup)
         .addTo(this.map)
-      pin.getElement().addEventListener("click", () => {
-        this.getInfoForLocationModal(marker.location_id);
-        this.openModal()
+      pin.getElement().addEventListener('click', () => {
+        this.loadPartial(marker.marker_data.location, marker.marker_data.guides);
       });
     });
   }

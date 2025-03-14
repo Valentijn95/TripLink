@@ -10,6 +10,8 @@
     opacity: 0.5;
     text-align: center;
     width: fit-content;
+    font-size: 0.6rem;
+    color: $light-gray;
   }
 
   .message-content {
@@ -19,16 +21,18 @@
     max-width: 70%;
     width: fit-content;
     word-wrap: break-word;
+    font-size: 0.8rem;
   }
 
   .message.sent .message-content {
-    align-self: flex-start;
-    background: $blue;
+    align-self: flex-end;
+    background: $primary-navy;
     color: $light-gray;
   }
 
   .message.received .message-content {
-    align-self: flex-end;
-    background: $gray-200;
+    align-self: flex-start;
+    background: $gray;
+    color: $light-gray;
   }
 }

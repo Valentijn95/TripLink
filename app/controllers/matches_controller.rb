@@ -20,8 +20,8 @@ class MatchesController < ApplicationController
     @match = Match.new
     @match.tourist = current_user
     @match.guide = User.find(params[:user_id])
-    @match.location = @match.guide.locations.first
-    raise
+    @match.location = Location.find(params[:match][:location_id])
+    @match.status = "pending"
   end
 
 
@@ -32,7 +32,7 @@ class MatchesController < ApplicationController
   end
 
   def match_params
-    params.require(:match).permit(:guide_id)
+    params.require(:match).permit(:guide_id, :location_id)
   end
 
 end

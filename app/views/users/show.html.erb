@@ -9,7 +9,10 @@
     </div>
     <p><%= @user.guide_description %></p>
 
+    <% location = params[:location] %>
+
     <%= simple_form_for [@user, @match] do |f| %>
+      <%= f.input :location_id, as: :hidden, input_html: { value: location } %>
       <%= f.button :submit, "connect", class: 'btn-connect' %>
     <% end %>
 

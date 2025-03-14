@@ -9,9 +9,11 @@ Rails.application.routes.draw do
   get "/search", to: "pages#render_location_partial", as: :location_partial
   get "/search/delete", to: "pages#render_empty_location_partial", as: :empty_loacation_partial
 
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show] do
+    resources :matches, only: [:create]
+  end
 
-  resources :matches, only: [:index, :show, :new, :create] do
+  resources :matches, only: [:index, :show, :new] do
     resources :messages, only: [:create]
   end
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

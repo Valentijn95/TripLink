@@ -141,7 +141,7 @@ puts "#{GuideLocation.count} user locations created"
 puts " ---------------------------------------"
 
 puts "Making matches"
-Match.create!(guide: User.first, tourist: User.last, location: User.first.locations.sample, status: "pending")
+Match.create!(guide: User.first, tourist: User.all[1], location: User.first.locations.sample, status: "pending")
 Match.create!(guide: User.all[1], tourist: User.last, location: User.all[1].locations.sample, status: "accepted")
 puts "#{Match.count} matches created"
 puts " ---------------------------------------"

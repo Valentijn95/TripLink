@@ -8,7 +8,11 @@
       <% end %>
     </div>
     <p><%= @user.guide_description %></p>
-    <button class="btn-connect">connect</button>
+
+    <%= simple_form_for [@user, @match] do |f| %>
+      <%= f.button :submit, "connect", class: 'btn-connect' %>
+    <% end %>
+
     <p><strong>Interests</strong></p>
     <div class="interests-container">
       <% @interests.each do |interest|%>

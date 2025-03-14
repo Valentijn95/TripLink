@@ -1,9 +1,50 @@
 .location-info-wrapper {
-  height: 20vh;
+  height: 100vh;
   width: 100vw;
   top: 0;
-  background-color: rgb(105, 21, 21);
-  color: white;
+  background-color:hsla(0, 0%, 83%, 0.6);
+  color: $gray;
   position: absolute;
   z-index: 10;
+  .partial-top-bar {
+    width: 94vw;
+    height: auto;
+    background-color: $primary-navy;
+    position: absolute;
+    top: 3vh;
+    left: 3vw;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    z-index: 101;
+    padding: 8px;
+    color: white;
+    .close {
+      padding: 2px 5px;
+
+      float: right;
+      border-radius: 5px;
+      cursor: pointer;
+      &:hover {
+        background-color: $secondary-blue;
+        color: $gray;
+      }
+    }
+  }
+}
+
+.location-info-container {
+  height: 94vh;
+  width: 94vw;
+  position: absolute;
+  top: 4vh;
+  left: 3vw;
+  background-color: $white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  padding: 5vh 10px 10px 10px;
+  overflow-y: auto;
+  z-index: 100;
+  h3 {
+    font-size: 1rem;
+  }
 }

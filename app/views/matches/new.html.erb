@@ -1,0 +1,13 @@
+
+
+<div class="container">
+<h1><%= @guide.name %></h1>
+
+<p>Request <%= @guide.name %> to be your guide</p>
+  <%= simple_form_for @match do |f| %>
+    <%= f.input :guide_id, as: :hidden, input_html: { value: @guide.id } %>
+    <%= f.input :tourist_id, as: :hidden, input_html: { value: current_user.id } %>
+
+    <%= f.submit "Request", class: "btn btn-primary" %>
+  <% end %>
+</div>

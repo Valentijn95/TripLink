@@ -21,8 +21,10 @@ class PagesController < ApplicationController
   end
 
   def render_location_partial
+
     @location = Location.find(params[:id])
-    @guides = User.where(id: params[:guide_ids])
+    guide_ids = params[:guide_ids].split(",").map { |id| id.to_i }
+    @guides = User.where(id: guide_ids)
 
     respond_to do |format|
       format.turbo_stream do

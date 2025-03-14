@@ -19,7 +19,7 @@ export default class extends Controller {
       zoom: 0.9
     })
     this.#addMarkersToMap();
-    // this.#fitMapToMarkers();
+    this.#fitMapToMarkers();
   }
 
 

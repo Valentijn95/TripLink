@@ -4,7 +4,7 @@ class Match < ApplicationRecord
 
   belongs_to :location
 
-  has_many :messages
+  has_many :messages, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
   validate :guide_is_valid

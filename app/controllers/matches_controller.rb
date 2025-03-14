@@ -25,6 +25,11 @@ class MatchesController < ApplicationController
     @match.guide = User.find(params[:user_id])
     @match.location = Location.find(params[:match][:location_id])
     @match.status = "pending"
+    if @match.save
+      redirect_to matches_path
+    else
+      render "users/#{params[:user_id]}?location=#{params[:match][:location_id]}"
+    end
   end
 
 
@@ -32,7 +37,7 @@ class MatchesController < ApplicationController
     @guide = User.find(params[:guide_id])
     @match = Match.new
   end
-  
+
   private
 
   def set_match

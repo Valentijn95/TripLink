@@ -1,10 +1,13 @@
 class MatchesController < ApplicationController
   before_action :set_match, only: [:show]
 
+
   def index
     @user = current_user
     @matches = Match.where(tourist_id: @user)
   end
+
+
 
   def show
     if current_user == @match.guide
@@ -12,9 +15,9 @@ class MatchesController < ApplicationController
     else
       @matched_user = @match.guide
     end
-    @match = Match.find(params[:id])
     @message = Message.new
   end
+
 
   def create
     @match = Match.new
@@ -25,6 +28,11 @@ class MatchesController < ApplicationController
   end
 
 
+  def new
+    @guide = User.find(params[:guide_id])
+    @match = Match.new
+  end
+  
   private
 
   def set_match

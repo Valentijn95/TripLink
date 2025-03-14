@@ -8,7 +8,14 @@
       <% end %>
     </div>
     <p><%= @user.guide_description %></p>
-    <button class="btn-connect">connect</button>
+
+    <% location = params[:location] %>
+
+    <%= simple_form_for [@user, @match] do |f| %>
+      <%= f.input :location_id, as: :hidden, input_html: { value: location } %>
+      <%= f.button :submit, "connect", class: 'btn-connect' %>
+    <% end %>
+
     <p><strong>Interests</strong></p>
     <div class="interests-container">
       <% @interests.each do |interest|%>

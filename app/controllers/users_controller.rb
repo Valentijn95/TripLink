@@ -7,7 +7,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @interests = @user.interests.pluck(:interest)
+    @match = Match.new
   end
+
 
   private
 

@@ -1,5 +1,12 @@
 <div class="container">
-  <h1>Profile page</h1>
-  <h1> <%= @user.name%> </h1>
-  <p> <%= link_to "Edit this user", edit_user_registration_path %></p>
+
+  <!-- if no one logge in show the login button -->
+  <% if user_signed_in? %>
+    <h1>Profile page</h1>
+    <h1> <%= @user.name%> </h1>
+    <p> <%= link_to "Edit this user", edit_user_registration_path %></p>
+    <p> <%= button_to "Log out", destroy_user_session_path, method: :delete %></p>
+  <% else %>
+    <p> <%= link_to "Log in", new_user_session_path %></p>
+  <% end %>
 </div>

@@ -3,7 +3,7 @@
     <h1>Your connections</h1>
 
     <% @matches.each do |match| %>
-    <div class="d-flex border w-100 mt-4 rounded" style="height: 100px;">
+    <div class="d-flex border w-100 mt-4 rounded justify-content-between">
       <% if match.tourist.photo.key != nil %>
         <%= cl_image_tag match.tourist.photo.key, width: 300, crop: :fill, class: "justify-content-center my-3" %>
       <% end %>
@@ -11,15 +11,16 @@
         <h2><%= match.guide.name %></h2>
         <p><%= match.guide.guide_description %></p>
         <p>Status: <%= match.status %></p>
+
       </div>
+      <%= link_to "Chat", match_path(match), class: "btn btn-primary" %>
     </div>
     <% end %>
 
-    <br>
-    <div class="d-flex justify-content-around">
+    <%# <div class="d-flex justify-content-around">
       <button class="col-5">Pending connections</button>
       <button class="col-5">Past connections</button>
-    </div>
+    </div> %>
 
   </div>
 </div>

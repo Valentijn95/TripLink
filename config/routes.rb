@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  post "/", to: "pages#home_search", as: :home_search
+  post "/", to: "pages#home_search"
 
   get "profile", to: "pages#profile", as: 'profile'
 
@@ -12,11 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
 
   resources :matches, only: [:index, :show, :new, :create] do
-    member do
-      get 'chat'
-      post 'send_message'
-    end
-  resources :messages, only: [:create]
+    resources :messages, only: [:create]
   end
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

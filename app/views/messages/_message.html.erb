@@ -1,17 +1,10 @@
-<%
-if message.user == current_user
-  message_class = "send"
-else
-  message_class = "received"
-end
-%>
+<div id="message-<%= message.id %>" class="message <%= message.user === user ? 'sent' : 'received' %>">
 
-<div id="message-<%= message.id %>" class="message <%=message_class%>">
 
-  <small>
-    <p><strong><%= message.user.name %></strong></p>
-    <p><%= message.created_at.strftime("%B %d, %Y at %I:%M %p") %></p>
+<p class="message-content"><%= message.content %>
+<br>
+  <small class="message-info">
+    <%= message.created_at.strftime("%I:%M %p") %>
   </small>
-
-<p><%= message.content %></p>
+</p>
 </div>

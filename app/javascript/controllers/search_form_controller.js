@@ -7,8 +7,7 @@ export default class extends Controller {
     console.log("search_form_controller connected");
   }
 
-  showSearchForm(event) {
-    console.log(this.barTarget);
+  showSearchForm() {
     this.barTarget.classList.remove("d-none");
   }
 

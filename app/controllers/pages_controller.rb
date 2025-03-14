@@ -1,8 +1,6 @@
 class PagesController < ApplicationController
 
   def home
-
-
     if session[:markers].nil?
       @default_locations = Location.all
       @markers = get_markers(@default_locations)

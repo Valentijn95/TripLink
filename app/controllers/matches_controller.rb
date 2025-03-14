@@ -4,7 +4,8 @@ class MatchesController < ApplicationController
 
   def index
     @user = current_user
-    @matches = Match.where(tourist_id: @user)
+    @matches_as_tourist = Match.where(tourist_id: @user)
+    @matches_as_guide = Match.where(guide_id: @user)
   end
 
 

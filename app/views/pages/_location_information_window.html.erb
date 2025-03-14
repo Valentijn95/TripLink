@@ -3,18 +3,35 @@
     <%# <div class="location-info-wrapper">empty window</div> %>
   <% else %>
 
-    <div class="location-info-wrapper" data-controller="map-partial">
-      <span data-action="click->map-partial#close">close</span>
-      <% if defined?(location) %>
-      <h1><%= location.name %></h1>
-      <% end %>
-      <% if defined?(guides) && guides.any? %>
-        <h2>Guides</h2>
-        <% guides.each do |guide| %>
-          <h2><%= guide.name %></h2>
-        <% end %>
-      <% end %>
-    </div>
+    <div class="location-info-wrapper" data-controller="map-partial" data-action="click->map-partial#close:stop">
+      <div class="partial-top-bar"><span data-action="click->map-partial#close" class="close">close</span></div>
+      <div class="location-info-container">
 
+          <% if defined?(location) %>
+            <h1><%= location.name %></h1>
+            <h3><%= location.address %></h3>
+          <% end %>
+          <% if defined?(guides) && guides.any? %>
+            <h1 class="mt-5">Guides</h1>
+
+              <div class="align-items-center text-center mt-5">
+              <% guides.each do |guide| %>
+
+              <div class="d-flex border w-100 mt-4 rounded" style="height: 100px;">
+                <%= image_tag 'profile-picture.webp', alt: 'guide' %>
+                <div class="justify-content-start text-start ms-2 mt-1">
+                  <h2><%= link_to guide.name, user_path(guide, location: location.id), data: { turbo: false } %></h2>
+                  <p><%= guide.guide_description %></p>
+                </div>
+              </div>
+
+              <% end %>
+              </div>
+
+          <% else %>
+            <h2 class="mt-5">No guides available</h2>
+          <% end %>
+      </div>
+    </div>
   <% end %>
 </div>

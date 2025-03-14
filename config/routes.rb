@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show]
 
+   get 'matches/new/:guide_id', to: 'matches#new', as: 'new_match'
+
   resources :matches, only: [:index, :show, :new, :create] do
     resources :messages, only: [:create]
   end

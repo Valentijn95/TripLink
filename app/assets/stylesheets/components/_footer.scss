@@ -1,9 +1,11 @@
 .footer {
+  margin-top: 1vh;
   position: fixed;
+  display: block;
   bottom: 0;
+  left: 0;
   width: 100%;
   padding-left: 0px;
-  background-color:rgb(17, 17, 18);
   // border-top-left-radius: 1.4vh;
   // border-top-right-radius: 1.4vh;
 }

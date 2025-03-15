@@ -11,23 +11,35 @@
             <h1><%= location.name %></h1>
             <h3><%= location.address %></h3>
           <% end %>
+          <!-- if user is not signed in show the login button -->
+
+
           <% if defined?(guides) && guides.any? %>
-            <h1 class="mt-5">Guides</h1>
+            <h1 class="mt-4">Guides</h1>
+            <% if !user_signed_in? %>
+              <p> Sign in or sign up to connect with a guide </p>
+              <%= link_to "Log in", new_user_session_path, class: "btn btn-outline-primary mb-2", data: { turbo: false } %>
+              <%= link_to "Sign up", new_user_registration_path, class: "btn btn-outline-primary mb-2", data: { turbo: false } %>
+            <% else %>
 
-              <div class="align-items-center text-center mt-5">
+              <div class="align-items-center text-center">
               <% guides.each do |guide| %>
+                <div class="d-flex border w-100 mt-4 rounded" style="height: 100px;">
 
-              <div class="d-flex border w-100 mt-4 rounded" style="height: 100px;">
-                <%= image_tag 'profile-picture.webp', alt: 'guide' %>
-                <div class="justify-content-start text-start ms-2 mt-1">
-                  <h2><%= link_to guide.name, user_path(guide, location: location.id), data: { turbo: false } %></h2>
-                  <p><%= guide.guide_description %></p>
+                  <% if guide.photo.key != nil %>
+                    <%= cl_image_tag(guide.photo.key, width: 100, height: 100, gravity: "face", crop: "auto") %>
+                  <% else %>
+                    <%= image_tag 'profile-picture.webp', alt: 'guide' %>
+                  <% end %>
+                  <div class="justify-content-start text-start ms-2 mt-1">
+                    <h2><%= link_to guide.name, user_path(guide, location: location.id), data: { turbo: false } %></h2>
+                    <p><%= guide.guide_description %></p>
+                  </div>
                 </div>
-              </div>
-
               <% end %>
               </div>
 
+            <% end %>
           <% else %>
             <h2 class="mt-5">No guides available</h2>
           <% end %>

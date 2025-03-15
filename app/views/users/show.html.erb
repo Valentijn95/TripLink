@@ -1,12 +1,12 @@
-<div class="container">
-  <div class="">
-    <h1>Guide show page</h1>
-    <h2><%= @user.name %></h2>
+
+
+
     <div class="text-center">
       <% if @user.photo.key != nil %>
-        <%= cl_image_tag @user.photo.key, width: 300, crop: :fill, class: "justify-content-center my-3" %>
+        <%= cl_image_tag(@user.photo.key, width: 366, height: 274, gravity: "face", crop: "auto") %>
       <% end %>
     </div>
+    <h1><%= @user.name %></h1>
     <p><%= @user.guide_description %></p>
 
     <% location = params[:location] %>
@@ -30,5 +30,3 @@
     <% @user.reviews.each do |review| %>
       <p><%= review.content %></p>
     <% end %>
-  </div>
-</div>

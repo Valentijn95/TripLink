@@ -8,6 +8,7 @@ class Location < ApplicationRecord
   geocoded_by :address, :latitude  => :lat, :longitude => :lng
   after_validation :geocode, if: :will_save_change_to_address?
 
-  validates :lat, :lng, presence: true
-  validates :address, presence: true, uniqueness: true
+  # validates :lat, :lng, presence: true
+  validates :address, presence: true
+  # validates_uniqueness_of :address, message: "This location already exists in the database
 end

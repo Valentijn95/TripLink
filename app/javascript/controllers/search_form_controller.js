@@ -9,6 +9,7 @@ export default class extends Controller {
 
   showSearchForm() {
     this.barTarget.classList.remove("d-none");
+    this.barTarget.querySelector(".search-form-input").focus();
   }
 
 };

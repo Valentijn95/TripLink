@@ -7,10 +7,10 @@
 // Override default Bootstrap variables
 
 // Define the $gray variable
-$red: #FD1015;
-$blue: #0D6EFD;
+$red: #ae4345;
+$blue: #6C99D2;
 $yellow: #FFC65A;
-$orange: #E67E22;
+$orange: #FFA725;
 $green: #1EDD88;
 $gray: #202020;
 $light-gray: #F4F4F4;
@@ -23,11 +23,11 @@ $font-size-base:         1rem;
 
 // Colors
 $body-color: $gray;  // Now this works because $gray is defined
-$primary:    $blue;
-$success:    $green;
+$primary:    #6C99D2;
+$success:    #1EDD88;
 $info:       $yellow;
 $danger:     $red;
-$warning:    $orange;
+$warning:    #FFA725;
 
 // Buttons & inputs' radius
 $border-radius-sm:            .0625rem;

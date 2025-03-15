@@ -11,3 +11,16 @@
 @import "search_form_main";
 @import "header";
 @import "chat";
+
+.body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+
+}
+.content {
+  padding-left: 3vw;
+  padding-right: 3vw;
+  padding-top: 11vh;
+  padding-bottom: 10vh;
+}

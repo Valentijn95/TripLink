@@ -7,32 +7,30 @@
         <%= cl_image_tag(@user.photo.key, width: 366, height: 274, gravity: "face", crop: "auto") %>
       <% end %>
     </div>
-    <h1><%= @user.name %></h1>
-    <p><%= @user.guide_description %></p>
 
-
-
-
-    <% if @this_match[0] %>
-      <%= button_to "Chat", match_path(@this_match[0]), class: 'btn-connect', method: :get %>
-    <% else %>
-      <%= simple_form_for [@user, @match] do |f| %>
-        <%= f.input :location_id, as: :hidden, input_html: { value: location } %>
-        <%= f.button :submit, "connect", class: 'btn-connect' %>
+    <div class="ps-3 pe-3">
+      <h1><%= @user.name %></h1>
+      <p><%= @user.guide_description %></p>
+      <% if @this_match[0] %>
+        <%= button_to "Chat", match_path(@this_match[0]), class: 'btn-connect', method: :get %>
+      <% else %>
+        <%= simple_form_for [@user, @match] do |f| %>
+          <%= f.input :location_id, as: :hidden, input_html: { value: location } %>
+          <%= f.button :submit, "connect", class: 'btn-connect' %>
+        <% end %>
       <% end %>
-    <% end %>
-
-    <p><strong>Interests</strong></p>
-    <div class="interests-container">
-      <% @interests.each do |interest|%>
-      <div class="interest">
-        <%= interest %>
+      <p><strong>Interests</strong></p>
+      <div class="interests-container">
+        <% @interests.each do |interest|%>
+        <div class="interest">
+          <%= interest %>
+        </div>
+        <% end %>
       </div>
+      <p><strong>Languages</strong></p>
+      <p>.....</p>
+      <p><strong>Reviews</strong></p>
+      <% @user.reviews.each do |review| %>
+        <p><%= review.content %></p>
       <% end %>
     </div>
-    <p><strong>Languages</strong></p>
-    <p>.....</p>
-    <p><strong>Reviews</strong></p>
-    <% @user.reviews.each do |review| %>
-      <p><%= review.content %></p>
-    <% end %>

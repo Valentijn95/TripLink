@@ -26,12 +26,12 @@
 }
 
 .search-form-input:focus {
-  border: 1px solid black;
   outline: none;
   opacity: 0.7;
 }
 
 .search-form-submit {
+  font-size: 1rem;
   position: absolute;
   height: 5vh;
   width: 5vh;
@@ -42,4 +42,5 @@
   color: white;
   font-weight: 700;
   border: none;
+  padding: 0;
 }

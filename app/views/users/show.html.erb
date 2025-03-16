@@ -1,3 +1,4 @@
+ <% location = params[:location] %>
 
 
 
@@ -9,11 +10,16 @@
     <h1><%= @user.name %></h1>
     <p><%= @user.guide_description %></p>
 
-    <% location = params[:location] %>
 
-    <%= simple_form_for [@user, @match] do |f| %>
-      <%= f.input :location_id, as: :hidden, input_html: { value: location } %>
-      <%= f.button :submit, "connect", class: 'btn-connect' %>
+
+
+    <% if @this_match[0] %>
+      <%= button_to "Chat", match_path(@this_match[0]), class: 'btn-connect', method: :get %>
+    <% else %>
+      <%= simple_form_for [@user, @match] do |f| %>
+        <%= f.input :location_id, as: :hidden, input_html: { value: location } %>
+        <%= f.button :submit, "connect", class: 'btn-connect' %>
+      <% end %>
     <% end %>
 
     <p><strong>Interests</strong></p>

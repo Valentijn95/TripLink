@@ -9,6 +9,9 @@ class User < ApplicationRecord
   has_many :guide_matches, class_name: 'Match', foreign_key: 'guide_id', dependent: :destroy
   has_many :tourist_matches, class_name: 'Match', foreign_key: 'tourist_id', dependent: :destroy
 
+  has_many :guides, through: :tourist_matches, class_name: 'User', foreign_key: 'guide_id'
+  has_many :tourists, through: :guide_matches, class_name: 'User', foreign_key: 'tourist_id'
+
   has_many :reviews, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

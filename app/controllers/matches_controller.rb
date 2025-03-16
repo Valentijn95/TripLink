@@ -21,13 +21,12 @@ class MatchesController < ApplicationController
 
 
   def create
-
     @match = Match.new
     @match.tourist = current_user
     @match.guide = User.find(params[:user_id])
     @match.location = Location.find(params[:match][:location_id])
     @match.status = "pending"
-    raise
+
     if @match.save
       redirect_to matches_path
     else

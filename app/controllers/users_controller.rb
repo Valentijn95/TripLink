@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @users = User.all
     @guides = User.where(guide: true)
   end
 
   def show
+    @this_match = Match.where(tourist_id: current_user.id, guide_id: params[:id])
     @user = User.find(params[:id])
     @interests = @user.interests.pluck(:interest)
     @match = Match.new

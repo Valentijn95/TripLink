@@ -2,7 +2,8 @@ class PagesController < ApplicationController
 
   def home
     if session[:markers].nil?
-      @default_locations = Location.all
+      # load locations that have a guide location
+      @default_locations = Location.joins(:guide_locations).where("guide_locations.location_id = locations.id")
       @markers = get_markers(@default_locations)
     else
       @markers = session[:markers]
@@ -11,7 +12,7 @@ class PagesController < ApplicationController
   end
 
   def home_search
-    @default_locations = Location.near(params[:location_search], 50)
+    @default_locations = Location.joins(:guide_locations).where("guide_locations.location_id = locations.id").near(params[:location_search], 50)
     session[:markers] = get_markers(@default_locations)
     redirect_to root_path
   end

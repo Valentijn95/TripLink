@@ -3,7 +3,8 @@ class MatchesController < ApplicationController
 
   def index
     @user = current_user
-    @matches = Match.where(tourist_id: @user)
+    @matches_as_tourist = Match.where(tourist_id: @user)
+    @matches_as_guide = Match.where(guide_id: @user)
   end
 
   def show
@@ -26,6 +27,7 @@ class MatchesController < ApplicationController
     @match.guide = User.find(params[:user_id])
     @match.location = Location.find(params[:match][:location_id])
     @match.status = "pending"
+
     if @match.save
       redirect_to matches_path
     else

@@ -1,13 +1,10 @@
 class MatchesController < ApplicationController
   before_action :set_match, only: [:show]
 
-
   def index
     @user = current_user
     @matches = Match.where(tourist_id: @user)
   end
-
-
 
   def show
     if current_user == @match.guide
@@ -18,6 +15,10 @@ class MatchesController < ApplicationController
     @message = Message.new
   end
 
+    def new
+      @guide = User.find(params[:guide_id])
+      @match = Match.new
+    end
 
   def create
     @match = Match.new
@@ -30,12 +31,6 @@ class MatchesController < ApplicationController
     else
       render "users/#{params[:user_id]}?location=#{params[:match][:location_id]}"
     end
-  end
-
-
-  def new
-    @guide = User.find(params[:guide_id])
-    @match = Match.new
   end
 
   private

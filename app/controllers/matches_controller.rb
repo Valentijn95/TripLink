@@ -2,11 +2,36 @@ class MatchesController < ApplicationController
   before_action :set_guide, only: [:new]
   before_action :set_match, only: [:show, :create_message]
 
+
+  def index
+    @user = current_user
+    @matches_as_tourist = Match.where(tourist_id: @user)
+    @matches_as_guide = Match.where(guide_id: @user)
+  end
+
+
+
   def show
     @match = Match.find(params[:id])
     @message = Message.new
     @matched_user = @match.guide
   end
+
+
+  def create
+    @match = Match.new
+    @match.tourist = current_user
+    @match.guide = User.find(params[:user_id])
+    @match.location = Location.find(params[:match][:location_id])
+    @match.status = "pending"
+
+    if @match.save
+      redirect_to matches_path
+    else
+      render "users/#{params[:user_id]}?location=#{params[:match][:location_id]}"
+    end
+  end
+
 
   def new
     @guide = User.find(params[:guide_id])
@@ -40,4 +65,9 @@ class MatchesController < ApplicationController
   def message_params
     params.require(:message).permit(:content)
   end
+
+  def match_params
+    params.require(:match).permit(:guide_id, :location_id)
+  end
+
 end

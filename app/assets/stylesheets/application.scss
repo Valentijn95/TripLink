@@ -1,12 +1,13 @@
+// Graphical variables
+@import "config/fonts";
+@import "config/colors";
+@import "config/bootstrap_variables";
+
 // External libraries
 @import "bootstrap";
 @import "font-awesome";
 @import url("https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css");
 
-// Graphical variables
-@import "config/fonts";
-@import "config/colors";
-@import "config/bootstrap_variables";
 
 // Your CSS partials
 @import "components/index";

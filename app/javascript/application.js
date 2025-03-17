@@ -3,6 +3,3 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
 import "bootstrap"
-
-import SearchFormController from "./controllers/search_form_controller.js"
-Stimulus.register("search-form", SearchFormController)

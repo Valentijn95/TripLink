@@ -1,46 +1,54 @@
-.chat {
-  width: 100vw;
-  margin-bottom: 10vh;
-  .message {
-    display: flex;
-    flex-direction: column;
-  }
-  #new_message {
-    position: fixed;
-    bottom: 64px;
-    width: 95%;
-    background-color: #fff;
-    padding: 2px;
-  }
+.messages {
+  height: 5rem;
+  padding: 5px;
+  overflow-y: auto;
 
-  .message-info {
-    opacity: 0.5;
-    text-align: center;
-    width: fit-content;
-    font-size: 0.6rem;
-    color: $light-gray;
-  }
+}
 
-  .message-content {
-    border-radius: 1rem;
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    max-width: 70%;
-    width: fit-content;
-    word-wrap: break-word;
-    font-size: 0.8rem;
-  }
+.message {
+  display: flex;
+  flex-direction: column;
+}
 
-  .message.sent .message-content {
-    align-self: flex-end;
-    background: $primary-navy;
-    color: $light-gray;
-  }
+.message-info {
+  opacity: 0.5;
+  text-align: center;
+  width: fit-content;
+  font-size: 0.6rem;
+  color: $light-gray;
+}
 
-  .message.received .message-content {
-    align-self: flex-start;
-    background: $gray;
-    color: $light-gray;
+.message-content {
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  max-width: 70%;
+  width: fit-content;
+  word-wrap: break-word;
+  font-size: 0.8rem;
+}
+
+.message.sent .message-content {
+  align-self: flex-end;
+  background: $primary-navy;
+  color: $light-gray;
+}
+
+.message.received .message-content {
+  align-self: flex-start;
+  background: $gray;
+  color: $light-gray;
+}
+
+.chat-form {
+  height: 4rem;
+  input {
+    height: 100%;
+  }
+  textarea {
+    display: block;
+    resize: vertical;
+    overflow: resize;
   }
 
   .custom-btn-size {

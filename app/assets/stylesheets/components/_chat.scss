@@ -5,6 +5,13 @@
     display: flex;
     flex-direction: column;
   }
+  #new_message {
+    position: fixed;
+    bottom: 64px;
+    width: 95%;
+    background-color: #fff;
+    padding: 2px;
+  }
 
   .message-info {
     opacity: 0.5;
@@ -35,4 +42,12 @@
     background: $gray;
     color: $light-gray;
   }
+
+  .custom-btn-size {
+    padding: 10px 24px;  /* Custom padding */
+    font-size: 1.2rem;    /* Larger font size */
+    height: 62px;         /* Set button height */
+    width: 94px;
+  }
+
 }

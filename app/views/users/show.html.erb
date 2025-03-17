@@ -1,35 +1,49 @@
  <% location = params[:location] %>
 
-
-
     <div class="text-center">
-      <% if @user.photo.key != nil %>
-        <%= cl_image_tag(@user.photo.key, width: 366, height: 274, gravity: "face", crop: "auto") %>
+      <% if @guide.photo.key != nil %>
+        <%= cl_image_tag(@guide.photo.key, width: 366, height: 274, gravity: "face", crop: "auto") %>
       <% end %>
     </div>
 
     <div class="ps-3 pe-3">
-      <h1><%= @user.name %></h1>
-      <p><%= @user.guide_description %>
-      </p>
 
+      <h1><%= @guide.name %></h1>
+      <p><%= @guide.guide_description %></p>
+    
       <% if @this_match[0] %>
         <%= button_to "Chat", match_path(@this_match[0]), class: 'btn-connect', method: :get %>
       <% else %>
         <%= link_to "Connect!", new_match_path(location_id: location, guide_id: @user.id), class: 'btn btn-connect' %>
       <% end %>
+
+      <br>
       <p><strong>Interests</strong></p>
       <div class="interests-container">
-        <% @interests.each do |interest|%>
-        <div class="interest">
-          <%= interest %>
-        </div>
+        <% sorted_interests = @guide_interests.sort_by { |interest| @user_interests.include?(interest) ? 0 : 1 } %>
+        <% sorted_interests.each do |interest|%>
+          <% if @user_interests.include?(interest) %>
+            <div class="interest-common">
+              <%= interest %>
+            </div>
+          <% else %>
+            <div class="interest">
+              <%= interest %>
+            </div>
+          <% end %>
         <% end %>
       </div>
-      <p><strong>Languages</strong></p>
-      <p>.....</p>
-      <p><strong>Reviews</strong></p>
-      <% @user.reviews.each do |review| %>
+
+      <br>
+      <p><strong>Locations 📍</strong></p>
+      <% @guide.locations.each do |location| %>
+        <p><%= location.address %></p>
+      <% end %>
+
+      <br>
+      <p><strong>Reviews ⭐️</strong></p>
+      <% @guide.reviews.each do |review| %>
         <p><%= review.content %></p>
       <% end %>
+
     </div>

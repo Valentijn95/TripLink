@@ -1,11 +1,18 @@
 <div class="container">
 
-  <!-- if no one logge in show the login button -->
+  <!-- if no one logged in show the login button -->
   <% if user_signed_in? %>
     <h1>Profile page</h1>
     <h1> <%= @user.name%> </h1>
 
-      <%= link_to "Edit this user", edit_user_registration_path, class: "col-5 btn btn-outline-primary mb-2" %>
+    <h2>Your guide locations:</h2>
+    <ul>
+    <% @user.locations.each do |location| %>
+      <li><%= location.city %></li>
+    <% end %>
+    </ul>
+
+      <%= link_to "Edit profile", edit_user_registration_path, class: "col-5 btn btn-outline-primary mb-2" %>
 
       <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "col-5 btn btn-outline-warning mb-2" %>
 

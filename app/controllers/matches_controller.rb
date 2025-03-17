@@ -2,7 +2,6 @@ class MatchesController < ApplicationController
   before_action :set_guide, only: [:new]
   before_action :set_match, only: [:show, :create_message]
 
-
   def index
     @user = current_user
     @matches_as_tourist = Match.where(tourist_id: @user)
@@ -19,14 +18,16 @@ class MatchesController < ApplicationController
     end
   end
 
-
-
   def show
     @match = Match.find(params[:id])
     @message = Message.new
     @matched_user = @match.guide
   end
 
+    def new
+      @guide = User.find(params[:guide_id])
+      @match = Match.new
+    end
 
   def create
     if params[:match][:message] == ""
@@ -48,7 +49,6 @@ class MatchesController < ApplicationController
     end
   end
 
-
   def new
     @location = Location.find(params[:location_id])
     @match = Match.new
@@ -66,7 +66,7 @@ class MatchesController < ApplicationController
     end
 
   end
-
+  
   private
 
   def set_guide

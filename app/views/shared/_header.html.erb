@@ -1,3 +1,11 @@
 <header class="main-header">
     <a href="/"><img src="<%= asset_path('TripLink.png') %>" alt="Logo" class="logo"></a>
+    <!-- check if one of the guide_matches from the user has the status pending -->
+    <% if user_signed_in? %>
+      <% if current_user.guide_matches.any? { |match| match.status == "pending" } %>
+          <i class="fa-solid fa-bell bell active"></i>
+      <% else %>
+        <i class="fa-solid fa-bell bell"></i>
+      <% end %>
+    <% end %>
 </header>

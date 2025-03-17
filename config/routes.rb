@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :matches, only: [:new, :create]
   end
 
+  post 'matches/new/:guide_id', to: 'matches#create_message', as: 'create_message'
   get 'matches/new', to: 'matches#new', as: 'new_match'
 
   resources :matches, only: [:index, :show, :new, :update] do
@@ -21,5 +22,4 @@ Rails.application.routes.draw do
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
-
 end

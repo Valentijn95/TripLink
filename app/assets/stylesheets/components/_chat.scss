@@ -50,4 +50,12 @@
     resize: vertical;
     overflow: resize;
   }
+
+  .custom-btn-size {
+    padding: 10px 24px;  /* Custom padding */
+    font-size: 1.2rem;    /* Larger font size */
+    height: 62px;         /* Set button height */
+    width: 94px;
+  }
+
 }

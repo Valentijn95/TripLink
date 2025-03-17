@@ -1,13 +1,9 @@
-
-
 <div class="container">
-<h1><%= @guide.name %></h1>
+  <h1>Send a message to <strong><%= @guide.name %></strong></h1>
+  <p>Send a message to <strong><%= @guide.name %></strong></p>
 
-<p>Request <%= @guide.name %> to be your guide</p>
-  <%= simple_form_for @match do |f| %>
-    <%= f.input :guide_id, as: :hidden, input_html: { value: @guide.id } %>
-    <%= f.input :tourist_id, as: :hidden, input_html: { value: current_user.id } %>
-
-    <%= f.submit "Request", class: "btn btn-primary" %>
+  <%= simple_form_for [@match, @message], url: match_messages_path(@match) do |f| %>
+    <%= f.input :content, label: false, placeholder: "Type your message here", wrapper_html: { class: "flex-grow-1" } %>
+    <%= f.submit "Send Message", class: "btn btn-primary" %>
   <% end %>
 </div>

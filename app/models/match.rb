@@ -12,11 +12,28 @@ class Match < ApplicationRecord
 
   validates :status, inclusion: { in: %w(pending accepted declined) }
 
-  after_create_commit :broadcast_guide_notification
+  after_create :broadcast_guide_notification
+  after_create :broadcast_guide_match
 
+  def broadcast_guide_match
+      broadcast_prepend_to "incomming_matches-#{guide.id}",
+                          partial: "matches/guide_match",
+                          target: "incomming_matches",
+                          locals: { match: self }
+
+      broadcast_replace_to "incomming_matches-#{guide.id}",
+                          partial: "matches/guide_match",
+                          target: "match_#{id}",
+                          locals: { match: self }
+  end
 
   def broadcast_guide_notification
-    broadcast_replace_to self.guide,
+    broadcast_replace_to "flashes-#{guide.id}",
+                        partial: "shared/flashes",
+                        target: "flashes",
+                        locals: { notice: "You have a new match!", alert: false }
+
+    broadcast_replace_to "header-#{guide.id}",
                         partial: "shared/header",
                         target: "header",
                         locals: { added_class: "active", user: guide }

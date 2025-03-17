@@ -3,15 +3,17 @@
     <% if @matches_as_guide.empty? && @matches_as_tourist.empty? %>
       <h1 class="text-center">No matches yet</h1>
     <% end %>
-    <% if @matches_as_guide.any? %>
+      <%= turbo_stream_from "incomming_matches-#{current_user.id}"%>
+    <% if @matches_as_guide.empty? %>
       <%= render "matches_as_guide", locals: { matches: @matches_as_guide } %>
+    <% else %>
+      <h1>Your Tourists</h1>
+        <%= render "matches_as_guide", locals: { matches: @matches_as_guide } %>
     <% end %>
 
     <% if @matches_as_tourist.any? %>
+      <h1>Your guides</h1>
       <%= render "matches_as_tourist", locals: { matches: @matches_as_tourist } %>
     <% end %>
-
-
-
   </div>
 </div>

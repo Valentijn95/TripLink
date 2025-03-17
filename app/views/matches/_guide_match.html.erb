@@ -1,0 +1,27 @@
+
+<div id="match_<%= match.id %>">
+  <div class="d-flex border w-100 mt-4 rounded justify-content-between match-card">
+    <span class="incomming">New incomming request!</span>
+        <% if match.tourist.photo.key != nil %>
+          <%= cl_image_tag match.tourist.photo.key, width: 300, crop: :fill, class: "justify-content-center my-3" %>
+        <% end %>
+        <div class="justify-content-start text-start ms-2 mt-1">
+
+              <span>request from: </span><h3><%= match.tourist.name %></h3>
+              <p>Status: <%= match.status %></p>
+              <p><%= match.messages.first %></p>
+
+              <% if match.status == 'pending' %>
+                <div class="row">
+                  <div class="col-6 mb-3"><%= button_to 'Accept', match_path(match.id, status: 'accepted'), :method => :patch, class: 'btn btn-outline-primary' %></div>
+                  <div class="col-6 mb-3"><%= button_to 'decline', match_path(match.id, status: 'declined'), :method => :patch, class: 'btn btn-outline-warning' %></div>
+                </div>
+
+          <% else %>
+            <div class="row">
+              <div class="col-6 mb-3"> <%= link_to "Chat", match_path(match), class: "btn btn-primary" %> </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+</div>

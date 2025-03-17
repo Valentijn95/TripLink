@@ -15,11 +15,16 @@
   .bell {
     right: 10vw;
     position: absolute;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: $light-gray;
+    padding: 0.5rem;
   }
   .active {
     color: $accent-orange;
+    font-size: 1.5rem;
+    border: 1px solid $accent-orange;
+    border-radius: 5px;
+    padding: 0.5rem;
   }
 
 }

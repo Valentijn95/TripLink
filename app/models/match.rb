@@ -19,12 +19,12 @@ class Match < ApplicationRecord
       broadcast_prepend_to "incomming_matches-#{guide.id}",
                           partial: "matches/guide_match",
                           target: "incomming_matches",
-                          locals: { match: self }
+                          locals: { match: self, incoming: "New incoming match" }
 
       broadcast_replace_to "incomming_matches-#{guide.id}",
                           partial: "matches/guide_match",
                           target: "match_#{id}",
-                          locals: { match: self }
+                          locals: { match: self, incoming: "New incoming match" }
   end
 
   def broadcast_guide_notification

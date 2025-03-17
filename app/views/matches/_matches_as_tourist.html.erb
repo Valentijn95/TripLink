@@ -8,9 +8,7 @@
       <h2><%= match.guide.name %></h2>
       <p><%= match.guide.short_description %></p>
       <p>Status: <strong><%= match.status %></strong><%= " - wait for confirmation" if match.status === 'pending' %></p>
-      <% if match.status == 'pending' %>
-        <p>Waiting for confirmation</p>
-      <% else %>
+      <% if match.status == 'accepted' %>
         <%= link_to "Chat", match_path(match), class: "btn btn-primary mb-3" %>
       <% end %>
     </div>

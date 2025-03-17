@@ -52,6 +52,25 @@ class PagesController < ApplicationController
 
   def get_markers(locations)
 
+    # find duplicate cities in all the different locations
+    array = []
+    locations.each do |location|
+      array << location.city
+    end
+    cities = array.uniq()
+
+    # Geocode all the unique cities again
+    city_coordinates = {}
+    cities.each do |city|
+      city_coordinates[city] = {
+        lat: Geocoder.search(city).first.latitude,
+        lng: Geocoder.search(city).first.longitude,
+      }
+    end
+    city_coordinates
+    # raise
+
+
     markers = locations.geocoded.map do |location|
       guides = User.joins(:guide_locations).where("guide_locations.location_id = ?", location.id).map { |user| user.id }
       {

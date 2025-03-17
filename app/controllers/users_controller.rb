@@ -8,8 +8,10 @@ class UsersController < ApplicationController
 
   def show
     @this_match = Match.where(tourist_id: current_user.id, guide_id: params[:id])
-    @user = User.find(params[:id])
-    @interests = @user.interests.pluck(:interest)
+    @guide = User.find(params[:id])
+    @guide_interests = @guide.interests.pluck(:interest)
+    @user = current_user
+    @user_interests = @user.interests.pluck(:interest)
     @match = Match.new
   end
 

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   get 'matches/new', to: 'matches#new', as: 'new_match'
 
-  resources :matches, only: [:index, :show, :new] do
+  resources :matches, only: [:index, :show, :new, :update] do
     resources :messages, only: [:create]
   end
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

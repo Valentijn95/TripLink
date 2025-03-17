@@ -8,6 +8,16 @@ class MatchesController < ApplicationController
     @matches_as_guide = Match.where(guide_id: @user)
   end
 
+  def update
+    @match = Match.find(params[:id])
+    @match.status = params[:status]
+    if @match.save
+      redirect_to matches_path
+    else
+      render :show
+    end
+  end
+
 
 
   def show

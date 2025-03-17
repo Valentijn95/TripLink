@@ -1,14 +1,30 @@
+.message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding: 1rem;
+}
 .messages {
   height: 5rem;
   padding: 5px;
   overflow-y: auto;
-
+  flex-grow: 1;
+}
+.new-message {
+  align-self: flex-end;
 }
 
 .message {
   display: flex;
   flex-direction: column;
 }
+.message-form {
+  width: 100%;
+}
+
+
+
 
 .message-info {
   opacity: 0.5;

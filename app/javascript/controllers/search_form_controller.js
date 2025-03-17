@@ -12,4 +12,6 @@ export default class extends Controller {
     this.barTarget.querySelector(".search-form-input").focus();
   }
 
+
+
 };

@@ -1,6 +1,10 @@
 <h1><%= @guide.name %></h1>
 
-  <%= simple_form_for [@match, @message], url: match_messages_path(@match) do |f| %>
-    <%= f.input :content, label: false, placeholder: "Type your message here", wrapper_html: { class: "flex-grow-1" } %>
-    <%= f.submit "Send Message", class: "btn btn-primary" %>
-  <% end %>
+<%= simple_form_for @match do |f| %>
+
+    <%= f.input :guide_id, as: :hidden, input_html: { value: @guide.id } %>
+    <%= f.input :location_id, as: :hidden, input_html: { value: @location.id } %>
+    <!--extra input field with a message -->
+    <%= f.input :message, label: "Message", input_html: { placeholder: "Introduce yourself to #{@guide.name}", value: "" } %>
+   <%= f.button :submit, class: 'btn btn-primary'%>
+<% end %>

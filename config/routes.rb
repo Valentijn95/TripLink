@@ -9,12 +9,10 @@ Rails.application.routes.draw do
   get "/search", to: "pages#render_location_partial", as: :location_partial
   get "/search/delete", to: "pages#render_empty_location_partial", as: :empty_loacation_partial
 
-  resources :users, only: [:index, :show] do
-    resources :matches, only: [:new, :create]
-  end
+  resources :users, only: [:index, :show]
 
-  post 'matches/new/:guide_id', to: 'matches#create_message', as: 'create_message'
-  get 'matches/new', to: 'matches#new', as: 'new_match'
+  resources :matches, only: [:new, :create]
+
 
   resources :matches, only: [:index, :show, :new, :update] do
     resources :messages, only: [:create]

@@ -7,6 +7,7 @@ class Message < ApplicationRecord
   after_create_commit :broadcast_message
 
   def broadcast_message
+    # test = OpenStruct.new({ message: message, user: user})
     broadcast_append_to match,
                         partial: "messages/message",
                         target: "messages",

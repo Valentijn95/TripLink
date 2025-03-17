@@ -29,37 +29,42 @@ class MatchesController < ApplicationController
 
 
   def create
-    @match = Match.new
-    @match.tourist = current_user
-    @match.guide = User.find(params[:user_id])
-    @match.location = Location.find(params[:match][:location_id])
-    @match.status = "pending"
-
-    if @match.save
-      redirect_to matches_path
+    if params[:match][:message] == ""
+      flash[:alert] = "request failed: message can't be blank"
+      render "users/#{params[:guide_id]}?location=#{params[:match][:location_id]}"
     else
-      render "users/#{params[:user_id]}?location=#{params[:match][:location_id]}"
+      @match = Match.new
+      @match.tourist = current_user
+      @match.guide = User.find(params[:match][:guide_id])
+      @match.location = Location.find(params[:match][:location_id])
+      @match.status = "pending"
+
+      if @match.save
+        create_message(params[:match][:message], @match)
+        redirect_to matches_path
+      else
+        render "users/#{params[:user_id]}?location=#{params[:match][:location_id]}"
+      end
     end
   end
 
 
   def new
-    @guide = User.find(params[:guide_id])
-    @match = Match.find_or_create_by(guide_id: @guide.id, tourist_id: current_user.id)
+    @location = Location.find(params[:location_id])
+    @match = Match.new
     @message = Message.new
   end
 
-  def create_message
-    @match = Match.find(params[:match_id])
-    @message = Message.new(message_params)
+  def create_message(message, match)
+    @message = Message.new(content: message)
     @message.user = current_user
-    @message.match = @match
-
+    @message.match = match
     if @message.save
-      redirect_to match_path(@match), notice: 'Message sent successfully!'
+      flash[:notice] = "message sent to user"
     else
-      render :new
+      flash[:notice] = "was not able to send message to user"
     end
+
   end
 
   private

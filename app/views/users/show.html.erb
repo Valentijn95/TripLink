@@ -7,15 +7,14 @@
     </div>
 
     <div class="ps-3 pe-3">
+
       <h1><%= @guide.name %></h1>
       <p><%= @guide.guide_description %></p>
+    
       <% if @this_match[0] %>
         <%= button_to "Chat", match_path(@this_match[0]), class: 'btn-connect', method: :get %>
       <% else %>
-        <%= simple_form_for [@guide, @match] do |f| %>
-          <%= f.input :location_id, as: :hidden, input_html: { value: location } %>
-          <%= f.button :submit, "connect", class: 'btn-connect' %>
-        <% end %>
+        <%= link_to "Connect!", new_match_path(location_id: location, guide_id: @user.id), class: 'btn btn-connect' %>
       <% end %>
 
       <br>

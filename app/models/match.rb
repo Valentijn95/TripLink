@@ -12,6 +12,16 @@ class Match < ApplicationRecord
 
   validates :status, inclusion: { in: %w(pending accepted declined) }
 
+  after_create_commit :broadcast_guide_notification
+
+
+  def broadcast_guide_notification
+    broadcast_replace_to self.guide,
+                        partial: "shared/header",
+                        target: "header",
+                        locals: { added_class: "active", user: guide }
+  end
+
   private
 
   def guide_is_valid

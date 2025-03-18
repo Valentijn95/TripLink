@@ -1,0 +1,15 @@
+<div id="match_<%= match.id %>">
+  <div class="d-flex border w-100 mt-4 rounded justify-content-between">
+    <% if match.guide.photo.key != nil %>
+      <%= cl_image_tag match.guide.photo.key, width: 300, crop: :fill, class: "justify-content-center my-3" %>
+    <% end %>
+    <div class="justify-content-start text-start ms-2 mt-1">
+      <h2><%= match.guide.name %></h2>
+      <p><%= match.guide.short_description %></p>
+      <p>Status: <strong><%= match.status %></strong><%= " - wait for confirmation" if match.status === 'pending' %></p>
+      <% if match.status == 'accepted' %>
+        <%= link_to "Chat", match_path(match), class: "btn btn-primary mb-3" %>
+      <% end %>
+    </div>
+  </div>
+</div>

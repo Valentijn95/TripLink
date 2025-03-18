@@ -52,6 +52,8 @@ gem "sassc-rails"
 gem "devise"
 gem "cloudinary"
 gem "geocoder"
+gem 'countries'
+
 
 group :development, :test do
   gem "dotenv-rails"

@@ -13,7 +13,8 @@ class Match < ApplicationRecord
   validates :status, inclusion: { in: %w(pending accepted declined) }
 
   after_create :broadcast_guide_notification
-  after_create :broadcast_guide_match
+  # commented this line to prevent the function from being triggered immediately
+  # after_create :broadcast_guide_match
 
   def broadcast_guide_match
       broadcast_prepend_to "incomming_matches-#{guide.id}",
@@ -26,6 +27,13 @@ class Match < ApplicationRecord
                           target: "match_#{id}",
                           locals: { match: self, incoming: "New incoming match" }
   end
+
+  def broadcast_tourist_match
+      broadcast_replace_to "incomming_matches-#{tourist.id}",
+                          partial: "matches/tourist_match",
+                          target: "match_#{id}",
+                          locals: { match: self }
+end
 
   def broadcast_guide_notification
     broadcast_replace_to "flashes-#{guide.id}",

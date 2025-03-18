@@ -15,7 +15,6 @@ class UsersController < ApplicationController
     @match = Match.new
   end
 
-
   private
 
   def user_params

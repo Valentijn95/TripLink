@@ -13,6 +13,7 @@ class MatchesController < ApplicationController
     @match = Match.find(params[:id])
     @match.status = params[:status]
     if @match.save
+      @match.broadcast_tourist_match
       redirect_to matches_path
     else
       render :show
@@ -41,9 +42,10 @@ class MatchesController < ApplicationController
       @match.location = Location.find(params[:match][:location_id])
       @match.status = "pending"
 
-      create_message(params[:match][:message], @match)
 
       if @match.save
+        create_message(params[:match][:message], @match)
+        @match.broadcast_guide_match
         redirect_to matches_path
       else
         render "users/#{params[:user_id]}?location=#{params[:match][:location_id]}"

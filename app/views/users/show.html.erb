@@ -10,11 +10,13 @@
 
       <h1><%= @guide.name %></h1>
       <p><%= @guide.guide_description %></p>
-    
-      <% if @this_match[0] %>
-        <%= button_to "Chat", match_path(@this_match[0]), class: 'btn-connect', method: :get %>
+
+      <% if @guide == current_user %>
+        <p><%= link_to "Edit profile", edit_user_registration_path(current_user), class: 'btn btn-connect' %></p>
+      <% elsif (match = @this_match[0]) %>
+        <%= match.status == 'accepted' ? button_to("Chat", match_path(match), class: 'btn-connect', method: :get) : match.status == 'declined' ? "<p>This match was declined. You cannot send a request to this guide anymore.</p>".html_safe : "<p>Waiting for confirmation...</p>".html_safe %>
       <% else %>
-        <%= link_to "Connect!", new_match_path(location_id: location, guide_id: @user.id), class: 'btn btn-connect' %>
+        <%= link_to "Connect!", new_match_path(location_id: location, guide_id: @guide.id), class: 'btn btn-connect' %>
       <% end %>
 
       <br>

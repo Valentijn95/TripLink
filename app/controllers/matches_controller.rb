@@ -1,4 +1,5 @@
 class MatchesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_guide, only: [:new]
   before_action :set_match, only: [:show, :create_message]
 
@@ -40,8 +41,9 @@ class MatchesController < ApplicationController
       @match.location = Location.find(params[:match][:location_id])
       @match.status = "pending"
 
+      create_message(params[:match][:message], @match)
+
       if @match.save
-        create_message(params[:match][:message], @match)
         redirect_to matches_path
       else
         render "users/#{params[:user_id]}?location=#{params[:match][:location_id]}"
@@ -66,7 +68,7 @@ class MatchesController < ApplicationController
     end
 
   end
-  
+
   private
 
   def set_guide

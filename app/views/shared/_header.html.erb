@@ -4,10 +4,9 @@
 
 
         <% if user.guide_matches.any? { |match| match.status == "pending" } %>
-          <a href="/matches" class="bell active"><i class="fa-solid fa-bell"></i></a>
+          <a href="/matches" target="_top" class="bell active"><i class="fa-solid fa-bell"></i></a>
+
         <% else %>
-          <i class="fa-solid fa-bell bell <%= added_class %>"></i>
+          <i id="dynamicBell" class="fa-solid fa-bell bell <%= added_class %>"></i>
         <% end %>
-
-
 </header>

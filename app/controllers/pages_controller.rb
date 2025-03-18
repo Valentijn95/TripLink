@@ -51,7 +51,6 @@ class PagesController < ApplicationController
   end
 
 
-
   def get_markers(locations)
     # @all_locations = locations.map { |loc| loc }
     # duplicates = Location.group(:city).having("count(*) > 1").count

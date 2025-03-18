@@ -1,0 +1,12 @@
+.match-card {
+  position: relative;
+  .incomming {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: $red;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+  }
+}

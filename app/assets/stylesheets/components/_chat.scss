@@ -2,17 +2,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
+  height: 75vh;
   padding: 1rem;
 }
 .messages {
   height: 5rem;
   padding: 5px;
+  width: 100%;
   overflow-y: auto;
   flex-grow: 1;
 }
 .new-message {
-  align-self: flex-end;
+  width: 100%;
+  textarea {
+    width: 75vw;
+  }
 }
 
 .message {

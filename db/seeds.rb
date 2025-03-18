@@ -80,7 +80,7 @@ locations = [
 def make_guide_locations(user, city)
   all_location_in_city = Location.where(city: city)
   if all_location_in_city.count == 1
-    GuideLocation.create!(user: user, location: all_location_in_city.first)
+    GuideLocation.create!(guide: user, location: all_location_in_city.first)
     return
   elsif all_location_in_city.count == 0
     puts "No locations in #{city}"
@@ -89,7 +89,7 @@ def make_guide_locations(user, city)
     locations = all_location_in_city.sample(all_location_in_city.count/2)
   end
   locations.each do |location|
-    GuideLocation.create!(user: user, location: location)
+    GuideLocation.create!(guide: user, location: location)
   end
 end
 

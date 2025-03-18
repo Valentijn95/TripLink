@@ -1,15 +1,15 @@
  <% location = params[:location] %>
 
-<div class="ps-3 pe-3">
 
   <h1><%= @guide.name %></h1>
 
-  <div class="text-center">
+  <div class="text-center main-photo">
     <% if @guide.photo.key != nil %>
-      <%= cl_image_tag(@guide.photo.key, class:"responsive-image", crop: "scale", gravity: "face", height: 200) %>
+      <%= cl_image_tag(@guide.photo.key, class:"responsive-image", crop: "scale", gravity: "face") %>
     <% end %>
   </div>
 
+<div class="ps-3 pe-3">
   <br>
   <p><%= @guide.guide_description %></p>
 

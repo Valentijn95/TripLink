@@ -1,0 +1,43 @@
+.select-container {
+  width: 300px; /* Adjust the width to make it thinner */
+  margin-bottom: 20px;
+}
+
+.select-dropdown {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+
+  /* Remove default dropdown arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  /* Custom background for the dropdown arrow */
+  background-image: url('data:image/svg+xml;base64,...');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px 16px;
+
+  /* Optional: Change the border color when focused */
+  &:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+  }
+}
+
+/* Style for the selected option */
+.select-dropdown option:checked {
+  background-color: #6C99D2; /* Highlight color when selected */
+  color: #fff; /* White text for better contrast */
+}
+
+/* Style for non-selected options when hovered */
+.select-dropdown option:hover {
+  background-color: #6C99D2; /* Light blue background on hover */
+  color: #fff; /* White text for better contrast */
+}

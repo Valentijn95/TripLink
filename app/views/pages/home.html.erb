@@ -1,10 +1,9 @@
 <%# this is the map on the homepage %>
-<div  style="width: 100vw; height: 100vh; left: 0; top: 0; position: absolute; z-index: 0;"
+<div  style="width: 100vw; height: 100dvh;"
       class="map-canvas"
       data-controller="map"
       data-map-markers-value="<%= @markers.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-
 
 <%= turbo_frame_tag :location_details do %>
   <%= render "location_information_window", location: nil, guides: nil %>

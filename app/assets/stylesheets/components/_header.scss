@@ -11,6 +11,22 @@
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
   z-index: 10;
+
+  .bell {
+    right: 10vw;
+    position: absolute;
+    font-size: 1.5rem;
+    color: $light-gray;
+    padding: 0.5rem;
+  }
+  .active {
+    color: $accent-orange;
+    font-size: 1.5rem;
+    border: 1px solid $accent-orange;
+    border-radius: 5px;
+    padding: 0.5rem;
+  }
+
 }
 
 .logo {

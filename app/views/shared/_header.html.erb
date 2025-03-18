@@ -1,3 +1,12 @@
-<header class="main-header">
+<header class="main-header" id="header" >
     <a href="/"><img src="<%= asset_path('TripLink.png') %>" alt="Logo" class="logo"></a>
+    <!-- check if one of the guide_matches from the user has the status pending -->
+
+
+        <% if user.guide_matches.any? { |match| match.status == "pending" } %>
+          <a href="/matches" target="_top" class="bell active"><i class="fa-solid fa-bell"></i></a>
+
+        <% else %>
+          <i id="dynamicBell" class="fa-solid fa-bell bell <%= added_class %>"></i>
+        <% end %>
 </header>

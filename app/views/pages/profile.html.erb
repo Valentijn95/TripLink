@@ -1,4 +1,5 @@
 <div class="container">
+
   <% if user_signed_in? %>
     <h1>Profile Page</h1>
     <h1><%= @user.name %></h1>
@@ -13,10 +14,20 @@
       <ul data-autocomplete-target="results" class="list-group"></ul>
     </div>
 
+    # -------------------- Interests form -------------------- #
     <%= form_with(model: @user, url: user_path(@user), method: :patch) do |f| %>
       <%= f.hidden_field :interest_ids, value: @user.interest_ids.join(",") %> <!-- Hidden field for interest_ids -->
       <%= f.submit "Update Interests", class: "btn btn-success mt-2" %>
     <% end %>
+
+    <h2>Your guide locations:</h2>
+    <ul>
+    <% @user.locations.each do |location| %>
+      <li><%= location.city %></li>
+    <% end %>
+    </ul>
+
+    <%= link_to "Edit profile", edit_user_registration_path, class: "col-5 btn btn-outline-primary mb-2" %>
 
     <!-- Display Selected Interests -->
     <h3>Your Interests:</h3>

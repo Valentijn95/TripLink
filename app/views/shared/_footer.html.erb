@@ -1,19 +1,20 @@
-<div class="footer">
 
-  <div class="footer-icons d-flex justify-content-around align-items-center pt-2 footer-container">
+<div data-controller="search-form">
+  <%= render "shared/search_form_main" %>
+  <div class="footer">
+    <div class="footer-icons d-flex justify-content-around align-items-center pt-2 footer-container">
+      <%= link_to matches_path, class: "text-grey text-center" do %>
+        <i class="fa fa-users fa-2x"></i>
+      <% end %>
 
-    <%= link_to matches_path, class: "text-grey text-center" do %>
-      <i class="fa fa-users fa-2x"></i>
-    <% end %>
+      <div class="search-option">
+          <i class="fa fa-search text-grey text-center" data-action="click->search-form#showSearchForm:prevent"></i>
+      </div>
 
-    <div class="search-option" data-controller="search-form">
-        <%= render "shared/search_form_main" %>
-        <i class="fa fa-search text-grey text-center" data-action="click->search-form#showSearchForm:prevent"></i>
+      <%= link_to profile_path, class: "text-grey text-center" do %>
+        <i class="fa fa-user fa-2x"></i>
+      <% end %>
+
     </div>
-
-    <%= link_to profile_path, class: "text-grey text-center" do %>
-      <i class="fa fa-user fa-2x"></i>
-    <% end %>
-
   </div>
 </div>

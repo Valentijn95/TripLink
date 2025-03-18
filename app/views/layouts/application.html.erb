@@ -15,8 +15,19 @@
   <body>
     <div class="content">
 
-      <%= render "shared/header" %>
-      <%= render "shared/flashes" %>
+
+      <% if user_signed_in? %>
+        <%= turbo_stream_from "flashes-#{current_user.id}" %>
+        <%= render "shared/flashes", notice: false, alert: false %>
+
+        <%= turbo_stream_from "header-#{current_user.id}" %>
+        <%= render "shared/header", added_class: "", user: current_user %>
+      <% else %>
+        <%= render "shared/flashes", notice: false, alert: false %>
+        <%= render "shared/header_logged_out" %>
+      <% end %>
+
+
       <%= yield %>
       <%# <% if !current_page?(no_footer_path)%>
         <%= render "shared/footer" %>

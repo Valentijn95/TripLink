@@ -9,16 +9,14 @@ Rails.application.routes.draw do
   get "/search", to: "pages#render_location_partial", as: :location_partial
   get "/search/delete", to: "pages#render_empty_location_partial", as: :empty_location_partial
 
-  patch '/users/:id', to: 'users#update', as: 'user'
 
-  resources :users, only: [:index, :show, :update] do
-    resources :matches, only: [:new, :create]
-  end
+  get "/api/autocomplete", to: "api#fetch_autocomplete_data", as: :fetch_autocomplete_data
 
-  post 'matches/new/:guide_id', to: 'matches#create_message', as: 'create_message'
-  get 'matches/new', to: 'matches#new', as: 'new_match'
+  resources :users, only: [:index, :show, :patch]
 
-  resources :matches, only: [:index, :show, :new] do
+  resources :matches, only: [:new, :create, :destroy]
+
+  resources :matches, only: [:index, :show, :new, :update] do
     resources :messages, only: [:create]
   end
 

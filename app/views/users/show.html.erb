@@ -1,36 +1,58 @@
  <% location = params[:location] %>
 
+<div class="ps-3 pe-3">
 
+  <h1><%= @guide.name %></h1>
 
-    <div class="text-center">
-      <% if @user.photo.key != nil %>
-        <%= cl_image_tag(@user.photo.key, width: 366, height: 274, gravity: "face", crop: "auto") %>
-      <% end %>
-    </div>
+  <div class="text-center">
+    <% if @guide.photo.key != nil %>
+      <%= cl_image_tag(@guide.photo.key, class:"responsive-image", crop: "scale") %>
+    <% end %>
+  </div>
 
-    <div class="ps-3 pe-3">
-      <h1><%= @user.name %></h1>
-      <p><%= @user.guide_description %></p>
-      <% if @this_match[0] %>
-        <%= button_to "Chat", match_path(@this_match[0]), class: 'btn-connect', method: :get %>
+  <br>
+  <p><%= @guide.guide_description %></p>
+
+  <% if @guide == current_user %>
+    <p><%= link_to "Edit profile", edit_user_registration_path(current_user), class: 'btn btn-connect' %></p>
+  <% elsif (match = @this_match[0]) %>
+    <%= match.status == 'accepted' ? button_to("Chat", match_path(match), class: 'btn-connect', method: :get) : match.status == 'declined' ? "<p>This match was declined. You cannot send a request to this guide anymore.</p>".html_safe : "<p>Waiting for confirmation...</p>".html_safe %>
+  <% else %>
+    <%= link_to "Connect!", new_match_path(location_id: location, guide_id: @guide.id), class: 'btn btn-connect' %>
+  <% end %>
+
+  <p><strong>Interests</strong></p>
+  <div class="interests-container">
+    <% sorted_interests = @guide_interests.sort_by { |interest| @user_interests.include?(interest) ? 0 : 1 } %>
+    <% sorted_interests.each do |interest|%>
+      <% if @user_interests.include?(interest) %>
+        <div class="interest-common">
+          <%= interest %>
+        </div>
       <% else %>
-        <%= simple_form_for [@user, @match] do |f| %>
-          <%= f.input :location_id, as: :hidden, input_html: { value: location } %>
-          <%= f.button :submit, "connect", class: 'btn-connect' %>
-        <% end %>
-      <% end %>
-      <p><strong>Interests</strong></p>
-      <div class="interests-container">
-        <% @interests.each do |interest|%>
         <div class="interest">
           <%= interest %>
         </div>
-        <% end %>
-      </div>
-      <p><strong>Languages</strong></p>
-      <p>.....</p>
-      <p><strong>Reviews</strong></p>
-      <% @user.reviews.each do |review| %>
-        <p><%= review.content %></p>
       <% end %>
-    </div>
+    <% end %>
+  </div>
+
+  <br>
+  <p><strong>Locations 📍</strong></p>
+  <% @grouped_locations = @guide.locations.group_by(&:country) %>
+  <% @grouped_locations_alf = @grouped_locations.keys.sort %>
+  <% @grouped_locations_alf.each do |country| %>
+    <p><%= country_to_flag(country) %> <u><%= country %></u></p>
+    <% @grouped_locations[country].sort_by(&:city).each do |location| %>
+      <p><%= location.name %>, <%= location.city %></p>
+    <% end %>
+    <p>-----------------------</p>
+  <% end %>
+
+  <br>
+  <p><strong>Reviews ⭐️</strong></p>
+  <% @guide.reviews.each do |review| %>
+    <p><%= review.content %></p>
+  <% end %>
+
+</div>

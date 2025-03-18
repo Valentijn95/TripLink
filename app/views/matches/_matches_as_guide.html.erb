@@ -1,0 +1,7 @@
+
+
+<div id="incomming_matches">
+  <% locals[:matches].each do |match| %>
+    <%=render "guide_match", match: match, incoming: false %>
+  <% end %>
+</div>

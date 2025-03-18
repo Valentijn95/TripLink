@@ -1,14 +1,34 @@
+.message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 75vh;
+  padding: 1rem;
+}
 .messages {
   height: 5rem;
   padding: 5px;
+  width: 100%;
   overflow-y: auto;
-
+  flex-grow: 1;
+}
+.new-message {
+  width: 100%;
+  textarea {
+    width: 75vw;
+  }
 }
 
 .message {
   display: flex;
   flex-direction: column;
 }
+.message-form {
+  width: 100%;
+}
+
+
+
 
 .message-info {
   opacity: 0.5;

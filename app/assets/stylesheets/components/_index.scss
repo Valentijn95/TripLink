@@ -5,20 +5,22 @@
 @import "footer";
 @import "form_legend_clear";
 @import "header";
+@import "images";
 @import "location_popup";
 @import "map";
 @import "navbar";
 @import "search_form_main";
 @import "header";
 @import "chat";
+@import "matches";
 
 .body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-
 }
+
 .content {
-  padding-top: 14vh;
-  padding-bottom: 12vh;
+  padding-top: 9.5vh;
+  padding-bottom: 14vh;
 }

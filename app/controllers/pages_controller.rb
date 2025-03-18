@@ -51,16 +51,19 @@ class PagesController < ApplicationController
   end
 
   def get_markers(locations)
+    # Group locations by city and keep only the first instance of each city
+    @uniq_locations = locations.uniq { |loc| loc.city }
 
-    markers = locations.geocoded.map do |location|
-      guides = User.joins(:guide_locations).where("guide_locations.location_id = ?", location.id).map { |user| user.id }
+    markers = @uniq_locations.map do |unique_location|
+    # markers = locations.geocoded.map do |location|
+      guides = User.joins(:guide_locations, :locations)
+                  .where("guide_locations.location_id = locations.id AND locations.city = ?", unique_location.city).map { |user| user.id }
       {
-        lat: location.lat,
-        lng: location.lng,
-        marker_data: { location: location.id, guides: guides },
+        lat: unique_location.city_lat,
+        lng: unique_location.city_lng,
+        marker_data: { location: unique_location.id, guides: guides },
       }
     end
     return markers
   end
-
 end

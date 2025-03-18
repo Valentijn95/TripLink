@@ -50,36 +50,37 @@ class PagesController < ApplicationController
     end
   end
 
+
+
   def get_markers(locations)
+    # @all_locations = locations.map { |loc| loc }
+    # duplicates = Location.group(:city).having("count(*) > 1").count
+    # if duplicates.any?
+    #   duplicates.each do |city|
+    #     cities = Location.where(city: city)
+    #     city_to_delete = cities.offset(1) # Keep the first instance and delete the rest
+    #     city_to_delete.each do |c|
+    #       @all_locations.delete(c)
+    #     end
+    #   end
+    # end
+    # @uniq = @all_locations.uniq()
 
-    # find duplicate cities in all the different locations
-    array = []
-    locations.each do |location|
-      array << location.city
-    end
-    cities = array.uniq()
+    # Fetch all locations
+    @all_locations = locations
 
-    # Geocode all the unique cities again
-    city_coordinates = {}
-    cities.each do |city|
-      city_coordinates[city] = {
-        lat: Geocoder.search(city).first.latitude,
-        lng: Geocoder.search(city).first.longitude,
-      }
-    end
-    city_coordinates
-    # raise
+    # Group locations by city and keep only the first instance of each city
+    @uniq_locations = @all_locations.uniq { |loc| loc.city }
 
-
-    markers = locations.geocoded.map do |location|
+    markers = @uniq_locations.map do |location|
+    # markers = locations.geocoded.map do |location|
       guides = User.joins(:guide_locations).where("guide_locations.location_id = ?", location.id).map { |user| user.id }
       {
-        lat: location.lat,
-        lng: location.lng,
+        lat: location.city_lat,
+        lng: location.city_lng,
         marker_data: { location: location.id, guides: guides },
       }
     end
     return markers
   end
-
 end

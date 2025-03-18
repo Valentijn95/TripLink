@@ -16,8 +16,8 @@
     <div class="content">
       <%= render "shared/flashes" %>
 
-      <% turbo_stream_from current_user%>
-      <%= render "shared/header", added_class: "", user: current_user %>
+      <%# <% turbo_stream_from current_user%>
+      <%# <%= render "shared/header", added_class: "", user: current_user %>
 
       <%= yield %>
       <%# <% if !current_page?(no_footer_path)%>

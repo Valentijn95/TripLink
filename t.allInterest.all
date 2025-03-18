@@ -1,0 +1,52 @@
+=> 
+[[32m#<Interest:0x00007f2b846fcaa0[0m
+  id: [34m[1m55[0m,
+  interest: [31m[1m"[0m[31mHiking[0m[31m[1m"[0m,
+  created_at: Tue, 18 Mar 2025 11:44:37.974111000 UTC +00:00,
+  updated_at: Tue, 18 Mar 2025 11:44:37.974111000 UTC +00:00[32m>[0m,
+ [32m#<Interest:0x00007f2b846fb7e0[0m
+  id: [34m[1m56[0m,
+  interest: [31m[1m"[0m[31mAdventure[0m[31m[1m"[0m,
+  created_at: Tue, 18 Mar 2025 11:44:37.978267000 UTC +00:00,
+  updated_at: Tue, 18 Mar 2025 11:44:37.978267000 UTC +00:00[32m>[0m,
+ [32m#<Interest:0x00007f2b846fb560[0m
+  id: [34m[1m57[0m,
+  interest: [31m[1m"[0m[31mCruises[0m[31m[1m"[0m,
+  created_at: Tue, 18 Mar 2025 11:44:37.982608000 UTC +00:00,
+  updated_at: Tue, 18 Mar 2025 11:44:37.982608000 UTC +00:00[32m>[0m,
+ [32m#<Interest:0x00007f2b846fb420[0m
+  id: [34m[1m58[0m,
+  interest: [31m[1m"[0m[31mSolo travel[0m[31m[1m"[0m,
+  created_at: Tue, 18 Mar 2025 11:44:37.986222000 UTC +00:00,
+  updated_at: Tue, 18 Mar 2025 11:44:37.986222000 UTC +00:00[32m>[0m,
+ [32m#<Interest:0x00007f2b846fb1a0[0m
+  id: [34m[1m59[0m,
+  interest: [31m[1m"[0m[31mStargazing[0m[31m[1m"[0m,
+  created_at: Tue, 18 Mar 2025 11:44:37.990020000 UTC +00:00,
+  updated_at: Tue, 18 Mar 2025 11:44:37.990020000 UTC +00:00[32m>[0m,
+ [32m#<Interest:0x00007f2b846fb060[0m
+  id: [34m[1m60[0m,
+  interest: [31m[1m"[0m[31mAnimal watching[0m[31m[1m"[0m,
+  created_at: Tue, 18 Mar 2025 11:44:37.993873000 UTC +00:00,
+  updated_at: Tue, 18 Mar 2025 11:44:37.993873000 UTC +00:00[32m>[0m,
+ [32m#<Interest:0x00007f2b846fade0[0m
+  id: [34m[1m61[0m,
+  interest: [31m[1m"[0m[31mArchitecture tours[0m[31m[1m"[0m,
+  created_at: Tue, 18 Mar 2025 11:44:37.997591000 UTC +00:00,
+  updated_at: Tue, 18 Mar 2025 11:44:37.997591000 UTC +00:00[32m>[0m,
+ [32m#<Interest:0x00007f2b846faca0[0m
+  id: [34m[1m62[0m,
+  interest: [31m[1m"[0m[31mBusiness travel[0m[31m[1m"[0m,
+  created_at: Tue, 18 Mar 2025 11:44:38.001014000 UTC +00:00,
+  updated_at: Tue, 18 Mar 2025 11:44:38.001014000 UTC +00:00[32m>[0m,
+ [32m#<Interest:0x00007f2b846faa20[0m
+  id: [34m[1m63[0m,
+  interest: [31m[1m"[0m[31mCulture[0m[31m[1m"[0m,
+  created_at: Tue, 18 Mar 2025 11:44:38.004281000 UTC +00:00,
+  updated_at: Tue, 18 Mar 2025 11:44:38.004281000 UTC +00:00[32m>[0m,
+ [32m#<Interest:0x00007f2b846fa8e0[0m
+  id: [34m[1m64[0m,
+  interest: [31m[1m"[0m[31mExperience personal growth[0m[31m[1m"[0m,
+  created_at: Tue, 18 Mar 2025 11:44:38.007551000 UTC +00:00,
+  updated_at: Tue, 18 Mar 2025 11:44:38.007551000 UTC +00:00[32m>[0m,
+ [31m[1m"[0m[31m...[0m[31m[1m"[0m]

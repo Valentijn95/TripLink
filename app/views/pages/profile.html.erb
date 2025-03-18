@@ -1,31 +1,32 @@
 <div class="container">
   <% if user_signed_in? %>
     <h1>Profile Page</h1>
-    <h1> <%= @user.name %> </h1>
+    <h1><%= @user.name %></h1>
 
     <%= link_to "Edit this user", edit_user_registration_path, class: "col-5 btn btn-outline-primary mb-2" %>
     <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "col-5 btn btn-outline-warning mb-2" %>
 
-    <!-- Interests Selection Form -->
+    <!-- Autocomplete Search Form -->
     <h3>Select Your Interests</h3>
-<%= form_with(model: @user, url: user_path(@user), method: :patch) do |f| %>
-  <div class="select-container">
-    <%= f.collection_select :interest_ids, Interest.all, :id, :interest,
-        { include_blank: "Choose your interests" },
-        { multiple: true, class: "form-control select-dropdown", selected: @user_interest_ids } %>
-  </div>
-  <%= f.submit "Update Interests", class: "btn btn-success mt-2" %>
-<% end %>
+    <div data-controller="autocomplete">
+      <input type="text" data-autocomplete-target="input" placeholder="Search for interests..." class="form-control">
+      <ul data-autocomplete-target="results" class="list-group"></ul>
+    </div>
+
+    <%= form_with(model: @user, url: user_path(@user), method: :patch) do |f| %>
+      <%= f.hidden_field :interest_ids, value: @user.interest_ids.join(",") %> <!-- Hidden field for interest_ids -->
+      <%= f.submit "Update Interests", class: "btn btn-success mt-2" %>
+    <% end %>
 
     <!-- Display Selected Interests -->
-<h3>Your Interests:</h3>
-<ul>
-  <% @user.interests.each do |interest| %>
-    <li><%= interest.interest %></li>
-  <% end %>
-</ul>
+    <h3>Your Interests:</h3>
+    <ul>
+      <% @user.interests.each do |interest| %>
+        <li><%= interest.interest %></li>
+      <% end %>
+    </ul>
 
   <% else %>
-    <p> <%= link_to "Log in", new_user_session_path, class: "btn btn-outline-primary" %></p>
+    <p><%= link_to "Log in", new_user_session_path, class: "btn btn-outline-primary" %></p>
   <% end %>
 </div>

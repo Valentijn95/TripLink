@@ -240,16 +240,17 @@ puts "#{Location.count} locations created"
 puts " ---------------------------------------"
 
 puts "Making guide locations"
-make_guide_locations(User.first, "Otterlo")
-make_guide_locations(User.all[1], "Paris")
-make_guide_locations(User.all[2], "Paris")
-make_guide_locations(User.all[3], "Buenos Aires")
-make_guide_locations(User.all[4], "Buenos Aires")
-make_guide_locations(User.all[5], "Amsterdam")
-make_guide_locations(User.all[6], "Amsterdam")
-make_guide_locations(User.all[7], "Brugge")
-make_guide_locations(User.all[8], "Brugge")
-make_guide_locations(User.all[9], "Lisbon")
+users = User.all.sort_by { |user| user.id }
+make_guide_locations(users[0], "Otterlo")
+make_guide_locations(users[1], "Paris")
+make_guide_locations(users[2], "Paris")
+make_guide_locations(users[3], "Buenos Aires")
+make_guide_locations(users[4], "Buenos Aires")
+make_guide_locations(users[5], "Amsterdam")
+make_guide_locations(users[6], "Amsterdam")
+make_guide_locations(users[7], "Brugge")
+make_guide_locations(users[8], "Brugge")
+make_guide_locations(users[9], "Lisbon")
 
 
 puts "#{GuideLocation.count} guide locations created"

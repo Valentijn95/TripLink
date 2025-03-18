@@ -5,10 +5,9 @@
 
   <div class="text-center main-photo">
     <% if @guide.photo.key != nil %>
-    <% profile_image = Cloudinary::Utils.cloudinary_url(@guide.photo.key, transformation: [
-    {crop: "thumb", gravity: "face",width: 200, aspect_ratio: "1.0"},
-    {radius: "max"}])%>
-      <%= image_tag(profile_image, alt: 'profile picture') %>
+      <%= cl_image_tag(@guide.photo.key, height: 250, gravity: "faces", crop: "fill") %>
+
+      <%#= image_tag(profile_image, alt: 'profile picture') %>
       <%#= cl_image_tag(@guide.photo.key, crop: "scale", transformation: [gravity: "face"]) %>
     <% end %>
   </div>

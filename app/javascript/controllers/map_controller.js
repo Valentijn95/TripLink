@@ -22,7 +22,7 @@ export default class extends Controller {
       container: this.element,
       style: 'mapbox://styles/viti95/cm8a9pull00fg01s38ky96654',
       center: [0, 0],
-      zoom: 1.5
+      zoom: 0.5
     })
     this.#addMarkersToMap();
     this.#fitMapToMarkers();

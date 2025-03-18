@@ -33,7 +33,7 @@
                   <% end %>
                   <div class="justify-content-start text-start ms-2 mt-1">
                     <h2><%= link_to guide.name, user_path(guide, location: location.id), data: { turbo: false } %></h2>
-                    <p><%= guide.guide_description %></p>
+                    <p><%= guide.short_description %></p>
                   </div>
                 </div>
               <% end %>

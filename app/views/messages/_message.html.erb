@@ -1,7 +1,7 @@
 <div id="message-<%= message.id %>" class="message <%= message.user === user ? 'sent' : 'received' %>">
 
 
-<p class="message-content"><%= message.content %>
+<p class="message-content"><%= message.content.gsub("\n", "<br>").html_safe %>
 <br>
   <small class="message-info">
     <%= message.created_at.strftime("%I:%M %p") %>

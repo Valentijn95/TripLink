@@ -20,397 +20,176 @@ interests = [
 ]
 
 locations = [
+  # Paris POIs
+  { location_name: "Louvre Museum", address: "Rue de Rivoli, 75001 Paris, France" },
+  { location_name: "Notre-Dame Cathedral", address: "6 Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France" },
+  { location_name: "Montmartre", address: "75018 Paris, France" },
+  { location_name: "Champs-Élysées", address: "Avenue des Champs-Élysées, 75008 Paris, France" },
+  { location_name: "Sacré-Cœur Basilica", address: "35 Rue du Chevalier de la Barre, 75018 Paris, France" },
 
-  #Argentina
-  {
-    "location_name": "Obelisco",
-    "address": "Obelisco, Buenos Aires, Argentina",
-    "description": "An iconic landmark in Buenos Aires, symbolizing Argentina's independence. A central meeting point in the city."
-  },
-  {
-    "location_name": "Iguazu Falls",
-    "address": "Iguazu Falls, Argentina",
-    "description": "One of the world's most breathtaking waterfalls, shared with Brazil. A UNESCO World Heritage site with stunning jungle scenery."
-  },
-  {
-    "location_name": "Perito Moreno Glacier",
-    "address": "Perito Moreno Glacier, Argentina",
-    "description": "A massive, advancing glacier offering dramatic ice formations and boat tours. One of Patagonia’s most famous natural wonders."
-  },
-  {
-    "location_name": "Mendoza Wine Region",
-    "address": "Mendoza Wine Region, Argentina",
-    "description": "Argentina’s premier wine region, known for Malbec wines and scenic vineyards. Perfect for wine tastings and mountain views."
-  },
-  {
-    "location_name": "Bariloche",
-    "address": "Bariloche, Argentina",
-    "description": "A picturesque town with stunning lakes and mountains, ideal for skiing and hiking. Famous for its Swiss-style chocolate."
-  },
+  # Amsterdam POIs
+  { location_name: "Rijksmuseum", address: "Museumstraat 1, 1071 XX Amsterdam, Netherlands" },
+  { location_name: "Anne Frank House", address: "Prinsengracht 263-267, 1016 GV Amsterdam, Netherlands" },
+  { location_name: "Van Gogh Museum", address: "Museumplein 6, 1071 DJ Amsterdam, Netherlands" },
+  { location_name: "Dam Square", address: "Dam, 1012 JL Amsterdam, Netherlands" },
+  { location_name: "Vondelpark", address: "1071 AA Amsterdam, Netherlands" },
 
-  #Australia
-  {
-    "location_name": "Great Barrier Reef",
-    "address": "Great Barrier Reef, Australia",
-    "description": "The world’s largest coral reef system, renowned for its underwater biodiversity and popular for diving and snorkeling."
-  },
-  {
-    "location_name": "Sydney Opera House",
-    "address": "Sydney, Australia",
-    "description": "An iconic architectural masterpiece and cultural venue, known for its distinctive sail-like design."
-  },
-  {
-    "location_name": "Uluru",
-    "address": "Uluru, Australia",
-    "description": "A massive sandstone monolith in the heart of the Red Centre, sacred to the indigenous Anangu people."
-  },
-  {
-    "location_name": "Blue Mountains",
-    "address": "Blue Mountains, Australia",
-    "description": "A stunning mountain range known for its eucalyptus forests, dramatic cliffs, and outdoor activities like hiking."
-  },
-  {
-    "location_name": "Great Ocean Road",
-    "address": "Great Ocean Road, Australia",
-    "description": "A scenic coastal drive offering breathtaking views of cliffs, beaches, and natural landmarks like the Twelve Apostles."
-  },
+  # Buenos Aires POIs
+  { location_name: "La Boca", address: "Caminito, Buenos Aires, Argentina" },
+  { location_name: "Recoleta Cemetery", address: "Junín 1760, C1113 CABA, Argentina" },
+  { location_name: "Teatro Colón", address: "Cerrito 628, C1010 CABA, Argentina" },
+  { location_name: "Plaza de Mayo", address: "Av. Hipólito Yrigoyen s/n, C1087 CABA, Argentina" },
+  { location_name: "Palermo Soho", address: "Palermo, Buenos Aires, Argentina" },
 
-  #Canada
-  {
-    "location_name": "Niagara Falls",
-    "address": "Niagara Falls, Canada",
-    "description": "One of the most famous natural wonders, with stunning waterfalls straddling the Canadian-American border."
-  },
-  {
-    "location_name": "Banff National Park",
-    "address": "Banff, Alberta, Canada",
-    "description": "A national park in the Canadian Rockies known for its breathtaking mountain scenery, wildlife, and outdoor activities."
-  },
-  {
-    "location_name": "Old Quebec",
-    "address": "Quebec City, Canada",
-    "description": "A UNESCO World Heritage site with charming cobblestone streets, historic architecture, and vibrant culture."
-  },
-  {
-    "location_name": "Vancouver",
-    "address": "Vancouver, Canada",
-    "description": "A beautiful coastal city surrounded by mountains and water, offering outdoor activities and a diverse cultural scene."
-  },
-  {
-    "location_name": "Whistler",
-    "address": "Whistler, British Columbia, Canada",
-    "description": "A popular ski resort known for its winter sports, scenic views, and outdoor activities year-round."
-  },
+  # Lisbon POIs
+  { location_name: "Belém Tower", address: "Av. Brasília, 1400-038 Lisboa, Portugal" },
+  { location_name: "Jerónimos Monastery", address: "Praça do Império 1400-206 Lisboa, Portugal" },
+  { location_name: "Alfama District", address: "1100-129 Lisboa, Portugal" },
+  { location_name: "Praça do Comércio", address: "Praça do Comércio, 1100-148 Lisboa, Portugal" },
 
-  #Chile
-  {
-    "location_name": "Torres del Paine National Park",
-    "address": "Torres del Paine, Chile",
-    "description": "A stunning national park famous for its rugged mountains, glaciers, and wildlife, ideal for trekking."
-  },
-  {
-    "location_name": "Easter Island",
-    "address": "Easter Island, Chile",
-    "description": "A remote island known for its mysterious Moai statues, ancient history, and unique cultural heritage."
-  },
-  {
-    "location_name": "Atacama Desert",
-    "address": "Atacama Desert, Chile",
-    "description": "One of the driest places on Earth, offering surreal landscapes, salt flats, and striking red rock formations."
-  },
-  {
-    "location_name": "Valparaiso",
-    "address": "Valparaiso, Chile",
-    "description": "A colorful, artistic coastal city known for its vibrant street art, funiculars, and bohemian atmosphere."
-  },
-  {
-    "location_name": "Lake District",
-    "address": "Lake District, Chile",
-    "description": "A picturesque region with clear lakes, volcanoes, and forests, ideal for outdoor adventures and nature retreats."
-  },
+  # Bruges, Belgium POIs
+  { location_name: "Market Square (Markt)", address: "Markt, 8000 Brugge, Belgium" },
+  { location_name: "Belfry of Bruges", address: "Markt 7, 8000 Brugge, Belgium" },
+  { location_name: "Minnewater Lake", address: "Minnewater, 8000 Brugge, Belgium" },
+  { location_name: "Church of Our Lady", address: "Mariastraat, 8000 Brugge, Belgium" },
+  { location_name: "Basilica of the Holy Blood", address: "Burg 13, 8000 Brugge, Belgium" },
+  { location_name: "Groeningemuseum", address: "Dijver 12, 8000 Brugge, Belgium" },
 
-  #Ecuador
-  {
-    "location_name": "Galápagos Islands",
-    "address": "Galápagos Islands, Ecuador",
-    "description": "A unique archipelago known for its diverse wildlife and pristine beaches, a paradise for nature lovers and eco-tourists."
-  },
-  {
-    "location_name": "Cotopaxi Volcano",
-    "address": "Cotopaxi Volcano, Ecuador",
-    "description": "One of the highest active volcanoes in the world, famous for its snow-capped peak and trekking opportunities."
-  },
-  {
-    "location_name": "Quito Old Town",
-    "address": "Quito, Ecuador",
-    "description": "A UNESCO World Heritage site known for its well-preserved colonial architecture and stunning churches."
-  },
-  {
-    "location_name": "Baños de Agua Santa",
-    "address": "Baños, Ecuador",
-    "description": "Known for its hot springs, waterfalls, and adventure activities like canyoning and zip-lining."
-  },
-  {
-    "location_name": "Amazon Rainforest",
-    "address": "Amazon Rainforest, Ecuador",
-    "description": "A vast tropical rainforest offering incredible biodiversity and eco-tourism experiences."
-  },
+  # Utrecht, Netherlands POIs
+  { location_name: "Dom Tower", address: "Domplein 21, 3512 JE Utrecht, Netherlands" },
+  { location_name: "Rietveld Schröder House", address: "Prins Hendriklaan 50, 3583 EP Utrecht, Netherlands" },
+  { location_name: "Museum Speelklok", address: "Steenweg 6, 3511 JP Utrecht, Netherlands" },
+  { location_name: "Oudegracht", address: "Oudegracht, 3511 Utrecht, Netherlands" },
+  { location_name: "Botanical Gardens Utrecht", address: "Budapestlaan 17, 3584 CD Utrecht, Netherlands" },
 
-  #France
-  {
-    "location_name": "Eiffel Tower",
-    "address": "Champ de Mars, Paris, France",
-    "description": "One of the most iconic landmarks in the world, offering breathtaking views of Paris. A must-visit attraction for tourists."
-  },
-  {
-    "location_name": "Louvre Museum",
-    "address": "Rue de Rivoli, Paris, France",
-    "description": "Home to thousands of artworks"
-  },
-  {
-    "location_name": "Famailla",
-    "address": "Famaillá, Tucuman"
-  },
-  {
-    "location_name": "Wijnandsrade",
-    "address": "Wijnandsrade, Netherlands"
-  },
-  {
-    "location_name": "Nuth", "address": "Nuth, Netherlands"
-  },
-  {
-    "location_name": "Hulsberg",
-    "address": "Hulsberg, Netherlands"
-  },
+  # Yellowstone National Park, USA POIs
+  { location_name: "Old Faithful", address: "Yellowstone National Park, WY 82190, USA" },
+  { location_name: "Grand Prismatic Spring", address: "Yellowstone National Park, WY 82190, USA" },
+  { location_name: "Mammoth Hot Springs", address: "Mammoth, Yellowstone National Park, WY 82190, USA" },
+  { location_name: "Yellowstone Lake", address: "Yellowstone National Park, WY 82190, USA" },
+  { location_name: "Grand Canyon of the Yellowstone", address: "Yellowstone National Park, WY 82190, USA" },
 
-  #Indonesia
-  {
-    "location_name": "Uluwatu Temple",
-    "address": "Uluwatu Temple, Bali, Indonesia",
-    "description": "A breathtaking sea temple perched on a cliff, known for its dramatic sunsets and Kecak fire dance performances. One of Bali’s most sacred temples."
-  },
-  {
-    "location_name": "Tegallalang Rice Terraces",
-    "address": "Tegallalang Rice Terraces, Bali, Indonesia", "description": "Famous for its lush, stepped rice fields, offering stunning views and a glimpse into traditional Balinese farming. A top spot for photography and nature lovers."
-  },
-  {
-    "location_name": "Mount Batur",
-    "address": "Mount Batur, Bali, Indonesia",
-    "description": "An active volcano popular for sunrise hikes, offering panoramic views of Bali's landscapes. A rewarding adventure for outdoor enthusiasts."
-  },
-  {
-    "location_name": "Ubud Monkey Forest",
-    "address": "Ubud Monkey Forest, Bali, Indonesia",
-    "description": "A lush sanctuary home to hundreds of playful monkeys and sacred temples. A unique experience blending nature and spirituality."
-  },
-  {
-    "location_name": "Tanah Lot Temple",
-    "address": "Tanah Lot Temple, Bali, Indonesia",
-    "description": "A stunning offshore temple known for its picturesque sunset views. A major spiritual and cultural landmark in Bali."
-  },
-  {
-    "location_name": "Nusa Penida",
-    "address": "Nusa Penida, Bali, Indonesia",
-    "description": "A paradise island with dramatic cliffs, crystal-clear waters, and breathtaking beaches. Famous for Kelingking Beach and diving spots."
-  },
-  {
-    "location_name": "Bali Swing",
-    "address": "Bali Swing, Bali, Indonesia",
-    "description": "A thrilling swing experience with panoramic jungle views. A favorite for Instagram-worthy shots."
-  },
-  {
-    "location_name": "Sekumpul Waterfalls",
-    "address": "Sekumpul Waterfalls, Bali, Indonesia",
-    "description": "A hidden gem featuring multiple cascading waterfalls surrounded by lush jungle. A must-visit for nature lovers and adventurers."
-  },
-  {
-    "location_name": "Sanur Beach",
-    "address": "Sanur Beach, Bali, Indonesia",
-    "description": "A tranquil beach with calm waters, perfect for sunrise walks and water activities. Less crowded than other Bali beaches."
-  },
-  {
-    "location_name": "Jimbaran Bay",
-    "address": "Jimbaran Bay, Bali, Indonesia",
-    "description": "Famous for its beachfront seafood restaurants and stunning sunsets. A romantic dining spot by the ocean."
-  },
-
-  #Kenya
-  {
-    "location_name": "Maasai Mara National Reserve",
-    "address": "Maasai Mara, Kenya",
-    "description": "Famous for the Great Migration, where millions of wildebeest and zebras cross the Mara River."
-  },
-  {
-    "location_name": "Mount Kenya",
-    "address": "Mount Kenya, Kenya",
-    "description": "Africa's second-highest peak, offering trekking routes through scenic landscapes and alpine vegetation."
-  },
-  {
-    "location_name": "Amboseli National Park",
-    "address": "Amboseli, Kenya",
-    "description": "Known for its large elephant herds and stunning views of Mount Kilimanjaro across the border in Tanzania."
-  },
-  {
-    "location_name": "Lamu Island",
-    "address": "Lamu, Kenya",
-    "description": "A UNESCO World Heritage site offering a glimpse into ancient Swahili culture with its sandy beaches and historical town."
-  },
-  {
-    "location_name": "Nakuru Lake",
-    "address": "Lake Nakuru, Kenya",
-    "description": "A famous saltwater lake known for its flamingo populations and wildlife, including rhinos and lions."
-  },
-
-  #Mexico
-  {
-    "location_name": "Chichen Itza",
-    "address": "Chichen Itza, Mexico",
-    "description": "A world-renowned Mayan archaeological site, home to the iconic El Castillo pyramid and ancient ruins."
-  },
-  {
-    "location_name": "Cancun",
-    "address": "Cancun, Mexico",
-    "description": "A tropical paradise famous for its beautiful beaches, luxury resorts, and vibrant nightlife."
-  },
-  {
-    "location_name": "Teotihuacan",
-    "address": "Teotihuacan, Mexico",
-    "description": "An ancient city known for its massive pyramids, including the Pyramid of the Sun and Pyramid of the Moon."
-  },
-  {
-      "location_name": "Copper Canyon",
-      "address": "Copper Canyon, Mexico",
-      "description": "A vast network of canyons in northern Mexico, offering stunning views and opportunities for hiking and horseback riding."
-  },
-  {
-      "location_name": "Mexico City",
-      "address": "Mexico City, Mexico",
-      "description": "A bustling metropolis with rich history, colonial architecture, world-class museums, and vibrant culture."
-  },
-
-  #Netherlands
-  {
-    "location_name": "Dam Square",
-    "address": "Dam Square, Amsterdam, Netherlands",
-    "description": "A historic and vibrant square in the heart of Amsterdam, known for its royal palace, bustling atmosphere, and street performers. It is a popular gathering place for tourists and locals alike."
-  },
-  {
-    "location_name": "Keukenhof",
-    "address": "Keukenhof, Lisse, Netherlands",
-    "description": "One of the world's largest flower gardens, famous for its stunning tulip displays. Open only in spring, it attracts millions of visitors each year."
-  },
-  {
-    "location_name": "Kinderdijk",
-    "address": "Kinderdijk, Netherlands",
-    "description": "A UNESCO World Heritage site known for its 18th-century windmills. It offers a glimpse into Dutch water management and picturesque landscapes."
-  },
-  {
-    "location_name": "Rotterdam",
-    "address": "Rotterdam Central Station, Netherlands",
-    "description": "A modern architectural landmark and a major transport hub in Rotterdam. The station’s striking design and high-speed train connections make it a key gateway to the city."
-  },
-  {
-    "location_name": "Giethoorn",
-    "address": "Giethoorn, Netherlands",
-    "description": "A charming, car-free village known as the 'Dutch Venice' due to its canals and picturesque thatched-roof houses. Visitors explore by boat, bike, or on foot."
-  },
-  {
-    "location_name": "Efteling",
-    "address": "Efteling, Kaatsheuvel, Netherlands",
-    "description": "One of Europe's oldest theme parks, inspired by fairy tales and folklore. It features enchanting rides, magical storytelling, and beautiful landscapes."
-  },
-  {
-    "location_name": "Vrijthof",
-    "address": "Maastricht Vrijthof, Netherlands",
-    "description": "A lively square in Maastricht, known for its cafes, historic churches, and cultural events. It's a popular spot for concerts and festivals."
-  },
-  {
-    "location_name": "Dom Tower",
-    "address": "Utrecht Dom Tower, Netherlands",
-    "description": "The tallest church tower in the Netherlands, offering panoramic city views. A symbol of Utrecht's rich medieval history."
-  },
-
-  #South Africa
-  {
-    "location_name": "Table Mountain",
-    "address": "Cape Town, South Africa",
-    "description": "A flat-topped mountain offering panoramic views of Cape Town and the surrounding coastline."
-  },
-  {
-    "location_name": "Kruger National Park",
-    "address": "Kruger National Park, South Africa",
-    "description": "One of Africa's largest game reserves, home to the Big Five: lion, elephant, buffalo, leopard, and rhinoceros."
-  },
-  {
-    "location_name": "Cape Point",
-    "address": "Cape Peninsula, South Africa",
-    "description": "A dramatic point where the Atlantic and Indian Oceans meet, with stunning cliffs and scenic views."
-  },
-  {
-    "location_name": "Garden Route",
-    "address": "Garden Route, South Africa",
-    "description": "A picturesque coastal stretch offering beautiful beaches, forests, and wildlife, ideal for road trips."
-  },
-  {
-    "location_name": "Robben Island",
-    "address": "Robben Island, South Africa",
-    "description": "A historical site where Nelson Mandela was imprisoned, now a museum offering insight into South Africa's history."
-  },
-
-  #United Kingdom
-  {
-    "location_name": "Stonehenge",
-    "address": "Wiltshire, England",
-    "description": "A prehistoric stone circle shrouded in mystery, one of the most iconic landmarks in Britain."
-  },
-  {
-    "location_name": "The Tower of London",
-    "address": "London, England",
-    "description": "A historic fortress and royal palace, known for housing the Crown Jewels and its role in British history."
-  },
-  {
-    "location_name": "Edinburgh Castle",
-    "address": "Edinburgh, Scotland",
-    "description": "A historic fortress overlooking the city, home to the Crown Jewels of Scotland and rich in medieval history."
-  },
-  {
-    "location_name": "Lake District",
-    "address": "Lake District, England",
-    "description": "A region known for its picturesque lakes, rugged mountains, and as the inspiration for many poets like William Wordsworth."
-  },
-  {
-    "location_name": "Big Ben",
-    "address": "London, England",
-    "description": "One of London's most famous landmarks, known for its iconic clock tower and its role in British culture."
-  },
-
-  #Japan
-  {
-    "location_name": "Mount Fuji",
-    "address": "Mount Fuji, Japan",
-    "description": "An iconic and sacred mountain, famous for its symmetrical cone shape and popular for hiking and photography."
-  },
-  {
-    "location_name": "Kyoto Temples",
-    "address": "Kyoto, Japan",
-    "description": "Home to historic temples, shrines, and the famous Arashiyama Bamboo Grove, offering a glimpse into traditional Japanese culture."
-  },
-  {
-    "location_name": "Tokyo Tower",
-    "address": "Tokyo, Japan",
-    "description": "A communications tower offering panoramic views of Tokyo and an iconic symbol of Japan’s modern skyline."
-  },
-  {
-    "location_name": "Hiroshima Peace Memorial Park",
-    "address": "Hiroshima, Japan",
-    "description": "A park and museum dedicated to the victims of the atomic bombing of Hiroshima in 1945, promoting peace and remembrance."
-  },
-  {
-    "location_name": "Nara Park",
-    "address": "Nara, Japan",
-    "description": "A park known for its friendly deer, ancient temples, and the Great Buddha statue of Todai-ji."
-  }
+  # De Hoge Veluwe National Park, Netherlands POIs
+  { location_name: "Kröller-Müller Museum", address: "Houtkampweg 6, 6731 AW Otterlo, Netherlands" },
+  { location_name: "Jachthuis Sint Hubertus", address: "Apeldoornseweg 258, 7351 TA Hoenderloo, Netherlands" },
+  { location_name: "De Hoge Veluwe Sand Dunes", address: "6731 Otterlo, Netherlands" },
+  { location_name: "Wildlife Watching Spot", address: "Houtkampweg, 6731 AW Otterlo, Netherlands" },
+  { location_name: "Park Entrance Otterlo", address: "Houtkampweg 9, 6731 AV Otterlo, Netherlands" }
 ]
+
+def make_guide_locations(user, city)
+  all_location_in_city = Location.where(city: city)
+  if all_location_in_city.count == 1
+    GuideLocation.create!(user: user, location: all_location_in_city.first)
+    return
+  elsif all_location_in_city.count == 0
+    puts "No locations in #{city}"
+    return
+  else
+    locations = all_location_in_city.sample(all_location_in_city.count/2)
+  end
+  locations.each do |location|
+    GuideLocation.create!(user: user, location: location)
+  end
+end
+
+def create_users
+  a1 = User.new(name: "Liam", email: "liam@tl.com", password: "password")
+  a1.rate = 50
+  a1.guide_description = "Discover hidden gems and secret spots that most tourists never see. Join me for an unforgettable journey!"
+  a1.short_description = "I love hiking and exploring new places."
+  a1.guide = true
+
+  a2 = User.new(name: "Emma", email: "emma@tl.com", password: "password")
+  a2.rate = 60
+  a2.guide_description = "Passionate about history and culture—I’ll take you through centuries of fascinating stories and iconic landmarks."
+  a2.short_description = "A history buff who enjoys museum visits."
+  a2.guide = true
+
+  a3 = User.new(name: "Noah", email: "noah@tl.com", password: "password")
+  a3.rate = 45
+  a3.guide_description = "Adventure awaits! From scenic trails to breathtaking viewpoints, I’ll guide you through the best outdoor experiences."
+  a3.short_description = "An outdoor enthusiast and coffee lover."
+  a3.guide = true
+
+  a4 = User.new(name: "Olivia", email: "olivia@tl.com", password: "password")
+  a4.rate = 55
+  a4.guide_description = "Food lover ready to take you on a culinary journey. Let's explore the best local dishes, street food, and hidden cafés!"
+  a4.short_description = "Big fan of trying new cuisines and flavors."
+  a4.guide = true
+
+  a5 = User.new(name: "Ethan", email: "ethan@tl.com", password: "password")
+  a5.rate = 38
+  a5.guide_description = "Nature, wildlife, and breathtaking views—let’s escape the city and experience the beauty of the great outdoors together!"
+  a5.short_description = "Love photographing landscapes and animals."
+  a5.guide = true
+
+  a6 = User.new(name: "Ava", email: "ava@tl.com", password: "password")
+  a6.rate = 48
+  a6.guide_description = "City explorer with a passion for street art, music, and unique local culture. Let’s dive into the heartbeat of the city!"
+  a6.short_description = "Always looking for the best street art spots."
+  a6.guide = true
+
+  a7 = User.new(name: "Silvia", email: "Silvia@tl.com", password: "password")
+  a7.rate = 52
+  a7.guide_description = "I’ll guide you through the best nightlife spots, trendy bars, and hidden speakeasies for an unforgettable evening!"
+  a7.short_description = "Love discovering unique cocktail bars."
+  a7.guide = true
+
+  a8 = User.new(name: "Sophia", email: "sophia@tl.com", password: "password")
+  a8.rate = 40
+  a8.guide_description = "History, legends, and fascinating stories await! Let me show you the most intriguing sites and hidden historical gems."
+  a8.short_description = "Love ancient ruins and old books."
+  a8.guide = true
+
+  # Tourists ------------------------------------------------------------------
+  a9 = User.new(name: "James", email: "james@tl.com", password: "password")
+  # a9.rate = 57
+  # a9.guide_description = "Let’s explore like locals! I’ll show you the best places to eat, relax, and experience the true spirit of this city."
+  a9.short_description = "Always on the lookout for cozy cafés."
+  # a9.guide = true
+
+  a10 = User.new(name: "Isabella", email: "isabella@tl.com", password: "password")
+  # a10.rate = 43
+  # a10.guide_description = "I’ll take you on a cultural deep dive—from museums to live performances, we’ll experience the best this place has to offer!"
+  a10.short_description = "Passionate about art and live music."
+  # a10.guide = true
+
+  a11 = User.new(name: "William", email: "william@tl.com", password: "password")
+  a11.short_description = "Love exploring new cities and trying local foods."
+
+
+  viti = User.new(name: "Viti", email: "viti@tl.com", password: "password")
+  viti.rate = 42
+  viti.guide_description = "I'll show you the meaning of life"
+  viti.guide = true
+
+  timo = User.new(name: "Timo", email: "timo@tl.com", password: "password")
+  timo.rate = 11
+  timo.guide_description = "I like big birds and i cannot lie"
+  timo.guide = true
+
+  denise = User.new(name: "Denise", email: "denise@tl.com", password: "password")
+  denise.rate = 33
+  denise.guide_description = "I like small birds and i cannot lie"
+  denise.guide = true
+
+  viti.save!
+  timo.save!
+  denise.save!
+  a1.save!
+  a2.save!
+  a3.save!
+  a4.save!
+  a5.save!
+  a6.save!
+  a7.save!
+  a8.save!
+  a9.save!
+  a10.save!
+  a11.save!
+end
+
 
 puts "Seeding TripLink ->"
 puts " ---------------------------------------"
@@ -427,21 +206,9 @@ puts "All existing records destroyed"
 puts " ---------------------------------------"
 
 puts "Making users"
-viti = User.new(name: "Viti", email: "viti@tl.com", password: "password")
-viti.rate = 42
-viti.guide_description = "I'll show you the meaning of life"
-viti.guide = true
 
-timo = User.new(name: "Timo", email: "timo@tl.com", password: "password")
-timo.rate = 11
-timo.guide_description = "I like big birds and i cannot lie"
-timo.guide = true
+create_users
 
-denise = User.new(name: "Denise", email: "denise@tl.com", password: "password")
-
-viti.save!
-timo.save!
-denise.save!
 
 puts "#{User.count} users created"
 puts " ---------------------------------------"
@@ -472,16 +239,20 @@ end
 puts "#{Location.count} locations created"
 puts " ---------------------------------------"
 
-puts "Making user_locations"
-all_locations = Location.all
-all_locations.each do |location|
-  GuideLocation.create!(user: User.all[1], location: location)
-end
-random_locations = Location.all.sample(Location.count/2)
-random_locations.each do |location|
-  GuideLocation.create!(user: User.first, location: location)
-end
-puts "#{GuideLocation.count} user locations created"
+puts "Making guide locations"
+make_guide_locations(User.first, "Otterlo")
+make_guide_locations(User.all[1], "Paris")
+make_guide_locations(User.all[2], "Paris")
+make_guide_locations(User.all[3], "Buenos Aires")
+make_guide_locations(User.all[4], "Buenos Aires")
+make_guide_locations(User.all[5], "Amsterdam")
+make_guide_locations(User.all[6], "Amsterdam")
+make_guide_locations(User.all[7], "Brugge")
+make_guide_locations(User.all[8], "Brugge")
+make_guide_locations(User.all[9], "Lisbon")
+
+
+puts "#{GuideLocation.count} guide locations created"
 puts " ---------------------------------------"
 
 puts "Making matches"

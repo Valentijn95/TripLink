@@ -1,15 +1,14 @@
 .message-container {
-  display: flex;
+  //display: flex;
   flex-direction: column;
   align-items: center;
-  height: 75vh;
   padding: 1rem;
 }
 .messages {
-  height: 5rem;
+  height: calc(100vh - 19rem);
   padding: 5px;
   width: 100%;
-  overflow-y: auto;
+  overflow-y: scroll;
   flex-grow: 1;
 }
 .new-message {
@@ -25,6 +24,8 @@
 }
 .message-form {
   width: 100%;
+  position: fixed;
+  bottom: 5rem;
 }
 
 
@@ -39,19 +40,20 @@
 }
 
 .message-content {
-  border-radius: 1rem;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.2rem;
+  padding: 0.4rem;
   max-width: 70%;
   width: fit-content;
+  min-width: 35%;
   word-wrap: break-word;
   font-size: 0.8rem;
 }
 
 .message.sent .message-content {
   align-self: flex-end;
-  background: $primary-navy;
-  color: $light-gray;
+  background: $secondary-blue;
+  color: $gray;
 }
 
 .message.received .message-content {
@@ -61,14 +63,24 @@
 }
 
 .chat-form {
-  height: 4rem;
+  height: 3rem;
   input {
-    height: 100%;
+    position: absolute;
+    bottom: -0.5rem;
+    right: calc( 8vw + 0.5rem );
+    font-size: 0.8rem;;
   }
   textarea {
-    display: block;
-    resize: vertical;
-    overflow: resize;
+    position: absolute;
+    bottom: -1rem;
+    border-bottom: none;
+    border-color: $gray;
+    border-top-left-radius: 0.3rem;
+    left: 0;
+    height: 6rem;
+    width: calc( 100% - 8vw );
+    opacity: 0.7;
+    // width: 92vw;
   }
 
   .custom-btn-size {

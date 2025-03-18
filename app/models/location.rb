@@ -25,9 +25,9 @@ class Location < ApplicationRecord
   def set_city
     results = Geocoder.search([self.lat, self.lng])
     self.city = results.first.city
-    city_coordinates = Geocoder.search(self.city)
-    self.city_lng = results.first.longitude
-    self.city_lat = results.first.latitude
+    city_coordinates = Geocoder.search(self.city).first.data["center"]
+    self.city_lng = city_coordinates.first
+    self.city_lat = city_coordinates.last
   end
 
   def set_country

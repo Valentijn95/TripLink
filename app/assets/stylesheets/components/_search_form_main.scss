@@ -1,17 +1,31 @@
 .search-form-wrapper {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 12vh;
+  top: -80vh;
+  .autocomplete-wrapper {
+    border-radius: 12px;
+    font-size: 0.8rem;
+    width: 80vw;
+    height: auto;
+    max-height: 8rem;
+    overflow-y: scroll;
+    opacity: 0.75;
+    margin-top: 0.5vh;
+    li {
+      background-color: $light-gray;
+    }
+  }
 }
 
 .search-form {
   height: 6vh;
   position: relative;
   border-radius: 2.5vh;
-  border: 1px solid black;
+  // border: 1px solid black;
   width: 80vw;
 }
 
@@ -21,7 +35,7 @@
   width: 100%;
   height: 100%;
   border: none;
-  background-color: white;
+  background-color: $light-gray;
   opacity: 0.5;
 }
 

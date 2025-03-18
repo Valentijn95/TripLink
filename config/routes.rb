@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get "/search", to: "pages#render_location_partial", as: :location_partial
   get "/search/delete", to: "pages#render_empty_location_partial", as: :empty_loacation_partial
 
+  get "/api/autocomplete", to: "api#fetch_autocomplete_data", as: :fetch_autocomplete_data
+
   resources :users, only: [:index, :show]
 
   resources :matches, only: [:new, :create, :destroy]

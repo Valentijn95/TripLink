@@ -1,8 +1,13 @@
 <div class="search-form-wrapper d-none" data-search-form-target="bar">
-  <form action="/" method="post">
+  <form action="/" method="post" autocomplete="off">
     <div class="search-form row">
-      <input type="text" class="search-form-input col-10" name="location_search" placeholder="Search for a location" />
+      <input type="text" data-search-form-target="input" data-action="input->search-form#fetchSearchResults:prevent" class="search-form-input col-10" name="location_search" placeholder="Search for a location" />
       <input type="submit" class="search-form-submit col-2" name="submit" value="→" />
     </div>
   </form>
+  <div class="autocomplete-wrapper">
+    <ul class="list-group" data-search-form-target="results">
+      <!-- here list items will be inserted by the stimulus controller search_from_controller.js -->
+    </ul>
+  </div>
 </div>

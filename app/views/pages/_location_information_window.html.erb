@@ -3,7 +3,7 @@
     <%# <div class="location-info-wrapper">empty window</div> %>
   <% else %>
 
-    <div class="location-info-wrapper" data-controller="map-partial" data-action="click->map-partial#close:stop">
+    <div class="location-info-wrapper" data-controller="map-partial">
       <div class="partial-top-bar"><span data-action="click->map-partial#close" class="close">close</span></div>
       <div class="location-info-container">
 
@@ -27,9 +27,9 @@
                 <div class="d-flex border w-100 mt-4 rounded" style="height: 200px;">
 
                   <% if guide.photo.key != nil %>
-                    <%= cl_image_tag(guide.photo.key, width: 100, height: 100, gravity: "face", crop: "auto") %>
+                    <%= cl_image_tag(@guide.photo.key, height: 100, gravity: "faces", crop: "fill") %>
                   <% else %>
-                    <%= image_tag 'profile-picture.webp', alt: 'guide' %>
+                    <%= image_tag 'profile-picture.webp', height: 100, alt: 'guide' %>
                   <% end %>
                   <div class="justify-content-start text-start ms-2 mt-1">
                     <h2><%= link_to guide.name, user_path(guide, location: location.id), data: { turbo: false } %></h2>

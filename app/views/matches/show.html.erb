@@ -1,13 +1,15 @@
-
-<h3 class="text-center mb-0 mt-1">Chat with <%= @matched_user.name %></h3>
-<%= turbo_stream_from @match %>
-
 <div class="message-container">
+
+<h3 class="text-center">Chat with <%= @matched_user.name %></h3>
+<%= turbo_stream_from "chat-#{@match.id}-#{current_user.id}" %>
+
   <div id="messages" class="messages">
     <% @match.messages.each do |message| %>
       <%= render "messages/message", message: message, user: current_user %>
     <% end %>
   </div>
+
+<div class="basic-padding">
   <div id="new_message mb-8" class="new-message">
       <%= simple_form_for [@match, @message], html: { class: "message-form", data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }} do |f| %>
           <section class="d-flex flex-row chat-form">
@@ -16,4 +18,5 @@
           </section>
       <% end %>
   </div>
+</div>
 </div>

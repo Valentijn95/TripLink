@@ -1,4 +1,4 @@
-<div id="message-<%= message.id %>" class="message <%= message.user === user ? 'sent' : 'received' %>">
+<div id="message-<%= message.id %>" class="message <%= message.user == user ? 'sent' : 'received' %>" data-controller="message">
 
 
 <p class="message-content"><%= message.content.gsub("\n", "<br>").html_safe %>

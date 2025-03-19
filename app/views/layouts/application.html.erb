@@ -18,12 +18,12 @@
 
       <% if user_signed_in? %>
         <%= turbo_stream_from "flashes-#{current_user.id}" %>
-        <%= render "shared/flashes", notice: false, alert: false %>
+        <%= render "shared/flashes" %>
 
         <%= turbo_stream_from "header-#{current_user.id}" %>
         <%= render "shared/header", added_class: "", user: current_user %>
       <% else %>
-        <%= render "shared/flashes", notice: false, alert: false %>
+        <%= render "shared/flashes" %>
         <%= render "shared/header_logged_out" %>
       <% end %>
 

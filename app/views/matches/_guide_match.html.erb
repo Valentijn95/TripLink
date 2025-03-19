@@ -25,9 +25,15 @@
             <div class="row">
               <div class="col-6 mb-3"> <%= link_to "Chat", match_path(match), class: "btn btn-primary" %> </div>
             </div>
-          <% else %>
+          <% elsif match.status == "pending-finished" %>
             <div class="row">
-              destroy match
+              <p>dit you go on a trip with <%= match.tourist.name %> Please confirm so <%= match.tourist.name %> can leave a review for you.</p>
+              <div class="d-flex">
+                <%= button_to "yes", end_match_path(match, value: "yes"), class: "btn btn-outline-primary me-3 mb-2" %>
+                <%= button_to "no", end_match_path(match, value: 'no'), data: { turbo_confirm: "This match will be set back to accepted, are you sure?" }, class: 'btn btn-outline-primary  me-3 mb-2' %>
+                <%= button_to "cancel match", match_path(match, value: 'cancel'), data: { turbo_confirm: "This match will be cancelled, are you sure?" }, class: 'btn btn-outline-danger me-3 mb-2' %>
+
+              </div>
             </div>
           <% end %>
         </div>

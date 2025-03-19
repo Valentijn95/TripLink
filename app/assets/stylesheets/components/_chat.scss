@@ -2,7 +2,12 @@
   //display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  background-color: rgb(196, 210, 226);
+  height: calc( 100vh - 6rem );
+  h3 {
+    margin-top: 0;
+    padding-top: 0.5rem;
+  }
 }
 .messages {
   height: calc(100vh - 19rem);
@@ -10,12 +15,6 @@
   width: 100%;
   overflow-y: scroll;
   flex-grow: 1;
-}
-.new-message {
-  width: 100%;
-  textarea {
-    width: 75vw;
-  }
 }
 
 .message {
@@ -28,15 +27,12 @@
   bottom: 5rem;
 }
 
-
-
-
 .message-info {
   opacity: 0.5;
   text-align: center;
   width: fit-content;
   font-size: 0.6rem;
-  color: $light-gray;
+  color: $gray;
 }
 
 .message-content {
@@ -58,29 +54,36 @@
 
 .message.received .message-content {
   align-self: flex-start;
-  background: $gray;
-  color: $light-gray;
+  background: $light-gray;
+  color: $gray;
 }
 
 .chat-form {
   height: 3rem;
   input {
     position: absolute;
-    bottom: -0.5rem;
-    right: calc( 8vw + 0.5rem );
-    font-size: 0.8rem;;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-size: 0.8rem;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
   }
   textarea {
     position: absolute;
-    bottom: -1rem;
-    border-bottom: none;
-    border-color: $gray;
-    border-top-left-radius: 0.3rem;
+    bottom: -2rem;
+    border: none;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    background-color: $light-gray;
+    border: 1px solid gray;
     left: 0;
     height: 6rem;
-    width: calc( 100% - 8vw );
+    width: calc( 100vw - 1rem );
     opacity: 0.7;
     // width: 92vw;
+  }
+  textarea:focus {
+    background-color: $secondary-blue;
   }
 
   .custom-btn-size {

@@ -1,13 +1,13 @@
 
 <div id="match_<%= match.id %>">
-  <div class="d-flex border w-100 mt-4 rounded justify-content-between match-card">
+  <div class="d-flex border w-100 mt-4 rounded justify-content-start match-card">
     <% if incoming %>
       <span class="right incoming"><%= incoming %></span>
     <% else %>
       <span class="right"><%= match.status %></span>
     <% end %>
         <% if match.tourist.photo.key != nil %>
-          <%= cl_image_tag match.tourist.photo.key, width: 300, crop: :fill, class: "justify-content-center my-3" %>
+          <%= cl_image_tag match.tourist.photo.key, height: 150, width: 150, gravity: :face, crop: :fill, class: "justify-content-center my-0" %>
         <% end %>
         <div class="justify-content-start text-start ms-2 mt-1">
 
@@ -23,7 +23,7 @@
 
           <% elsif match.status == 'accepted' %>
             <div class="row">
-              <div class="col-6 mb-3"> <%= link_to "Chat", match_path(match), class: "btn btn-primary" %> </div>
+              <div class="col-6 mb-3"> <%= link_to "Chat", match_path(match), class: "btn btn-outline-primary" %> </div>
             </div>
           <% elsif match.status == "pending-finished" %>
             <div class="row">

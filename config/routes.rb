@@ -11,12 +11,15 @@ Rails.application.routes.draw do
 
   get "/api/autocomplete", to: "api#fetch_autocomplete_data", as: :fetch_autocomplete_data
 
+  post "/matches/:id/finish", to: "matches#finish", as: :finish_match
+  post "/matches/:id/end", to: "matches#end", as: :end_match
 
   resources :users, only: [:index, :show]
 
   resources :matches, only: [:new, :create, :destroy]
 
   resources :matches, only: [:index, :show, :new, :update] do
+    resources :reviews, only: [:new, :create]
     resources :messages, only: [:create]
   end
 

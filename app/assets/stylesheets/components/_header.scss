@@ -12,13 +12,24 @@
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
   z-index: 10;
 
+  a {
+    text-decoration: none;
+  }
+
   .bell {
     right: 10vw;
     position: absolute;
     font-size: 1.5rem;
     color: $light-gray;
     padding: 0.5rem;
+    .pending-match-count {
+      position: absolute;
+      top: 0.1rem;
+      left: 0.18rem;
+      font-size: 1rem;
+    }
   }
+
   .active {
     color: $accent-orange;
     font-size: 1.5rem;

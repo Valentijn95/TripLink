@@ -8,8 +8,16 @@
       <p><%= match.guide.short_description %></p>
       <p>Status: <strong><%= match.status %></strong><%= " - wait for confirmation" if match.status === 'pending' %></p>
       <% if match.status == 'accepted' %>
-        <%= link_to "Chat", match_path(match), class: "btn btn-primary mb-3" %>
+
+        <div class="d-flex justify-content-between">
+          <%= link_to "Chat", match_path(match), class: "btn btn-outline-primary mb-3" %>
+          <%= button_to "Finish match", finish_match_path(match), class: "btn btn-outline-warning mb-3" %>
+        </div>
+
+      <% elsif match.status == "finished" %>
+          <%= button_to "Write review", new_match_review_path(match), class: "btn btn-outline-primary mb-3" %>
       <% end %>
+
     </div>
   </div>
 </div>

@@ -20,10 +20,52 @@ class MatchesController < ApplicationController
     end
   end
 
+  def finish
+    @match = Match.find(params[:id])
+    @match.status = "pending-finished"
+    if @match.save
+      @match.broadcast_guide_notification(@match.tourist.name + " wants to finish the match")
+      redirect_to matches_path, notice: "finish match request sent"
+    else
+      redirect_to matches_path, alert: "Failed to finish match"
+    end
+  end
+
+  def end
+    @match = Match.find(params[:id])
+    if params[:value] == "yes"
+      @match.status = "finished"
+      if @match.save
+        redirect_to matches_path, notice: "match finished"
+      else
+        redirect_to matches_path, alert: "failed to finish match"
+      end
+    elsif params[:value] == "no"
+      @match.status = "accepted"
+      if @match.save
+        redirect_to matches_path, notice: "match resumed"
+      else
+        redirect_to matches_path, alert: "failed to finish match"
+      end
+    elsif params[:value] == "cancel"
+      @match.status = "cancelled"
+      if @match.save
+        redirect_to matches_path, notice: "match cancelled"
+      else
+        redirect_to matches_path, alert: "failed to cancel match"
+      end
+    end
+  end
+
   def show
     @match = Match.find(params[:id])
     @message = Message.new
-    @matched_user = @match.guide
+
+    if current_user == @match.tourist
+      @matched_user = @match.guide
+    else
+      @matched_user = @match.tourist
+    end
   end
 
     def new

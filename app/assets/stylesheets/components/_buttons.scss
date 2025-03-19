@@ -17,8 +17,13 @@
 }
 
 .btn-delete {
-  font-size: 0.5rem;
-  border-radius: 2px;
-  background-color: $accent-orange;
-  justify-content: start;
+  border: none;
+  color: gray;
+  border-radius: 50%;
+  height: 1rem;
+  width: 1rem;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }

@@ -1,0 +1,24 @@
+.input-button-group {
+  display: flex;
+  align-items: stretch;
+  margin-right: 10px;
+}
+
+.input-field {
+  border: 1px solid $secondary-blue;
+  flex: 1;
+  border-right: none;
+  border-radius: 0.2rem;
+}
+
+.submit-button {
+  border: 1px solid $secondary-blue;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 0.2rem;
+}
+
+.border-bottom {
+  border-bottom: 1px solid $gray-200;
+  padding-bottom: 0.5rem;
+}

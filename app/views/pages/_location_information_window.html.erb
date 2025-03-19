@@ -27,7 +27,7 @@
                 <div class="d-flex border w-100 mt-4 rounded" style="height: 200px;">
 
                   <% if guide.photo.key != nil %>
-                    <%= cl_image_tag(@guide.photo.key, height: 100, gravity: "faces", crop: "fill") %>
+                    <%= cl_image_tag guide.photo.key, height: 100, width: 100, crop: :fill, class: "justify-content-center my-0" %>
                   <% else %>
                     <%= image_tag 'profile-picture.webp', height: 100, alt: 'guide' %>
                   <% end %>
@@ -39,7 +39,7 @@
   <% locations = guide.locations.where(city: location.city).limit(3) %>
   <% if locations.any? %>
     <p>My favorite places in <%= location.country %></p>
-    <ul class="locations-list-no-bullets">
+    <ul class="list-unstyled">
       <% locations.each do |loc| %>
         <li>📍 <%= loc.name %>, <%= loc.city %></li>
       <% end %>

@@ -15,3 +15,10 @@
   border: 2px solid $accent-orange;
   color: $accent-orange;
 }
+
+.btn-delete {
+  font-size: 0.5rem;
+  border-radius: 2px;
+  background-color: $accent-orange;
+  justify-content: start;
+}

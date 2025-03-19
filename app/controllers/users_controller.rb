@@ -1,5 +1,3 @@
-
-
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
@@ -15,7 +13,6 @@ class UsersController < ApplicationController
     @user = current_user
     @user_interests = @user.interests.pluck(:interest)
     @match = Match.new
-
   end
 
   private

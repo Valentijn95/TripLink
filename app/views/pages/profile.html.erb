@@ -1,9 +1,30 @@
 <div class="container">
 
-  <!-- if no one logged in show the login button -->
-  <% if user_signed_in? %>
+  <!-- if user is not signed in, show the login button -->
+  <% if !user_signed_in? %>
+      <p> <%= link_to "Log in", new_user_session_path, class: "btn btn-outline-primary" %></p>
+
+  <!-- if user is signed in, show the profile page -->
+  <% else %>
+
     <h1>Profile page</h1>
     <h1> <%= @user.name%> </h1>
+
+    <h2>Your interests:</h2>
+      <% @user.interests.sort_by(&:interest).each do |interest| %>
+        <div class="interests-container">
+          <%= interest.interest %>
+          <%= button_to 'X', remove_interest_path(interest_id: interest.id), method: :delete, data: { turbo_confirm: 'Are you sure?' }, class: 'btn-delete' %>
+        </div>
+      <% end %>
+
+      <% if @available_interests.any? %>
+        <%= form_with url: add_interest_path, method: :post do |f| %>
+          <%= f.collection_select :interest_id, @available_interests.sort_by(&:interest), :id, :interest %>
+          <%= f.submit "Add interest", class: "btn btn-outline-primary" %>
+        <% end %>
+      <% end %>
+
 
     <h2>Your guide locations:</h2>
     <ul>
@@ -12,11 +33,9 @@
     <% end %>
     </ul>
 
-      <%= link_to "Edit profile", edit_user_registration_path, class: "col-5 btn btn-outline-primary mb-2" %>
+    <%= link_to "Edit profile", edit_user_registration_path, class: "col-5 btn btn-outline-primary mb-2" %>
 
-      <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "col-5 btn btn-outline-warning mb-2" %>
+    <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "col-5 btn btn-outline-warning mb-2" %>
 
-  <% else %>
-    <p> <%= link_to "Log in", new_user_session_path, class: "btn btn-outline-primary" %></p>
   <% end %>
 </div>

@@ -13,6 +13,7 @@
 @import "header";
 @import "chat";
 @import "matches";
+@import "intro_popup";
 
 .body {
   margin: 0;
@@ -22,7 +23,8 @@
 
 .content {
   padding-top: 5.15rem;
-  padding-bottom: 2rem;
+  padding-bottom: 3rem;
+
 }
 
 .basic-padding {

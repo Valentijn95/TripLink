@@ -1,0 +1,30 @@
+<div class="basic-padding">
+
+  <h2>Apply to be a guide</h2>
+
+  <%= simple_form_for(@user, url: apply_guide_path(@user), html: { method: :put }) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+
+      <%= f.input :name, required: true, disabled: true %>
+      <%= f.input :email, required: true , disabled: true %>
+      <%= f.input :short_description, required: true %>
+
+        <!-- guide description & rate input field -->
+        <%= f.input :guide_description, required: true %>
+        <%= f.input :rate, required: true %>
+
+      <%= f.input :current_password,
+                  hint: "we need your current password to confirm your changes",
+                  required: false,
+                  input_html: { autocomplete: "current-password" } %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Apply", class: "btn btn-primary" %>
+      <%= link_to "Back", :back, class: "btn btn-outline-primary" %>
+    </div>
+  <% end %>
+
+</div>

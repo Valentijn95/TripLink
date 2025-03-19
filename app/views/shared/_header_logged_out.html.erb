@@ -1,49 +1,18 @@
+<section data-controller="intromodal">
+
 <header class="main-header" id="header">
   <a href="/"><img src="<%= asset_path('TripLink.png') %>" alt="Logo" class="logo"></a>
 
-  <i class="fa-solid fa-question bell active" onclick="showModal()"></i>
+  <i data-action="click->intromodal#show" class="fa-solid fa-question bell active"></i>
 </header>
 
 
-<div id="helpModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-  <h1>Welcome to TripLink!</h1>
-  <h2>Looking for an authentic travel experience?</h2> <h3> TripLink connects you with local guides who know the city, helping you discover hidden gems and unique stories for an unforgettable trip! </h3>
-  <h3>We’re Valentijn, Timo, and Denise, students from Le Wagon, and we’re excited to share this unique journey with you.</h3>
+  <div class="intromodal d-none" data-intromodal-target="canvas">
+    <div class="modal-content">
+    <span class="close" data-action="click->intromodal#close">&times;</span>
+    <h1>Welcome to TripLink!</h1>
+    <h2>Looking for an authentic travel experience?</h2> <h3> TripLink connects you with local guides who know the area, helping you discover hidden gems and unique stories for an unforgettable trip!</h3>
+    <h3>We’re Valentijn, Timo, and Denise, students from Le Wagon, and we’re excited to share this unique journey with you.</h3>
+    </div>
   </div>
-</div>
-
-<!-- JavaScript -->
-<script>
-// Wait for the DOM to be fully loaded before executing
-document.addEventListener('DOMContentLoaded', function() {
-  var modal = document.getElementById("helpModal");
-
-  // Ensure the modal is hidden on page load
-  modal.style.display = "none";
-
-  // Function to show modal when the icon is clicked
-  function showModal() {
-    modal.style.display = "flex";
-  }
-
-  // Function to close the modal
-  function closeModal() {
-    modal.style.display = "none";
-  }
-
-  // Event listener for the icon click to show the modal
-  document.querySelector('.bell').addEventListener('click', showModal);
-
-  // Event listener for closing modal when clicking the close button (x)
-  document.querySelector('.close').addEventListener('click', closeModal);
-
-  // Close modal if user clicks outside the modal content
-  window.onclick = function(event) {
-    if (event.target === modal) {
-      closeModal();
-    }
-  }
-});
-</script>
+</section>

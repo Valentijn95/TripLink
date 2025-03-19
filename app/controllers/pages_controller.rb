@@ -38,6 +38,22 @@ class PagesController < ApplicationController
     redirect_to profile_path, notice: "Interest removed"
   end
 
+  def new_guide
+    @user = User.find(params[:id])
+  end
+
+  def apply_guide
+    @user = User.find(params[:id])
+    @user.guide_description = params[:user][:guide_description]
+    @user.rate = params[:user][:rate]
+    @user.guide = true
+    if @user.save
+      redirect_to profile_path, notice: "Contratulations you are now a guide!"
+    else
+      render :new_guide, status: :unprocessable_entity
+    end
+  end
+
   def render_location_partial
 
     @location = Location.find(params[:id])

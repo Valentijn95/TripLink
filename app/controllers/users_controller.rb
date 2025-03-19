@@ -13,6 +13,8 @@ class UsersController < ApplicationController
     @user = current_user
     @user_interests = @user.interests.pluck(:interest)
     @match = Match.new
+
+    @reviews = Review.joins(:match).where(matches: { guide_id: @guide.id })
   end
 
   private

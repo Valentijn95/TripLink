@@ -1,0 +1,80 @@
+/* Card container styling */
+.d-flex.border.w-100.mt-4.rounded {
+  background-color:  #faf8f4;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  padding: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+
+.d-flex.border.w-100.mt-4.rounded:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+
+.d-flex.border.w-100.mt-4.rounded img {
+  border-radius: 5px;
+  object-fit: cover;
+  width: 120px;
+  height: 120px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+
+/* Content styling inside the card */
+
+.d-flex.border.w-100.mt-4.rounded h2 {
+  font-size: 1.5rem;
+  color: #000000;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.d-flex.border.w-100.mt-4.rounded p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+
+.d-flex.border.w-100.mt-4.rounded .locations-list {
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 10px;
+}
+
+
+.d-flex.border.w-100.mt-4.rounded .locations-list span {
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 1rem;
+}
+
+.d-flex.border.w-100.mt-4.rounded .locations-list span:hover {
+  color: #000000;
+  cursor: pointer;
+}
+
+.guide-card-link {
+  text-decoration: none; // Removes underline from the link
+  color: inherit; // Keeps the original text color
+}
+
+.guide-card-link h2,
+.guide-card-link p {
+  text-decoration: none;  // Removes underline from text
+  color: inherit; // color stays the same
+}
+
+.guide-card-link .d-flex {
+  cursor: pointer;
+}
+

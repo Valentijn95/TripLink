@@ -8,9 +8,10 @@
       <div class="location-info-container">
 
           <% if defined?(location) %>
-            <h1><%= location.city %></h1>
-            <h3><%= location.country %></h3>
-          <% end %>
+  <h1 class="mt-2 mb-1"><%= location.city %></h1>
+  <h3 class="mt-0 mb-1"><%= location.country %></h3>
+<% end %>
+
           <!-- if user is not signed in show the login button -->
 
 
@@ -24,34 +25,33 @@
 
               <div class="align-items-center text-center">
               <% guides.each do |guide| %>
-                <div class="d-flex border w-100 mt-4 rounded" style="height: 200px;">
-
-                  <% if guide.photo.key != nil %>
-                    <%= cl_image_tag(@guide.photo.key, height: 100, gravity: "faces", crop: "fill") %>
-                  <% else %>
-                    <%= image_tag 'profile-picture.webp', height: 100, alt: 'guide' %>
-                  <% end %>
-                  <div class="justify-content-start text-start ms-2 mt-1">
-                    <h2><%= link_to guide.name, user_path(guide, location: location.id), data: { turbo: false } %></h2>
-
-                    <p><%= guide.short_description %></p>
-                <div class="locations-list mt-3">
-  <% locations = guide.locations.where(city: location.city).limit(3) %>
-  <% if locations.any? %>
-    <p>My favorite places in <%= location.country %></p>
-    <ul class="locations-list-no-bullets">
-      <% locations.each do |loc| %>
-        <li>📍 <%= loc.name %>, <%= loc.city %></li>
+              <%= link_to user_path(guide, location: location.id), data: { turbo: false }, class: "guide-card-link" do %>
+       <div class="d-flex border w-100 mt-4 rounded" style="height: 200;">
+      <% if guide.photo.key.present? %>
+        <%= cl_image_tag(guide.photo.key, height: 100, gravity: "faces", crop: "fill") %>
+      <% else %>
+        <%= image_tag 'profile-picture.webp', height: 100, alt: 'guide' %>
       <% end %>
-    </ul>
-  <% else %>
-    <p>No locations available in <%= location.city %> for this guide.</p>
-  <% end %>
-</div>
-                  </div>
-                </div>
+      <div class="justify-content-start text-start ms-2 mt-1">
+        <h2><%= guide.name %></h2>
+        <p><%= guide.short_description %></p>
+        <div class="locations-list mt-3">
+          <% locations = guide.locations.where(city: location.city).limit(3) %>
+          <% if locations.any? %>
+            <p>
+              <% locations.each do |loc| %>
+                📍 <%= loc.name %><br>
               <% end %>
-              </div>
+            </p>
+          <% else %>
+            <p>No locations available in <%= location.city %> for this guide.</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
 
             <% end %>
           <% else %>

@@ -11,15 +11,20 @@ Rails.application.routes.draw do
 
   get "/api/autocomplete", to: "api#fetch_autocomplete_data", as: :fetch_autocomplete_data
 
+
   resources :users, only: [:index, :show]
 
   resources :matches, only: [:new, :create, :destroy]
 
-
   resources :matches, only: [:index, :show, :new, :update] do
     resources :messages, only: [:create]
   end
+
+  post "/profile/add_interest", to: "pages#add_interest", as: :add_interest
+  delete "/profile/remove_interest", to: "pages#remove_interest", as: :remove_interest
+
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
+
 end

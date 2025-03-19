@@ -19,6 +19,22 @@ class PagesController < ApplicationController
 
   def profile
     @user = current_user
+    @user_interests = @user.interests
+    @available_interests = Interest.all - @user_interests
+  end
+
+  def add_interest
+    @user = current_user
+    @interest = Interest.find(params[:interest_id])
+    @user.interests << @interest
+    redirect_to profile_path, notice: "Interest added"
+  end
+
+  def remove_interest
+    @user = current_user
+    @interest = Interest.find(params[:interest_id])
+    @user.interests.destroy(@interest)
+    redirect_to profile_path, notice: "Interest removed"
   end
 
   def render_location_partial

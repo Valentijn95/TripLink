@@ -23,34 +23,36 @@
               <%= link_to "Sign up", new_user_registration_path, class: "btn btn-outline-primary mb-2", data: { turbo: false } %>
             <% else %>
 
-              <div class="align-items-center text-center">
-              <% guides.each do |guide| %>
-              <%= link_to user_path(guide, location: location.id), data: { turbo: false }, class: "guide-card-link" do %>
-       <div class="d-flex border w-100 mt-4 rounded" style="height: 200;">
-      <% if guide.photo.key.present? %>
-        <%= cl_image_tag(guide.photo.key, height: 100, gravity: "faces", crop: "fill") %>
-      <% else %>
-        <%= image_tag 'profile-picture.webp', height: 100, alt: 'guide' %>
-      <% end %>
-      <div class="justify-content-start text-start ms-2 mt-1">
-        <h2><%= guide.name %></h2>
-        <p><%= guide.short_description %></p>
-        <div class="locations-list mt-3">
-          <% locations = guide.locations.where(city: location.city).limit(3) %>
-          <% if locations.any? %>
-            <p>
-              <% locations.each do |loc| %>
-                📍 <%= loc.name %><br>
-              <% end %>
-            </p>
-          <% else %>
-            <p>No locations available in <%= location.city %> for this guide.</p>
-          <% end %>
+             <div class="guides-container text-center">
+  <% guides.each do |guide| %>
+    <%= link_to user_path(guide, location: location.id), data: { turbo: false }, class: "guide-card-link" do %>
+      <div class="guide-card">
+        <% if guide.photo.key.present? %>
+          <%= cl_image_tag(guide.photo.key, class: "guide-card-image") %>
+        <% else %>
+          <%= image_tag 'profile-picture.webp', class: "guide-card-image", alt: 'guide' %>
+        <% end %>
+        <div class="guide-card-content">
+          <h2 class="guide-card-title"><%= guide.name %></h2>
+          <p class="guide-card-description"><%= guide.short_description %></p>
+          <div class="guide-card-locations">
+            <% locations = guide.locations.where(city: location.city).limit(3) %>
+            <% if locations.any? %>
+              <p>
+                <% locations.each do |loc| %>
+                  📍 <%= loc.name %><br>
+                <% end %>
+              </p>
+            <% else %>
+              <p>No locations available in <%= location.city %> for this guide.</p>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>
+
 
 
             <% end %>

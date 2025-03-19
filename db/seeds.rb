@@ -2,21 +2,26 @@ interests = [
   "Hiking",
   "Adventure",
   "Cruises",
-  "Solo travel",
   "Stargazing",
   "Animal watching",
   "Architecture tours",
-  "Business travel",
   "Culture",
-  "Experience personal growth",
-  "Family travel",
   "Fishing",
-  "Getting accustomed to different cultures",
+  "Partying"
+  "Experience different cultures",
   "Language learning",
   "Safaris",
   "Food",
+  "Wine tasting",
+  "Photography",
+  "History",
+  "Museums",
+  "Beaches",
   "Art",
   "Bird watching"
+  "Extreme people watching",
+  "Dance like nobody's watching",
+  "Festivals"
 ]
 
 locations = [
@@ -161,17 +166,17 @@ def create_users
 
   viti = User.new(name: "Viti", email: "viti@tl.com", password: "password")
   viti.rate = 42
-  viti.guide_description = "I'll show you the meaning of life"
+  viti.guide_description = "I'll show you the meaning of life."
   viti.guide = true
 
   timo = User.new(name: "Timo", email: "timo@tl.com", password: "password")
   timo.rate = 11
-  timo.guide_description = "I like big birds and i cannot lie"
+  timo.guide_description = "I like big birds and i cannot lie."
   timo.guide = true
 
   denise = User.new(name: "Denise", email: "denise@tl.com", password: "password")
   denise.rate = 33
-  denise.guide_description = "I like small birds and i cannot lie"
+  denise.guide_description = "I like small birds and i cannot lie."
   denise.guide = true
 
   viti.save!
@@ -217,7 +222,7 @@ puts "Making interests"
 interests.each do |interest|
   Interest.create!(interest: interest)
 end
-puts "#{Interest.count} intersts created"
+puts "#{Interest.count} interests created"
 puts " ---------------------------------------"
 
 puts "Making user_interests"
@@ -229,7 +234,7 @@ User.all.each do |user|
   UserInterest.create!(interest: random_interests[3], user: user)
   UserInterest.create!(interest: random_interests[4], user: user)
 end
-puts "#{UserInterest.count} user interests created"
+puts "#{UserInterest.count} user_interests created"
 puts " ---------------------------------------"
 
 puts "Making locations"
@@ -239,7 +244,7 @@ end
 puts "#{Location.count} locations created"
 puts " ---------------------------------------"
 
-puts "Making guide locations"
+puts "Making guide_locations"
 users = User.all.sort_by { |user| user.id }
 make_guide_locations(users[0], "Otterlo")
 make_guide_locations(users[1], "Paris")
@@ -253,7 +258,7 @@ make_guide_locations(users[8], "Brugge")
 make_guide_locations(users[9], "Lisbon")
 
 
-puts "#{GuideLocation.count} guide locations created"
+puts "#{GuideLocation.count} guide_locations created"
 puts " ---------------------------------------"
 
 puts "Making matches"

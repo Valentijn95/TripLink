@@ -7,29 +7,42 @@
   <!-- if user is signed in, show the profile page -->
   <% else %>
 
-    <h1>Profile page</h1>
-    <h1> <%= @user.name%> </h1>
+    <br>
+    <h1 class="border-bottom" >Profile</h1>
 
-    <h2>Your interests:</h2>
+    <div class="d-flex align-items-center mt-3">
+    <% if @user.photo.key != nil %>
+      <%= cl_image_tag(@user.photo.key, height: 75, width: 75, gravity: "faces", crop: "fill", class: "rounded-circle") %>
+    <% end %>
+    <h1 class="ms-3"> <%= @user.name%> </h1>
+    </div>
+
+    <br>
+    <h2 class="mb-3">Your interests</h2>
+      <div class="interests-container">
       <% @user.interests.sort_by(&:interest).each do |interest| %>
-        <div class="interests-container">
-          <%= interest.interest %>
-          <%= button_to 'X', remove_interest_path(interest_id: interest.id), method: :delete, data: { turbo_confirm: 'Are you sure?' }, class: 'btn-delete' %>
+          <div class="interest-profile align-items-center">
+          <span class="me-2"><%= interest.interest %></span>
+          <%= button_to 'ⓧ', remove_interest_path(interest_id: interest.id), method: :delete, class: 'btn-delete' %>
         </div>
       <% end %>
+      </div>
 
       <% if @available_interests.any? %>
         <%= form_with url: add_interest_path, method: :post do |f| %>
-          <%= f.collection_select :interest_id, @available_interests.sort_by(&:interest), :id, :interest %>
-          <%= f.submit "Add interest", class: "btn btn-outline-primary" %>
+        <p>Want to add an interest to your profile?</p>
+        <div class="input-button-group">
+          <%= f.collection_select :interest_id, @available_interests.sort_by(&:interest), :id, :interest, { prompt: "Select interest"}, class: 'input-field' %>
+          <%= f.submit "Add", class: "submit-button" %>
+        </div>
         <% end %>
       <% end %>
 
-
-    <h2>Your guide locations:</h2>
+    <br>
+    <h2 class="mb-3">Your guide locations</h2>
     <ul>
     <% @user.locations.each do |location| %>
-      <li><%= location.city %></li>
+      <li><%= location.name %>, <%= location.city %></li>
     <% end %>
     </ul>
 

@@ -1,7 +1,7 @@
  <% location = params[:location] %>
 
 
-  <h1><%= @guide.name %></h1>
+  <h1 class="basic-padding"><%= @guide.name %></h1>
 
   <div class="text-center main-photo">
     <% if @guide.photo.key != nil %>
@@ -12,7 +12,7 @@
     <% end %>
   </div>
 
-<div class="ps-3 pe-3">
+<div class="basic-padding">
   <br>
   <p><%= @guide.guide_description %></p>
 

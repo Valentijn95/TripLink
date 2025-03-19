@@ -33,7 +33,8 @@
                   <% end %>
                   <div class="justify-content-start text-start ms-2 mt-1">
                     <h2><%= link_to guide.name, user_path(guide, location: location.id), data: { turbo: false } %></h2>
-                    <p><%= guide.guide_description %></p>
+
+                    <p><%= guide.short_description %></p>
                 <div class="locations-list mt-3">
   <% locations = guide.locations.where(city: location.city).limit(3) %>
   <% if locations.any? %>
@@ -47,7 +48,6 @@
     <p>No locations available in <%= location.city %> for this guide.</p>
   <% end %>
 </div>
-
                   </div>
                 </div>
               <% end %>

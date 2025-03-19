@@ -4,8 +4,8 @@ export default class extends Controller {
   static targets = ["bar", "input", "results"]
 
   connect() {
-    console.log("search_form_controller connected");
-  }
+
+    }
 
   showSearchForm() {
     this.barTarget.classList.remove("d-none");

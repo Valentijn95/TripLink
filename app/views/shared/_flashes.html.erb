@@ -1,19 +1,18 @@
-
-  <section id="flashes">
-    <% if notice %>
-      <div class="flash flash-warning alert alert-dismissible fade show" role="alert">
-        <span><%= notice %></span>
-        <a data-bs-dismiss="alert" aria-label="Close" class="ms-2">
-          <i class="fas fa-times"></i>
-        </a>
-      </div>
-    <% end %>
-    <% if alert %>
-      <div class="flash flash-danger alert alert-dismissible fade show" role="alert">
-        <span><%= alert %>  </span>
-        <a data-bs-dismiss="alert" aria-label="Close" class="ms-2">
-          <i class="fas fa-times"></i>
-        </a>
-      </div>
-    <% end %>
-  </section>
+<section id="flashes">
+  <% if notice %>
+    <div data-controller="flash" data-flash-timeout-value="3000" class="flash flash-warning alert alert-dismissible show" role="alert">
+      <span><%= notice %></span>
+      <a data-bs-dismiss="alert" aria-label="Close" class="ms-2">
+        <i class="fas fa-times"></i>
+      </a>
+    </div>
+  <% end %>
+  <% if alert %>
+    <div data-controller="flash" data-flash-timeout-value="3000" class="flash flash-danger alert alert-dismissible show" role="alert">
+      <span><%= alert %></span>
+      <a data-bs-dismiss="alert" aria-label="Close" class="ms-2">
+        <i class="fas fa-times"></i>
+      </a>
+    </div>
+  <% end %>
+</section>

@@ -1,7 +1,40 @@
-<header class="main-header" id="header" >
-    <a href="/"><img src="<%= asset_path('TripLink.png') %>" alt="Logo" class="logo"></a>
-    <!-- check if one of the guide_matches from the user has the status pending -->
-          <i class="fa-solid fa-question bell active"></i>
+<header class="main-header" id="header">
+  <a href="/"><img src="<%= asset_path('TripLink.png') %>" alt="Logo" class="logo"></a>
 
-
+  <i class="fa-solid fa-question bell active" onclick="showModal()"></i>
 </header>
+
+
+<div id="helpModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h1>Welcome to TripLink!</h1>
+    <h3>Looking for an authentic travel experience? TripLink allows you to connect with local guides who know the city inside and out, ensuring you uncover the hidden treasures and unique stories that will make your trip extraordinary. Enjoy every moment of your journey and make it unforgettable!</h3>
+  </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+// show popup
+  function showModal() {
+    var modal = document.getElementById("helpModal");
+    modal.style.display = "flex"; // Show the modal using flex
+  }
+
+  // close popup
+  function closeModal() {
+    var modal = document.getElementById("helpModal");
+    modal.style.display = "none"; // Hide the modal
+  }
+
+  // close popup if the user clicks anywhere outside of the popup
+  window.onclick = function(event) {
+    var modal = document.getElementById("helpModal");
+    var modalContent = document.querySelector(".modal-content");
+
+    // checking if its closing when clicked
+    if (event.target === modal) {
+      closeModal();
+    }
+  }
+</script>

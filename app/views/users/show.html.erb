@@ -49,13 +49,15 @@
     <% @grouped_locations[country].sort_by(&:city).each do |location| %>
       <p><%= location.name %>, <%= location.city %></p>
     <% end %>
-    <p>-----------------------</p>
   <% end %>
 
   <br>
   <p><strong>Reviews ⭐️</strong></p>
-  <% @guide.reviews.each do |review| %>
+  <% @reviews.each do |review| %>
     <p><%= review.content %></p>
+    <p><i>Written by <%= review.user.name %> on <%= review.created_at.strftime("%d-%m-%Y") %></i></p>
   <% end %>
+  <p>-----------------------</p>
+
 
 </div>

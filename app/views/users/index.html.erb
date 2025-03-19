@@ -1,23 +1,25 @@
-<div class="align-items-center text-center mt-5">
+<div class="align-items-center text-center mt-2 basic-padding">
 
-  <h1>Users found</h1>
+  <h1>All users</h1>
     <% @users.each do |user| %>
     <div class="d-flex border w-100 mt-4 rounded" style="height: 100px;">
       <%= image_tag 'profile-picture.webp', alt: 'guide' %>
       <div class="justify-content-start text-start ms-2 mt-1">
         <h2><%= link_to user.name, user_path(user) %></h2>
-        <p><%= user.guide_description %></p>
+        <p><%= user.short_description %></p>
       </div>
     </div>
     <% end %>
-
-    <h1>Guides found</h1>
+    
+    <br>
+    <br>
+    <h1>Guides</h1>
     <% @guides.each do |guide| %>
     <div class="d-flex border w-100 mt-4 rounded" style="height: 100px;">
       <%= image_tag 'profile-picture.webp', alt: 'guide' %>
       <div class="justify-content-start text-start ms-2 mt-1">
         <h2><%= link_to guide.name, user_path(guide) %></h2>
-        <p><%= guide.guide_description %></p>
+        <p><%= guide.short_description %></p>
       </div>
     </div>
     <% end %>

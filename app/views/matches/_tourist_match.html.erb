@@ -15,7 +15,7 @@
         </div>
 
       <% elsif match.status == "finished" %>
-          <%= button_to "Write review", new_match_review_path(match), class: "btn btn-outline-primary mb-3" %>
+          <%= button_to "Write review", new_match_review_path(match.id), method: :get, class: "btn btn-outline-primary mb-3" %>
       <% end %>
 
     </div>

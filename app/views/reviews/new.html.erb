@@ -1,0 +1,7 @@
+<div class="basic-padding">
+  <h1>Write a review</h1>
+  <%= simple_form_for([@match, @review]) do |f| %>
+    <%= f.input :content, label: 'Content', as: :text, input_html: { rows: 5 } %>
+    <%= f.button :submit, 'Submit review', class: 'btn btn-primary' %>
+  <% end %>
+</div>

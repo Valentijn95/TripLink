@@ -55,9 +55,7 @@
   <p><strong>Reviews ⭐️</strong></p>
   <% @reviews.each do |review| %>
     <p><%= review.content %></p>
-    <p><i>Written by <%= review.user.name %> on <%= review.created_at.strftime("%d-%m-%Y") %></i></p>
+    <p class="border-bottom border-secondary pb-4"><i>Written by <%= review.user.name %> on <%= review.created_at.strftime("%d-%m-%Y") %></i></p>
   <% end %>
-  <p>-----------------------</p>
-
 
 </div>

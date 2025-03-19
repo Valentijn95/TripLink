@@ -4,9 +4,9 @@
       <%= cl_image_tag match.guide.photo.key, height: 150, width: 150, crop: :fill, class: "justify-content-center my-0" %>
     <% end %>
     <div class="justify-content-start text-start ms-2 mt-1">
-      <h2><%= match.guide.name %></h2>
+      <h2><%= link_to match.guide.name, user_path(match.guide) %></h2>
       <p><%= match.guide.short_description %></p>
-      <p>Status: <strong><%= match.status %></strong><%= " - wait for confirmation" if match.status === 'pending' %></p>
+      <p>Connection status: <strong><%= match.status %></strong><%= " - wait for confirmation" if match.status === 'pending' %></p>
       <% if match.status == 'accepted' %>
 
         <div class="d-flex justify-content-between">

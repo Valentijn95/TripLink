@@ -79,7 +79,7 @@ locations = [
   { location_name: "Jachthuis Sint Hubertus", address: "Apeldoornseweg 258, 7351 TA Hoenderloo, Netherlands" },
   { location_name: "De Hoge Veluwe Sand Dunes", address: "6731 Otterlo, Netherlands" },
   { location_name: "Wildlife Watching Spot", address: "Houtkampweg, 6731 AW Otterlo, Netherlands" },
-  { location_name: "Park Entrance Otterlo", address: "Houtkampweg 9, 6731 AV Otterlo, Netherlands" }
+  { location_name: "Park Entrance Otterlo", address: "Houtkampweg 9, 6731 AV Otterlo, Netherlands" },
 
   # Bali, Indonesia POIs
   { location_name: "Tanah Lot Temple", address: "Beraban, Kediri, Tabanan Regency, Bali, Indonesia" },
@@ -274,10 +274,10 @@ puts "#{GuideLocation.count} guide_locations created"
 puts " ---------------------------------------"
 
 puts "Making matches"
-Match.create!(guide: User.first, tourist: User.all[1], location: User.first.locations.sample, status: "pending")
-Message.create!(user: User.all[1], match: Match.first, content: "I want to see the birds")
-Match.create!(guide: User.all[1], tourist: User.last, location: User.all[1].locations.sample, status: "accepted")
-Message.create!(user: User.last, match: Match.last, content: "Do you like birds?")
+Match.create!(guide: users[0], tourist: users[10], location: users[0].locations.sample, status: "pending")
+Message.create!(user: users[10], match: Match.first, content: "I want to see the birds")
+Match.create!(guide: users[1], tourist: users[11], location: users[1].locations.sample, status: "pending")
+Message.create!(user: users[11], match: Match.last, content: "Do you like birds?")
 puts "#{Match.count} matches created and #{Message.count} messages created"
 puts " ---------------------------------------"
 

@@ -282,7 +282,7 @@ puts "#{Match.count} matches created and #{Message.count} messages created"
 puts " ---------------------------------------"
 
 puts "Making reviews"
-Review.create!(user: User.first, match: Match.first, content: "This review is about a bird and it is awesome")
-Review.create!(user: User.all[1], match: Match.last, content: "This review is about a terrible bird")
+Review.create!(user: users[10], match: Match.first, content: "This review is about a bird and it is awesome")
+Review.create!(user: users[11], match: Match.last, content: "This review is about a terrible bird")
 puts "#{Review.count} reviews created"
 puts " ---------------------------------------"

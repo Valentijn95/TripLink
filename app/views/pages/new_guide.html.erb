@@ -7,16 +7,11 @@
 
     <div class="form-inputs">
 
-      <%= f.input :name, required: true, disabled: true %>
-      <%= f.input :email, required: true , disabled: true %>
-      <%= f.input :short_description, required: true %>
-
         <!-- guide description & rate input field -->
         <%= f.input :guide_description, required: true %>
         <%= f.input :rate, required: true %>
 
       <%= f.input :current_password,
-                  hint: "we need your current password to confirm your changes",
                   required: false,
                   input_html: { autocomplete: "current-password" } %>
     </div>

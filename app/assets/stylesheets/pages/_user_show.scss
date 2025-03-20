@@ -38,6 +38,7 @@
   object-fit: cover;
 }
 
+
 .review-border {
   border-bottom: 1px solid $gray-200;
   width: 50%;
@@ -102,4 +103,9 @@
   margin: 0 auto;
   margin-top: 2rem;
   margin-bottom: 2rem;
+
+.chain-emoji {
+  width: 40px;
+  height: 40px;
+
 }

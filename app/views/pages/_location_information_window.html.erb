@@ -1,63 +1,66 @@
 <div id="location-info">
   <% if location == nil %>
-
   <% else %>
-
-  <div class="location-info-wrapper" data-controller="map-partial">
-  <div class="partial-top-bar"><span data-action="click->map-partial#close" class="close">close</span></div>
-  <div class="location-info-container">
-
-  <% if defined?(location) %>
-    <h1 class="mt-2 mb-1"><%= location.city %></h1>
-    <h3 class="mt-0 mb-1"><%= location.country %></h3>
-  <% end %>
-
-  <!-- if user is not signed in show the login button -->
-
   <%= country_to_flag(location.country) %>
 
-  <% if defined?(guides) && guides.any? %>
-    <h1 class="mt-4">Guides</h1>
-    <% if !user_signed_in? %>
-      <p> Sign in or sign up to connect with a guide </p>
-      <%= link_to "Log in", new_user_session_path, class: "btn btn-outline-primary mb-2", data: { turbo: false } %>
-      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-outline-primary mb-2", data: { turbo: false } %>
-    <% else %>
-
-      <div class="guides-container text-center">
-  <% guides.each do |guide| %>
-    <%= link_to user_path(guide, location: location.id), data: { turbo: false }, class: "guide-card-link" do %>
-      <div class="guide-card">
-        <% if guide.photo.key.present? %>
-          <%= cl_image_tag(guide.photo.key, class: "guide-card-image") %>
-        <% else %>
-          <%= image_tag 'profile-picture.webp', class: "guide-card-image", alt: 'guide' %>
-        <% end %>
-        <div class="guide-card-content">
-          <h2 class="guide-card-title"><%= guide.name %></h2>
-          <p class="guide-card-description"><%= guide.short_description %></p>
-          <div class="guide-card-locations">
-            <% locations = guide.locations.where(city: location.city).limit(3) %>
-            <% if locations.any? %>
-              <p>
-                <% locations.each do |loc| %>
-                  📍 <%= loc.name %><br>
-                <% end %>
-              </p>
-            <% else %>
-              <p>No locations available in <%= location.city %> for this guide.</p>
-            <% end %>
-          </div>
-        </div>
+    <div class="location-info-wrapper" data-controller="map-partial">
+      <div class="partial-top-bar">
+        <span data-action="click->map-partial#close" class="close">close</span>
       </div>
-    <% end %>
-  <% end %>
-</div>
+      <div class="location-info-container">
+        <% if defined?(location) %>
+          <div class="location-heading">
+            <h1>
+              <%= location.city %>,
+              <span class="<%= 'wrap-country' if location.country.length > 9 %>">
+                <%= location.country %>
+              </span>
+            </h1>
+            <div class="location-divider"></div>
+          </div>
+        <% end %>
 
-            <% end %>
+        <!-- if user is not signed in show the login button -->
+        <% if defined?(guides) && guides.any? %>
+          <h1 class="guides-heading">Guides</h1>
+          <% if !user_signed_in? %>
+            <p> Sign in or sign up to connect with a guide </p>
+            <%= link_to "Log in", new_user_session_path, class: "btn btn-outline-primary mb-2", data: { turbo: false } %>
+            <%= link_to "Sign up", new_user_registration_path, class: "btn btn-outline-primary mb-2", data: { turbo: false } %>
           <% else %>
-            <h2 class="mt-5">No guides available</h2>
+            <div class="guides-container text-center">
+              <% guides.each do |guide| %>
+                <%= link_to user_path(guide, location: location.id), data: { turbo: false }, class: "guide-card-link" do %>
+                  <div class="guide-card">
+                    <% if guide.photo.key.present? %>
+                      <%= cl_image_tag(guide.photo.key, class: "guide-card-image") %>
+                    <% else %>
+                      <%= image_tag 'profile-picture.webp', class: "guide-card-image", alt: 'guide' %>
+                    <% end %>
+                    <div class="guide-card-content">
+                      <h2 class="guide-card-title"><%= guide.name %></h2>
+                      <p class="guide-card-description"><%= guide.short_description %></p>
+                      <div class="guide-card-locations">
+                        <% locations = guide.locations.where(city: location.city).limit(3) %>
+                        <% if locations.any? %>
+                          <p>
+                            <% locations.each do |loc| %>
+                              📍 <%= loc.name %><br>
+                            <% end %>
+                          </p>
+                        <% else %>
+                          <p>No locations available in <%= location.city %> for this guide.</p>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
           <% end %>
+        <% else %>
+          <h2 class="mt-5">No guides available</h2>
+        <% end %>
       </div>
     </div>
   <% end %>

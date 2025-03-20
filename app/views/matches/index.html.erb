@@ -17,7 +17,8 @@
 
     <% if @matches_as_tourist.any? %>
       <br>
-      <h1>Your guides</h1>
+      <h1 class="guides-heading">Your guides</h1>
+      <div class="location-divider2"></div>
       <%= render "matches_as_tourist", locals: { matches: @matches_as_tourist } %>
     <% end %>
   </div>

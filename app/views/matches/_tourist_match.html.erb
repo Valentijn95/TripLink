@@ -1,18 +1,21 @@
 <div id="match_<%= match.id %>">
-  <div class="d-flex flex-column border border-2 justify-content-between">
+  <div class="match-container">
     <% if match.guide.photo.key != nil %>
-      <a href="users/<%=match.guide.id%>">
+     <a href="users/<%= match.guide.id %>">
         <%= cl_image_tag(match.guide.photo.key, height: 220, width: 372, gravity: "faces", crop: "fill", class: "cloudinary-image") %>
       </a>
     <% end %>
-    <div class="text-start ms-2 mt-1">
-      <h2><%= link_to match.guide.name, user_path(match.guide) %></h2>
-      <p><%= match.guide.short_description %></p>
-      <p>
-        <%= "Waiting for confirmation." if match.status === 'pending' %>
-        <%= "Waiting for confirmation to write a review." if match.status === 'finishing' %>
-        <%= "This connection is declined, you can't send a new request." if match.status === 'declined' %>
-      </p>
+
+    <div class="match-card-header">
+      <h2><%= link_to match.guide.name, user_path(match.guide), class: "guide-name-link" %></h2>
+     <div class="match-card-body">
+         <p class="match-description"><%= match.guide.short_description %></p>
+        <p class="match-status">
+         <%= "Waiting for confirmation." if match.status === 'pending' %>
+         <%= "Waiting for confirmation to write a review." if match.status === 'finishing' %>
+       <%= "This connection is declined, you can't send a new request." if match.status === 'declined' %>
+       </p>
+      </div>
       <% if match.status == 'accepted' %>
 
         <div class="d-flex justify-content-start">

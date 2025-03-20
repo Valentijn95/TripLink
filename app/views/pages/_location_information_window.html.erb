@@ -36,7 +36,7 @@
                       <p class="guide-card-description">My favorite place in <%= location.city %></p>
                       <div class="guide-card-locations">
                       <% if guide.locations.any? %>
-                       <p>📍 <%= guide.locations.sample.name %></p>
+                     <p><i class="fas fa-map-marker-alt map-marker-icon"></i> <%= guide.locations.sample.name %></p>
                         <% else %>
                        <p>No locations available in <%= location.city %> for this guide.</p>
                        <% end %>

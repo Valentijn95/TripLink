@@ -23,7 +23,7 @@
   border-radius: 5px;
   object-fit: cover;
   width: 140px;
-  height: 140px;
+  height: 160px;
   margin: 0 10 0 0px;
 }
 
@@ -36,9 +36,9 @@
   font-size: 1.5rem;
   color: #000000;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
   margin-left: 4px;
-  margin-top: 3px;
+  margin-top: 5px;
   padding-top: 6px;
   transform: translateY(5px);
 }
@@ -47,7 +47,7 @@
   font-size: 0.95rem;
   color: #555;
   line-height: 1.5;
-  margin-bottom: -11px;
+  margin-bottom: -5px;
   margin-left: 5px;
   margin-top: 5px;
 }
@@ -63,7 +63,7 @@
     text-decoration: none;
     color: inherit;
     margin-top: 16px;
-    margin-left: -5px;
+    margin-left: 1px;
   }
 
   span {
@@ -134,4 +134,8 @@
   display: block;
   word-wrap: break-word;
   margin-top: 5px;
+}
+
+.map-marker-icon {
+  color: #133E87;
 }

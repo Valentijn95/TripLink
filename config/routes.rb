@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get "/profile/:id/new_guide", to: "pages#new_guide", as: :new_guide
   put "/profile/:id/create_guide", to: "pages#apply_guide", as: :apply_guide
 
+  resources :locations, only: [:create, :destroy]
+
   resources :users, only: [:index, :show]
 
   resources :matches, only: [:new, :create, :destroy]

@@ -38,3 +38,11 @@
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+
+.new-location-autocomplete {
+  position: absolute;
+  left: 1rem;
+  width: calc( 100% - 2rem );
+  background-color: white;
+  opacity: 0.9;
+}

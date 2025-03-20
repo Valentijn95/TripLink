@@ -1,7 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  static targets = ["bar", "input", "results"]
+  static targets = ["bar", "input", "results", "city"]
 
   connect() {
 
@@ -12,19 +12,25 @@ export default class extends Controller {
     this.barTarget.querySelector(".search-form-input").focus();
   }
 
-  displaySearchResults(options) {
+  displaySearchResults(suggestions) {
+    console.log(suggestions);
     this.resultsTarget.innerHTML = "";
 
-    options.forEach((option) => {
+    suggestions.forEach((suggestion) => {
 
-      const address = option.properties.full_address;
+      const city = suggestion.context.place.name;
+      const address = suggestion.address;
+      const name = suggestion.name;
       const li = document.createElement("li");
-      li.innerHTML = address;
+      li.innerHTML = `${name} - ${address}, ${suggestion.context.place.name}`;
       li.classList.add("list-group-item");
       this.resultsTarget.appendChild(li);
 
       li.addEventListener("click", () => {
+        console.log(city);
+        this.resultsTarget.innerHTML = "";
         this.inputTarget.value = address;
+        this.cityTarget.value = city;
         this.inputTarget.focus();
       });
       // console.log(options);
@@ -39,7 +45,7 @@ export default class extends Controller {
     fetch(url)
       .then(response => response.json())
       .then((data) => {
-        this.displaySearchResults(data.features);
+        this.displaySearchResults(data.suggestions);
       });
   }
 };

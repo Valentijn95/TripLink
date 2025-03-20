@@ -40,6 +40,8 @@
     <% end %>
   </div>
 
+<p><img src="<%= asset_path('Chain.png') %>" class="chain-emoji" /> CONNECTIONS: STATUS </p>
+
   <br>
   <p><strong>Locations 📍</strong></p>
   <% @grouped_locations = @guide.locations.group_by(&:country) %>

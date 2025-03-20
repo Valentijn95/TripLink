@@ -1,6 +1,8 @@
 <div id="location-info">
   <% if location == nil %>
   <% else %>
+  <%= country_to_flag(location.country) %>
+
     <div class="location-info-wrapper" data-controller="map-partial">
       <div class="partial-top-bar">
         <span data-action="click->map-partial#close" class="close">close</span>

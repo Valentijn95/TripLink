@@ -9,9 +9,9 @@
       <h2><%= link_to match.guide.name, user_path(match.guide) %></h2>
       <p><%= match.guide.short_description %></p>
       <p>
-        <%= "Wait for confirmation" if match.status === 'pending' %>
-        <%= "Wait for confirmation to write a review" if match.status === 'finishing' %>
-        <%= "This connection is declined, you can't send a new request" if match.status === 'declined' %>
+        <%= "Waiting for confirmation." if match.status === 'pending' %>
+        <%= "Waiting for confirmation to write a review." if match.status === 'finishing' %>
+        <%= "This connection is declined, you can't send a new request." if match.status === 'declined' %>
       </p>
       <% if match.status == 'accepted' %>
 

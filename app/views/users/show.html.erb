@@ -1,63 +1,95 @@
- <% location = params[:location] %>
+<% location = params[:location] %>
 
+<div class="basic-padding user-details mt-2">
+  <h1 class="user-name"><%= @guide.name %></h1>
+  <p class="user-tagline"><%= @guide.guide_description %></p>
+</div>
 
-  <h1 class="basic-padding"><%= @guide.name %></h1>
-
-  <div class="text-center main-photo">
-    <% if @guide.photo.key != nil %>
-      <%= cl_image_tag(@guide.photo.key, height: 250, width: 372, gravity: "faces", crop: "fill", class: "cloudinary-image") %>
-
-      <%#= image_tag(profile_image, alt: 'profile picture') %>
-      <%#= cl_image_tag(@guide.photo.key, crop: "scale", transformation: [gravity: "face"]) %>
-    <% end %>
-  </div>
+<div class="text-center main-photo">
+  <% if @guide.photo.key != nil %>
+    <%= cl_image_tag(@guide.photo.key, height: 250, width: 372, gravity: "faces", crop: "fill", class: "cloudinary-image") %>
+    <%#= image_tag(profile_image, alt: 'profile picture') %>
+    <%#= cl_image_tag(@guide.photo.key, crop: "scale", transformation: [gravity: "face"]) %>
+  <% end %>
+</div>
 
 <div class="basic-padding">
-  <br>
-  <p><%= @guide.guide_description %></p>
-
   <% if @guide == current_user %>
     <p><%= link_to "Edit profile", edit_user_registration_path(current_user), class: 'btn btn-connect' %></p>
   <% elsif (match = @this_match[0]) %>
-    <%= match.status == 'accepted' ? button_to("Chat", match_path(match), class: 'btn-connect', method: :get) : match.status == 'declined' ? "<p>This match was declined. You cannot send a request to this guide anymore.</p>".html_safe : "<p>Waiting for confirmation...</p>".html_safe %>
+    <% if match.status == 'accepted' %>
+      <p class='status-message'>⛓️‍💥 Status: accepted</p>
+      <%= button_to("Chat", match_path(match), class: 'btn-connect', method: :get) %>
+    <% elsif match.status == 'pending' %>
+      <p class='status-message'>⛓️‍💥 Status: waiting for guide to accept...</p>
+    <% elsif match.status == 'declined' %>
+      <p class='status-message'>Your connection request was declined. You cannot send a request to this guide anymore.</p>
+    <% elsif match.status == 'finished' %>
+      <p class='status-message'>⛓️‍💥 Status: finished</p>
+    <% elsif match.status == 'cancelled' %>
+      <p class='status-message'>⛓️‍💥 Status: cancelled</p>
+    <% elsif match.status == 'finishing'  %>
+      <p class='status-message'>⛓️‍💥 Status: waiting for guide to close the connection...</p>
+    <% else %>
+      <p>Unknown status</p>
+    <% end %>
   <% else %>
     <%= link_to "Connect!", new_match_path(location_id: location, guide_id: @guide.id), class: 'btn btn-connect' %>
   <% end %>
 
-  <p><strong>Interests</strong></p>
-  <div class="interests-container">
+  <div class="show-page-border"></div>
+
+    <p class="text-center fs-5 mb-4"><strong>Interests 🤩</strong></p>
     <% sorted_interests = @guide_interests.sort_by { |interest| @user_interests.include?(interest) ? 0 : 1 } %>
-    <% sorted_interests.each do |interest|%>
-      <% if @user_interests.include?(interest) %>
-        <div class="interest-common">
-          <%= interest %>
-        </div>
-      <% else %>
-        <div class="interest">
-          <%= interest %>
-        </div>
+      <div class="interests-container mb-3">
+        <% sorted_interests.each do |interest| %>
+          <% if @user_interests.include?(interest) %>
+            <div class="interest-common">
+              <%= interest %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="review-border-interest"></div>
+
+      <div class="interests-container">
+        <% sorted_interests.each do |interest| %>
+          <% unless @user_interests.include?(interest) %>
+            <div class="interest">
+              <%= interest %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+  <div class="show-page-border"></div>
+
+    <p class="text-center fs-5 mb-4"><strong>Locations 📍</strong></p>
+    <% @grouped_locations = @guide.locations.group_by(&:country) %>
+    <% @grouped_locations_alf = @grouped_locations.keys.sort %>
+    <% @grouped_locations_alf.each do |country| %>
+      <% @grouped_locations[country].sort_by(&:city).each do |location| %>
+        <p class="text-center fs-6"> <%= country_to_flag(country) %> <%= location.name %>, <%= location.city %> </p>
       <% end %>
-    <% end %>
-  </div>
 
 <p><img src="<%= asset_path('Chain.png') %>" class="chain-emoji" /> CONNECTIONS: STATUS </p>
 
-  <br>
-  <p><strong>Locations 📍</strong></p>
-  <% @grouped_locations = @guide.locations.group_by(&:country) %>
-  <% @grouped_locations_alf = @grouped_locations.keys.sort %>
-  <% @grouped_locations_alf.each do |country| %>
-    <p><%= country_to_flag(country) %> <u><%= country %></u></p>
-    <% @grouped_locations[country].sort_by(&:city).each do |location| %>
-      <p><%= location.name %>, <%= location.city %></p>
     <% end %>
-  <% end %>
 
-  <br>
-  <p><strong>Reviews ⭐️</strong></p>
-  <% @reviews.each do |review| %>
-    <p><%= review.content %></p>
-    <p class="border-bottom border-secondary pb-4"><i>Written by <%= review.user.name %> on <%= review.created_at.strftime("%d-%m-%Y") %></i></p>
-  <% end %>
+  <div class="show-page-border"></div>
 
+    <p class="text-center fs-5 mb-4"><strong>Reviews ⭐️</strong></p>
+    <div class="d-flex flex-column review-container">
+      <% if @reviews.empty? %>
+        <p class="text-center"><%= @guide.name %> has no reviews yet...</p>
+      <% else %>
+        <% @reviews.each do |review| %>
+          <p class="review-content"><%= review.content %></p>
+          <p class="review-details"><i>Written by <%= review.user.name %> on <%= review.created_at.strftime("%d-%m-%Y") %></i></p>
+          <div class="review-border"></div>
+        <% end %>
+      <% end %>
+      <br>
+  </div>
 </div>

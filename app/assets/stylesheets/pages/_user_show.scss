@@ -4,10 +4,21 @@
   gap: 10px;
   margin-bottom: 1rem;
   margin: 0 auto;
+}
+
+.interests-container-guide {
   justify-content: center;
 }
 
-.interest-common {
+.interest-guide {
+  padding: 0px 10px;
+  border: 1px solid $secondary-blue;
+  border-radius: 5px;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.interest-guide-common {
   padding: 0px 10px;
   border: 1.5px solid $accent-orange;
   border-radius: 5px;
@@ -15,42 +26,17 @@
   cursor: pointer;
 }
 
-.interest {
-  padding: 0px 10px;
-  border: 1px solid $secondary-blue;
-  border-radius: 5px;
-  background-color: #ffffff;
-  cursor: pointer;
-}
-
-.interest-profile {
-  display: flex;
-  padding: 0px 10px;
-  border: 1px solid $secondary-blue;
-  border-radius: 5px;
-  background-color: #ffffff;
-  cursor: pointer;
+.interest-border {
+  border-bottom: 1px solid $gray-200;
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 15px;
 }
 
 .main-photo {
   width: 100%;
   height: auto;
   object-fit: cover;
-}
-
-
-.review-border {
-  border-bottom: 1px solid $gray-200;
-  width: 50%;
-  align-self: center;
-  margin-bottom: 25px;
-}
-
-.review-border-interest {
-  border-bottom: 1px solid $gray-200;
-  width: 50%;
-  margin: 0 auto;
-  margin-bottom: 15px;
 }
 
 .review-container {
@@ -72,6 +58,13 @@
   color: $gray-600;
 }
 
+.review-border {
+  border-bottom: 1px solid $gray-200;
+  width: 50%;
+  align-self: center;
+  margin-bottom: 25px;
+}
+
 .user-details {
   display: flex;
   flex-direction: column;
@@ -85,7 +78,7 @@
   margin-right: 10px;
 }
 
-.user-tagline {
+.user-show-description {
   font-size: 1rem;
   color: $gray-600;
 }
@@ -97,15 +90,16 @@
   margin-bottom: 1.7rem;
 }
 
+.chain-emoji {
+  width: 40px;
+  height: 40px;
+  padding-bottom: 2px;
+}
+
 .show-page-border {
   border-bottom: 1px solid $gray-200;
   width: 90%;
   margin: 0 auto;
   margin-top: 2rem;
   margin-bottom: 2rem;
-
-.chain-emoji {
-  width: 40px;
-  height: 40px;
-
 }

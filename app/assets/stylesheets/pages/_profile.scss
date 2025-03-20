@@ -1,3 +1,16 @@
+.interests-container-profile {
+  justify-content: start;
+}
+
+.interest-profile {
+  display: flex;
+  padding: 0px 10px;
+  border: 1px solid $secondary-blue;
+  border-radius: 5px;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
 .input-button-group {
   display: flex;
   align-items: stretch;
@@ -18,8 +31,10 @@
   border-radius: 0.2rem;
 }
 
-.border-bottom {
+.profile-page-border {
   border-bottom: 1px solid $gray-200;
-  padding-bottom: 0.5rem;
-  margin-bottom: 10px;
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }

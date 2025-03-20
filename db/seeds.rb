@@ -147,7 +147,7 @@ def create_users
   a6.short_description = "Always looking for the best street art spots."
   a6.guide = true
 
-  a7 = User.new(name: "Silvia", email: "Silvia@tl.com", password: "password")
+  a7 = User.new(name: "Silvia", email: "silvia@tl.com", password: "password")
   a7.rate = 52
   a7.guide_description = "I’ll guide you through the best nightlife spots, trendy bars, and hidden speakeasies for an unforgettable evening!"
   a7.short_description = "Love discovering unique cocktail bars."
@@ -175,7 +175,6 @@ def create_users
   a11 = User.new(name: "William", email: "william@tl.com", password: "password")
   a11.short_description = "Love exploring new cities and trying local foods."
 
-
   viti = User.new(name: "Viti", email: "viti@tl.com", password: "password")
   viti.rate = 42
   viti.guide_description = "I'll show you the meaning of life."
@@ -194,20 +193,22 @@ def create_users
   denise.short_description = "I don't like birds."
   denise.guide = true
 
-  viti.save!
-  timo.save!
-  denise.save!
-  a1.save!
-  a2.save!
-  a3.save!
-  a4.save!
-  a5.save!
-  a6.save!
-  a7.save!
-  a8.save!
-  a9.save!
-  a10.save!
-  a11.save!
+
+  viti.save! #users[0] = user no. 1
+  timo.save! #users[1] = user no. 2
+  denise.save! #users[2] = user no. 3
+  a1.save! #users[3] = user no. 4
+  a2.save! #users[4] = user no. 5
+  a3.save! #users[5] = user no. 6
+  a4.save! #users[6] = user no. 7
+  a5.save! #users[7] = user no. 8
+  a6.save! #users[8] = user no. 9
+  a7.save! #users[9] = user no. 10
+  a8.save! #users[10] = user no. 11
+
+  a9.save! #users[11] = tourist no. 1
+  a10.save! #users[12] = tourist no. 2
+  a11.save! #users[13] = tourist no. 3
 end
 
 
@@ -271,21 +272,21 @@ make_guide_locations(users[6], "Amsterdam")
 make_guide_locations(users[7], "Brugge")
 make_guide_locations(users[8], "Brugge")
 make_guide_locations(users[9], "Lisbon")
-
+make_guide_locations(users[10], "Denpasar")
 
 puts "#{GuideLocation.count} guide_locations created"
 puts " ---------------------------------------"
 
 puts "Making matches"
 Match.create!(guide: users[0], tourist: users[10], location: users[0].locations.sample, status: "pending")
-Message.create!(user: users[10], match: Match.first, content: "I want to see the birds")
+Message.create!(user: users[10], match: Match.first, content: "Hey! I see you like jogging, me too! Let's explore the great outdoors together.")
 Match.create!(guide: users[1], tourist: users[11], location: users[1].locations.sample, status: "pending")
-Message.create!(user: users[11], match: Match.last, content: "Do you like birds?")
+Message.create!(user: users[11], match: Match.last, content: "I see you also like birds, nice! Want to spot some unique species together?")
 puts "#{Match.count} matches created and #{Message.count} messages created"
 puts " ---------------------------------------"
 
 puts "Making reviews"
-Review.create!(user: users[10], match: Match.first, content: '"This review is about a bird and it is awesome"')
-Review.create!(user: users[11], match: Match.last, content: '"This review is about a terrible bird"')
+Review.create!(user: users[0], match: Match.first, content: '"Viti was an amazing guide! His passion for jogging turned our tour into a unique and active adventure. He shared fascinating insights while keeping the pace fun and engaging. His energy and enthusiasm made the experience unforgettable. Highly recommend!"')
+Review.create!(user: users[1], match: Match.last, content: '"Timo was amazing! His passion for birds added a unique twist to the tour. He taught us to identify birds by their calls and shared fascinating facts. His enthusiasm made the trip unforgettable. Highly recommend!"')
 puts "#{Review.count} reviews created"
 puts " ---------------------------------------"

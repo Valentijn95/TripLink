@@ -18,16 +18,16 @@
     <p><%= link_to "Edit profile", edit_user_registration_path(current_user), class: 'btn btn-connect' %></p>
   <% elsif (match = @this_match[0]) %>
     <% if match.status == 'accepted' %>
-      <p class='status-message'>⛓️‍💥 Status: accepted</p>
+      <p class='status-message'><img src="<%= asset_path('Chain.png') %>" class="chain-emoji"/>Status: accepted</p>
       <%= button_to("Chat", match_path(match), class: 'btn-connect', method: :get) %>
     <% elsif match.status == 'pending' %>
-      <p class='status-message'>⛓️‍💥 Status: waiting for guide to accept...</p>
+      <p class='status-message'><img src="<%= asset_path('Chain.png') %>" class="chain-emoji"/>Status: waiting for guide to accept...</p>
     <% elsif match.status == 'declined' %>
       <p class='status-message'>Your connection request was declined. You cannot send a request to this guide anymore.</p>
     <% elsif match.status == 'finished' %>
-      <p class='status-message'>⛓️‍💥 Status: finished</p>
+      <p class='status-message'><img src="<%= asset_path('Chain.png') %>" class="chain-emoji"/>Status: finished</p>
     <% elsif match.status == 'cancelled' %>
-      <p class='status-message'>⛓️‍💥 Status: cancelled</p>
+      <p class='status-message'><img src="<%= asset_path('Chain.png') %>" class="chain-emoji"/>Status: cancelled</p>
     <% elsif match.status == 'finishing'  %>
       <p class='status-message'><img src="<%= asset_path('Chain.png') %>" class="chain-emoji"/>Status: waiting for guide to close the connection...</p>
     <% else %>

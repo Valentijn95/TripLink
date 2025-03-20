@@ -16,7 +16,7 @@
         <p><%= match.messages.first.content %></p>
         <div class="d-flex">
           <%= button_to 'Accept', match_path(match.id, status: 'accepted'), :method => :patch, class: 'btn btn-outline-primary me-3 mb-2' %>
-          <%= button_to 'decline', match_path(match.id, status: 'declined'), :method => :patch, class: 'btn btn-outline-warning me-3 mb-2' %>
+          <%= button_to 'Decline', match_path(match.id, status: 'declined'), :method => :patch, class: 'btn btn-outline-warning me-3 mb-2' %>
         </div>
 
       <% elsif match.status == 'accepted' %>

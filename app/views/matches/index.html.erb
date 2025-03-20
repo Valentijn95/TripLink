@@ -11,11 +11,12 @@
       <%= render "matches_as_guide", locals: { matches: @matches_as_guide } %>
     <% else %>
 
-      <h1>Your Tourists</h1>
+      <h1>Your tourists</h1>
         <%= render "matches_as_guide", locals: { matches: @matches_as_guide } %>
     <% end %>
 
     <% if @matches_as_tourist.any? %>
+      <br>
       <h1>Your guides</h1>
       <%= render "matches_as_tourist", locals: { matches: @matches_as_tourist } %>
     <% end %>

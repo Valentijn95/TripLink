@@ -179,16 +179,19 @@ def create_users
   viti = User.new(name: "Viti", email: "viti@tl.com", password: "password")
   viti.rate = 42
   viti.guide_description = "I'll show you the meaning of life."
+  viti.short_description = "I like birds."
   viti.guide = true
 
   timo = User.new(name: "Timo", email: "timo@tl.com", password: "password")
   timo.rate = 11
   timo.guide_description = "I like big birds and i cannot lie."
+  timo.short_description = "I love birds."
   timo.guide = true
 
   denise = User.new(name: "Denise", email: "denise@tl.com", password: "password")
   denise.rate = 33
   denise.guide_description = "I like small birds and i cannot lie."
+  denise.short_description = "I don't like birds."
   denise.guide = true
 
   viti.save!
@@ -282,7 +285,7 @@ puts "#{Match.count} matches created and #{Message.count} messages created"
 puts " ---------------------------------------"
 
 puts "Making reviews"
-Review.create!(user: users[10], match: Match.first, content: "This review is about a bird and it is awesome")
-Review.create!(user: users[11], match: Match.last, content: "This review is about a terrible bird")
+Review.create!(user: users[10], match: Match.first, content: '"This review is about a bird and it is awesome"')
+Review.create!(user: users[11], match: Match.last, content: '"This review is about a terrible bird"')
 puts "#{Review.count} reviews created"
 puts " ---------------------------------------"

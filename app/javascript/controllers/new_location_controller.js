@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="new-location"
 export default class extends Controller {
 
-  static targets = [ "canvas", "input", "results", "name" ]
+  static targets = [ "canvas", "input", "results", "name", "address" ]
 
   connect() {
     console.log("new location controller connected");
@@ -35,11 +35,13 @@ export default class extends Controller {
       li.innerHTML = input;
       li.classList.add("list-group-item");
       this.resultsTarget.appendChild(li);
+      console.log(this.addressTarget.value)
 
       li.addEventListener("click", () => {
         this.resultsTarget.innerHTML = "";
         this.inputTarget.value = input;
         this.nameTarget.value = name;
+        this.addressTarget.value = suggestion.full_address;
         this.inputTarget.focus();
       });
       // console.log(options);

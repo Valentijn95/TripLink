@@ -62,13 +62,14 @@
 
 
                   <%= simple_form_for @location do |f| %>
-                    <%= f.input :address, placeholder: "Type address...", label: false, class: "new-location-search", input_html: { data: { action: "input->new-location#fetchSearchResults", new_location_target: "input" } } %>
+                    <%= f.input :address, placeholder: "Type address...", label: false, class: "new-location-search", input_html: { data: { action: "input->new-location#fetchSearchResults", new_location_target: "input" }, autocomplete: "off" } %>
                   <div class="autocomplete-wrapper new-location-autocomplete">
                     <ul class="list-group" data-new-location-target="results">
                       <!-- here list items will be inserted by the stimulus controller search_from_controller.js -->
                     </ul>
                   </div>
                     <%= f.input :name, placeholder: "Name your location...", label: false, input_html: { data: { new_location_target: "name" } } %>
+                    <%= f.hidden_field :full_address, value: "", data: { new_location_target: "address" } %>
                     <%= f.button :submit, value: "add location", class: 'btn btn-primary'%>
                   <% end %>
 

@@ -1,15 +1,17 @@
 .interests-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 10px;
   margin-bottom: 1rem;
+  margin: 0 auto;
+  justify-content: center;
 }
 
 .interest-common {
   padding: 0px 10px;
   border: 1.5px solid $accent-orange;
   border-radius: 5px;
-  background-color: #ffffff;
+  background-color: $white;
   cursor: pointer;
 }
 
@@ -34,4 +36,76 @@
   width: 100%;
   height: auto;
   object-fit: cover;
+}
+
+
+.review-border {
+  border-bottom: 1px solid $gray-200;
+  width: 50%;
+  align-self: center;
+  margin-bottom: 25px;
+}
+
+.review-border-interest {
+  border-bottom: 1px solid $gray-200;
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
+.review-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 80vw;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.review-content {
+  text-align: center;
+  align-self: center;
+  font-size: medium;
+}
+
+.review-details {
+  font-size: small;
+  color: $gray-600;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.user-name {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.user-tagline {
+  font-size: 1rem;
+  color: $gray-600;
+}
+
+.status-message {
+  text-align: center;
+  color: $gray-600;
+  margin-top: 1rem;
+  margin-bottom: 1.7rem;
+}
+
+.show-page-border {
+  border-bottom: 1px solid $gray-200;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+.chain-emoji {
+  width: 40px;
+  height: 40px;
+
 }

@@ -29,11 +29,11 @@
         <h3 class="mt-2"><%= match.tourist.name %></h3>
 
         <div class="d-flex flex-column justify-content-end">
-          <p>did you go on a trip with <%= match.tourist.name %> </p>
+          <p>Did you go on a trip with <%= match.tourist.name %>?</p>
           <div class="d-flex">
-            <%= button_to "yes", end_match_path(match, value: "yes"), class: "btn btn-outline-primary me-3 mb-2" %>
-            <%= button_to "no", end_match_path(match, value: 'no'), data: { turbo_confirm: "This match will be set back to accepted, are you sure?" }, class: 'btn btn-outline-primary  me-3 mb-2' %>
-            <%= button_to "cancel match", match_path(match, value: 'cancel'), data: { turbo_confirm: "This match will be cancelled, are you sure?" }, class: 'btn btn-outline-danger me-3 mb-2' %>
+            <%= button_to "Yes", end_match_path(match, value: "yes"), class: "btn btn-outline-primary me-3 mb-2" %>
+            <%= button_to "No", end_match_path(match, value: 'no'), data: { turbo_confirm: "This match will be set back to accepted, are you sure?" }, class: 'btn btn-outline-primary  me-3 mb-2' %>
+            <%= button_to "Cancel match", match_path(match, value: 'cancel'), data: { turbo_confirm: "This match will be cancelled, are you sure?" }, class: 'btn btn-outline-danger me-3 mb-2' %>
 
           </div>
         </div>

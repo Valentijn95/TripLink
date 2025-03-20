@@ -7,7 +7,7 @@ interests = [
   "Architecture tours",
   "Culture",
   "Fishing",
-  "Partying"
+  "Partying",
   "Experience different cultures",
   "Language learning",
   "Safaris",
@@ -18,7 +18,7 @@ interests = [
   "Museums",
   "Beaches",
   "Art",
-  "Bird watching"
+  "Bird watching",
   "Extreme people watching",
   "Dance like nobody's watching",
   "Festivals"
@@ -79,7 +79,19 @@ locations = [
   { location_name: "Jachthuis Sint Hubertus", address: "Apeldoornseweg 258, 7351 TA Hoenderloo, Netherlands" },
   { location_name: "De Hoge Veluwe Sand Dunes", address: "6731 Otterlo, Netherlands" },
   { location_name: "Wildlife Watching Spot", address: "Houtkampweg, 6731 AW Otterlo, Netherlands" },
-  { location_name: "Park Entrance Otterlo", address: "Houtkampweg 9, 6731 AV Otterlo, Netherlands" }
+  { location_name: "Park Entrance Otterlo", address: "Houtkampweg 9, 6731 AV Otterlo, Netherlands" },
+
+  # Bali, Indonesia POIs
+  { location_name: "Tanah Lot Temple", address: "Beraban, Kediri, Tabanan Regency, Bali, Indonesia" },
+  { location_name: "Ubud Monkey Forest", address: "Jalan Monkey Forest, Ubud, Gianyar, Bali, Indonesia" },
+  { location_name: "Sekumpul Waterfall", address: "Sekumpul Village, Buleleng Regency, Bali, Indonesia" },
+  { location_name: "Mount Batur", address: "Kintamani, Bangli Regency, Bali, Indonesia" },
+  { location_name: "Pura Ulun Danu Bratan", address: "Jl. Bedugul - Singaraja, Candikuning, Baturiti, Tabanan Regency, Bali, Indonesia" },
+  { location_name: "Tegalalang Rice Terraces", address: "Jalan Raya Tegallalang, Tegallalang, Gianyar, Bali, Indonesia" },
+  { location_name: "Bali Safari and Marine Park", address: "Jl. Prof. Dr. Ida Bagus Mantra, Gianyar, Bali, Indonesia" },
+  { location_name: "Waterbom Bali", address: "Jl. Kartika Plaza, Tuban, Kuta, Badung Regency, Bali, Indonesia" },
+  { location_name: "Besakih Great Temple", address: "Besakih, Rendang, Karangasem Regency, Bali, Indonesia" },
+  { location_name: "Tirta Gangga", address: "Jalan Raya Abang, Karangasem Regency, Bali, Indonesia" }
 ]
 
 def make_guide_locations(user, city)
@@ -262,15 +274,15 @@ puts "#{GuideLocation.count} guide_locations created"
 puts " ---------------------------------------"
 
 puts "Making matches"
-Match.create!(guide: User.first, tourist: User.all[1], location: User.first.locations.sample, status: "pending")
-Message.create!(user: User.all[1], match: Match.first, content: "I want to see the birds")
-Match.create!(guide: User.all[1], tourist: User.last, location: User.all[1].locations.sample, status: "accepted")
-Message.create!(user: User.last, match: Match.last, content: "Do you like birds?")
+Match.create!(guide: users[0], tourist: users[10], location: users[0].locations.sample, status: "pending")
+Message.create!(user: users[10], match: Match.first, content: "I want to see the birds")
+Match.create!(guide: users[1], tourist: users[11], location: users[1].locations.sample, status: "pending")
+Message.create!(user: users[11], match: Match.last, content: "Do you like birds?")
 puts "#{Match.count} matches created and #{Message.count} messages created"
 puts " ---------------------------------------"
 
 puts "Making reviews"
-Review.create!(user: User.first, match: Match.first, content: "This review is about a bird and it is awesome")
-Review.create!(user: User.all[1], match: Match.last, content: "This review is about a terrible bird")
+Review.create!(user: users[10], match: Match.first, content: "This review is about a bird and it is awesome")
+Review.create!(user: users[11], match: Match.last, content: "This review is about a terrible bird")
 puts "#{Review.count} reviews created"
 puts " ---------------------------------------"

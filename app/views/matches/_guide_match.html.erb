@@ -1,41 +1,50 @@
 
 <div id="match_<%= match.id %>">
-  <div class="d-flex border w-100 mt-4 rounded justify-content-between match-card">
+  <div class="d-flex flex-column border border-3 justify-content-between match-card">
     <% if incoming %>
-      <span class="right incoming"><%= incoming %></span>
+      <span class="right status border incoming"><%= incoming %></span>
     <% else %>
-      <span class="right"><%= match.status %></span>
+      <span class="right status border"><%= match.status %></span>
     <% end %>
-        <% if match.tourist.photo.key != nil %>
-          <%= cl_image_tag match.tourist.photo.key, width: 300, crop: :fill, class: "justify-content-center my-3" %>
-        <% end %>
-        <div class="justify-content-start text-start ms-2 mt-1">
+    <% if match.tourist.photo.key != nil %>
+      <%= cl_image_tag(match.tourist.photo.key, height: 220, width: 372, gravity: "faces", crop: "fill", class: "cloudinary-image") %>
+    <% end %>
+    <div class="ms-2 mt-1">
+      <% if match.status == 'pending' %>
+      <h3 class="mt-2"><%= match.tourist.name %> says: </h3>
 
-          <h3><%= match.tourist.name %></h3>
-
-
-          <% if match.status == 'pending' %>
-            <p><%= match.messages.first.content %></p>
-            <div class="row">
-              <div class="col-6 mb-3"><%= button_to 'Accept', match_path(match.id, status: 'accepted'), :method => :patch, class: 'btn btn-outline-primary' %></div>
-              <div class="col-6 mb-3"><%= button_to 'decline', match_path(match.id, status: 'declined'), :method => :patch, class: 'btn btn-outline-warning' %></div>
-            </div>
-
-          <% elsif match.status == 'accepted' %>
-            <div class="row">
-              <div class="col-6 mb-3"> <%= link_to "Chat", match_path(match), class: "btn btn-primary" %> </div>
-            </div>
-          <% elsif match.status == "pending-finished" %>
-            <div class="row">
-              <p>dit you go on a trip with <%= match.tourist.name %> Please confirm so <%= match.tourist.name %> can leave a review for you.</p>
-              <div class="d-flex">
-                <%= button_to "yes", end_match_path(match, value: "yes"), class: "btn btn-outline-primary me-3 mb-2" %>
-                <%= button_to "no", end_match_path(match, value: 'no'), data: { turbo_confirm: "This match will be set back to accepted, are you sure?" }, class: 'btn btn-outline-primary  me-3 mb-2' %>
-                <%= button_to "cancel match", match_path(match, value: 'cancel'), data: { turbo_confirm: "This match will be cancelled, are you sure?" }, class: 'btn btn-outline-danger me-3 mb-2' %>
-
-              </div>
-            </div>
-          <% end %>
+        <p><%= match.messages.first.content %></p>
+        <div class="d-flex">
+          <%= button_to 'Accept', match_path(match.id, status: 'accepted'), :method => :patch, class: 'btn btn-outline-primary me-3 mb-2' %>
+          <%= button_to 'decline', match_path(match.id, status: 'declined'), :method => :patch, class: 'btn btn-outline-warning me-3 mb-2' %>
         </div>
-      </div>
+
+      <% elsif match.status == 'accepted' %>
+        <h3 class="mt-2"><%= match.tourist.name %></h3>
+        <div class="d-flex justify-content-end">
+          <%= link_to "Chat", match_path(match), class: "btn btn-outline-primary" %>
+        </div>
+
+      <% elsif match.status == "finishing" %>
+        <h3 class="mt-2"><%= match.tourist.name %></h3>
+
+        <div class="d-flex flex-column justify-content-end">
+          <p>did you go on a trip with <%= match.tourist.name %> </p>
+          <div class="d-flex">
+            <%= button_to "yes", end_match_path(match, value: "yes"), class: "btn btn-outline-primary me-3 mb-2" %>
+            <%= button_to "no", end_match_path(match, value: 'no'), data: { turbo_confirm: "This match will be set back to accepted, are you sure?" }, class: 'btn btn-outline-primary  me-3 mb-2' %>
+            <%= button_to "cancel match", match_path(match, value: 'cancel'), data: { turbo_confirm: "This match will be cancelled, are you sure?" }, class: 'btn btn-outline-danger me-3 mb-2' %>
+
+          </div>
+        </div>
+
+      <% elsif match.status == "finished" %>
+        <div class="d-flex flex-column justify-content-end">
+          <p>We hope your visit to <%= match.location.city %> was amazing!<p>
+          <p><%= match.tourist.name %> can now leave a review for you</p>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
 </div>

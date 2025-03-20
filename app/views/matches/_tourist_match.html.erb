@@ -1,21 +1,27 @@
 <div id="match_<%= match.id %>">
-  <div class="d-flex border w-100 mt-4 rounded justify-content-between">
+  <div class="d-flex flex-column border border-2 justify-content-between">
     <% if match.guide.photo.key != nil %>
-      <%= cl_image_tag match.guide.photo.key, width: 300, crop: :fill, class: "justify-content-center my-3" %>
+      <a href="users/<%=match.guide.id%>">
+        <%= cl_image_tag(match.guide.photo.key, height: 220, width: 372, gravity: "faces", crop: "fill", class: "cloudinary-image") %>
+      </a>
     <% end %>
-    <div class="justify-content-start text-start ms-2 mt-1">
-      <h2><%= match.guide.name %></h2>
+    <div class="text-start ms-2 mt-1">
+      <h2><%= link_to match.guide.name, user_path(match.guide) %></h2>
       <p><%= match.guide.short_description %></p>
-      <p>Status: <strong><%= match.status %></strong><%= " - wait for confirmation" if match.status === 'pending' %></p>
+      <p>
+        <%= "Wait for confirmation" if match.status === 'pending' %>
+        <%= "Wait for confirmation to write a review" if match.status === 'finishing' %>
+        <%= "This connection is declined, you can't send a new request" if match.status === 'declined' %>
+      </p>
       <% if match.status == 'accepted' %>
 
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-start">
           <%= link_to "Chat", match_path(match), class: "btn btn-outline-primary mb-3" %>
-          <%= button_to "Finish match", finish_match_path(match), class: "btn btn-outline-warning mb-3" %>
+          <%= button_to "Finish match", finish_match_path(match), class: "btn btn-outline-warning ms-3 mb-3" %>
         </div>
 
       <% elsif match.status == "finished" %>
-          <%= button_to "Write review", new_match_review_path(match), class: "btn btn-outline-primary mb-3" %>
+          <%= button_to "Write review", new_match_review_path(match.id), method: :get, class: "btn btn-outline-primary mb-3" %>
       <% end %>
 
     </div>

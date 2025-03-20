@@ -1,10 +1,12 @@
-<div class="container">
+<div class="basic-padding">
   <div class="mt-3">
     <% if @matches_as_guide.empty? && @matches_as_tourist.empty? %>
-      <h1 class="text-center">No matches yet</h1>
+      <h1 class="text-center mb-3">You have no connections</h1>
+      <p class="text-center">Start connecting with a guide by looking for them on the map</p>
     <% end %>
 
-      <%= turbo_stream_from "incomming_matches-#{current_user.id}"%>
+    <%= turbo_stream_from "incomming_matches-#{current_user.id}"%>
+
     <% if @matches_as_guide.empty? %>
       <%= render "matches_as_guide", locals: { matches: @matches_as_guide } %>
     <% else %>
@@ -19,5 +21,3 @@
     <% end %>
   </div>
 </div>
-
-

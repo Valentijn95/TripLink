@@ -22,12 +22,13 @@ class MatchesController < ApplicationController
 
   def finish
     @match = Match.find(params[:id])
-    @match.status = "pending-finished"
+    @match.status = "finishing"
     if @match.save
-      @match.broadcast_guide_notification(@match.tourist.name + " wants to finish the match")
-      redirect_to matches_path, notice: "finish match request sent"
+      @match.broadcast_guide_notification(@match.tourist.name + " wants to finish your connection")
+      @match.broadcast_update_guide_match
+      redirect_to matches_path, notice: "finish connection request sent"
     else
-      redirect_to matches_path, alert: "Failed to finish match"
+      redirect_to matches_path, alert: "Failed to finish connection"
     end
   end
 
@@ -36,23 +37,23 @@ class MatchesController < ApplicationController
     if params[:value] == "yes"
       @match.status = "finished"
       if @match.save
-        redirect_to matches_path, notice: "match finished"
+        redirect_to matches_path, notice: "Connection finished"
       else
-        redirect_to matches_path, alert: "failed to finish match"
+        redirect_to matches_path, alert: "Failed to finish connection"
       end
     elsif params[:value] == "no"
       @match.status = "accepted"
       if @match.save
-        redirect_to matches_path, notice: "match resumed"
+        redirect_to matches_path, notice: "Connection resumed"
       else
-        redirect_to matches_path, alert: "failed to finish match"
+        redirect_to matches_path, alert: "Failed to finish connection"
       end
     elsif params[:value] == "cancel"
       @match.status = "cancelled"
       if @match.save
-        redirect_to matches_path, notice: "match cancelled"
+        redirect_to matches_path, notice: "Connection cancelled"
       else
-        redirect_to matches_path, alert: "failed to cancel match"
+        redirect_to matches_path, alert: "Failed to cancel connection"
       end
     end
   end
@@ -75,8 +76,7 @@ class MatchesController < ApplicationController
 
   def create
     if params[:match][:message] == ""
-      flash[:alert] = "request failed: message can't be blank"
-      render "users/#{params[:guide_id]}?location=#{params[:match][:location_id]}"
+      redirect_to new_match_path(location_id: params[:match][:location_id], guide_id: params[:match][:guide_id]), alert: "Message can't be blank"
     else
       @match = Match.new
       @match.tourist = current_user
@@ -90,7 +90,7 @@ class MatchesController < ApplicationController
         @match.broadcast_guide_match
         redirect_to matches_path
       else
-        render "users/#{params[:user_id]}?location=#{params[:match][:location_id]}"
+        redirect_to new_match_path(location_id: params[:match][:location_id], guide_id: params[:match][:guide_id]), alert: "Request could not be sent, try again later"
       end
     end
   end

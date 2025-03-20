@@ -1,0 +1,26 @@
+.new-match-form {
+  position: relative;
+  input {
+    position: absolute;
+    bottom: -9.7rem;
+    right: 0.3rem;
+    font-size: 0.8rem;
+    border-top-left-radius: 1rem;
+  }
+  textarea {
+    position: absolute;
+    bottom: -10rem;
+    left: -0.05rem;
+
+    background-color: $light-gray;
+    border: 1px solid gray;
+    color: $gray;
+    height: 9rem;
+    width: calc( 100vw - 0.9rem );
+    opacity: 1;
+    // width: 92vw;
+  }
+  textarea:focus {
+    background-color: rgb(205, 205, 205);
+  }
+}

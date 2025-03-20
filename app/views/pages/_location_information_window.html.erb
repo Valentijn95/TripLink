@@ -1,11 +1,11 @@
 <div id="location-info">
   <% if location == nil %>
-    <%# <div class="location-info-wrapper">empty window</div> %>
+
   <% else %>
 
-    <div class="location-info-wrapper" data-controller="map-partial">
-      <div class="partial-top-bar"><span data-action="click->map-partial#close" class="close">close</span></div>
-      <div class="location-info-container">
+  <div class="location-info-wrapper" data-controller="map-partial">
+    <div class="partial-top-bar"><span data-action="click->map-partial#close" class="close">close</span></div>
+    <div class="location-info-container">
 
           <% if defined?(location) %>
   <h1 class="mt-2 mb-1"><%= location.city %></h1>
@@ -52,8 +52,6 @@
     <% end %>
   <% end %>
 </div>
-
-
 
             <% end %>
           <% else %>

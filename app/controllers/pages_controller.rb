@@ -19,6 +19,8 @@ class PagesController < ApplicationController
   end
 
   def profile
+    @location = Location.new
+
     @user = current_user
     @user_interests = @user.interests
     @available_interests = Interest.all - @user_interests

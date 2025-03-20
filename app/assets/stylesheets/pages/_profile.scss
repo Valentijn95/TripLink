@@ -22,3 +22,11 @@
   border-bottom: 1px solid $gray-200;
   padding-bottom: 0.5rem;
 }
+
+.new-location-autocomplete {
+  position: absolute;
+  left: 1rem;
+  width: calc( 100% - 2rem );
+  background-color: white;
+  opacity: 0.9;
+}

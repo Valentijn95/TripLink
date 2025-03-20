@@ -9,7 +9,7 @@
 
           <% pending_match_count = user.guide_matches.where(status: 'pending').count %>
 
-          <a href="/matches" target="_top" class="bell active">
+          <a href="matches" class="bell active">
             <span class="pending-match-count"><%= pending_match_count %></span>
             <i class="fa-solid fa-bell"></i>
           </a>

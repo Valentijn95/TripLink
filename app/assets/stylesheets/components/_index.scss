@@ -30,3 +30,14 @@
 .basic-padding {
   padding: 0.8rem 0.5rem;
 }
+
+.group {
+  border: 1px solid #a9a9a9;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+}
+
+.cloudinary-image {
+  width: 100%;
+  object-fit: cover;
+}

@@ -10,7 +10,7 @@ class Match < ApplicationRecord
   validate :guide_is_valid
   validates :tourist, :location, :status, presence: true
 
-  validates :status, inclusion: { in: %w(pending accepted pending-finished finished declined cancelled) }
+  validates :status, inclusion: { in: %w(pending accepted finishing finished declined cancelled) }
 
   after_create :broadcast_guide_notification
   # commented this line to prevent the function from being triggered immediately
@@ -28,12 +28,19 @@ class Match < ApplicationRecord
                           locals: { match: self, incoming: "New incoming match" }
   end
 
+  def broadcast_update_guide_match
+    broadcast_replace_to "incomming_matches-#{guide.id}",
+                          partial: "matches/guide_match",
+                          target: "match_#{id}",
+                          locals: { match: self, incoming: false }
+  end
+
   def broadcast_tourist_match
       broadcast_replace_to "incomming_matches-#{tourist.id}",
                           partial: "matches/tourist_match",
                           target: "match_#{id}",
                           locals: { match: self }
-end
+  end
 
   def broadcast_guide_notification(text = "You have a new match!")
     broadcast_replace_to "flashes-#{guide.id}",

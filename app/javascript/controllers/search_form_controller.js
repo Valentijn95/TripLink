@@ -12,24 +12,49 @@ export default class extends Controller {
     this.barTarget.querySelector(".search-form-input").focus();
   }
 
+  makeOption(name, location) {
+    const option =
+      `<li class="list-group-item">
+        <div class="d-flex flex-column align-items-start justify-content-center">
+          <span>${name}</span>
+          <span>${location}</span>
+        </div>
+      </li>`;
+    return option;
+  }
+
   displaySearchResults(suggestions) {
-    console.log(suggestions);
-    this.resultsTarget.innerHTML = "";
+    this.resultsTarget.innerHTML = ""; // Clear the results
+    if (suggestions[0].context.place == undefined && suggestions[0].feature_type == "place") {
+      this.cityTarget.value = suggestions[0].name;
+    } else {
+      this.cityTarget.value = suggestions[0].context.place.name;
+    }
 
     suggestions.forEach((suggestion) => {
+      console.log("name: ", suggestion.name);
+      let city;
+      if (suggestion.context.place == undefined && suggestion.feature_type == "place") {
+        city = suggestion.name;
+      } else {
+        city = suggestion.context.place.name;
+      }
 
-      const city = suggestion.context.place.name;
-      const address = suggestion.address;
+
+      const area = suggestion.place_formatted;
       const name = suggestion.name;
+
       const li = document.createElement("li");
-      li.innerHTML = `${name} - ${address}, ${suggestion.context.place.name}`;
       li.classList.add("list-group-item");
+      li.innerHTML = `<div class="d-flex flex-column align-items-start justify-content-center">
+                        <span>${name}</span>
+                        <span>${area}</span>
+                      </div>`;
       this.resultsTarget.appendChild(li);
 
       li.addEventListener("click", () => {
-        console.log(city);
         this.resultsTarget.innerHTML = "";
-        this.inputTarget.value = address;
+        this.inputTarget.value = name + ", " + area;
         this.cityTarget.value = city;
         this.inputTarget.focus();
       });

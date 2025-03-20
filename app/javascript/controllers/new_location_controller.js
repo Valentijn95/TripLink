@@ -18,24 +18,26 @@ export default class extends Controller {
   }
 
   displaySearchResults(suggestions) {
-    console.log(suggestions);
-    this.resultsTarget.innerHTML = "";
-    suggestions.forEach((suggestion) => {
-      let name = "";
 
+    this.resultsTarget.innerHTML = "";
+    console.log(suggestions[0].name);
+    this.nameTarget.value = suggestions[0].name;
+    this.addressTarget.value = suggestions[0].full_address;
+
+    suggestions.forEach((suggestion) => {
+      console.log(suggestion);
+      let name = "";
       if (suggestion.name_preferred) {
         name = suggestion.name_preferred;
       } else {
         name = suggestion.name;
       }
-      console.log(name);
       const input = `${suggestion.name} - ${suggestion.address}, ${suggestion.context.place.name}`;
-      // console.log(suggestion);
+
       const li = document.createElement("li");
       li.innerHTML = input;
       li.classList.add("list-group-item");
       this.resultsTarget.appendChild(li);
-      console.log(this.addressTarget.value)
 
       li.addEventListener("click", () => {
         this.resultsTarget.innerHTML = "";

@@ -2,7 +2,7 @@
 
 <div class="basic-padding user-details mt-2">
   <h1 class="user-name"><%= @guide.name %></h1>
-  <p class="user-tagline"><%= @guide.guide_description %></p>
+  <p class="user-show-description"><%= @guide.guide_description %></p>
 </div>
 
 <div class="text-center main-photo">
@@ -29,7 +29,7 @@
     <% elsif match.status == 'cancelled' %>
       <p class='status-message'>⛓️‍💥 Status: cancelled</p>
     <% elsif match.status == 'finishing'  %>
-      <p class='status-message'>⛓️‍💥 Status: waiting for guide to close the connection...</p>
+      <p class='status-message'><img src="<%= asset_path('Chain.png') %>" class="chain-emoji"/>Status: waiting for guide to close the connection...</p>
     <% else %>
       <p>Unknown status</p>
     <% end %>
@@ -37,26 +37,27 @@
     <%= link_to "Connect!", new_match_path(location_id: location, guide_id: @guide.id), class: 'btn btn-connect' %>
   <% end %>
 
+
   <div class="show-page-border"></div>
 
     <p class="text-center fs-5 mb-4"><strong>Interests 🤩</strong></p>
     <% sorted_interests = @guide_interests.sort_by { |interest| @user_interests.include?(interest) ? 0 : 1 } %>
-      <div class="interests-container mb-3">
+      <div class="interests-container mb-3 interests-container-guide">
         <% sorted_interests.each do |interest| %>
           <% if @user_interests.include?(interest) %>
-            <div class="interest-common">
+            <div class="interest-guide-common">
               <%= interest %>
             </div>
           <% end %>
         <% end %>
       </div>
 
-      <div class="review-border-interest"></div>
+      <div class="interest-border"></div>
 
-      <div class="interests-container">
+      <div class="interests-container interests-container-guide">
         <% sorted_interests.each do |interest| %>
           <% unless @user_interests.include?(interest) %>
-            <div class="interest">
+            <div class="interest-guide">
               <%= interest %>
             </div>
           <% end %>
@@ -72,9 +73,6 @@
       <% @grouped_locations[country].sort_by(&:city).each do |location| %>
         <p class="text-center fs-6"> <%= country_to_flag(country) %> <%= location.name %>, <%= location.city %> </p>
       <% end %>
-
-<p><img src="<%= asset_path('Chain.png') %>" class="chain-emoji" /> CONNECTIONS: STATUS </p>
-
     <% end %>
 
   <div class="show-page-border"></div>

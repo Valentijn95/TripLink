@@ -13,7 +13,7 @@ class PagesController < ApplicationController
   end
 
   def home_search
-    @default_locations = Location.joins(:guide_locations).where("guide_locations.location_id = locations.id").near(params[:location_search], 50)
+    @default_locations = Location.joins(:guide_locations).where("guide_locations.location_id = locations.id").near(params[:city], 50)
     session[:markers] = get_markers(@default_locations)
     redirect_to root_path
   end

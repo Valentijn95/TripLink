@@ -2,6 +2,7 @@
   <form action="/" method="post" autocomplete="off">
     <div class="search-form row">
       <input type="text" data-search-form-target="input" data-action="input->search-form#fetchSearchResults:prevent" class="search-form-input col-10" name="location_search" placeholder="Search for a location" />
+      <input type="hidden" data-search-form-target="city" name="city" />
       <input type="submit" class="search-form-submit col-2" name="submit" value="→" />
     </div>
   </form>

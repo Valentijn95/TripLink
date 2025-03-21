@@ -47,7 +47,7 @@ export default class extends Controller {
       const li = document.createElement("li");
       li.classList.add("list-group-item");
       li.innerHTML = `<div class="d-flex flex-column align-items-start justify-content-center">
-                        <span>${name}</span>
+                        <span><strong>${name}</strong></span>
                         <span>${area}</span>
                       </div>`;
       this.resultsTarget.appendChild(li);

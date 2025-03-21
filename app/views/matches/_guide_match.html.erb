@@ -40,7 +40,7 @@
 
       <% elsif match.status == "finished" %>
         <div class="d-flex flex-column justify-content-end">
-          <p>We hope your visit to <%= match.location.city %> was amazing!<p>
+          <p>We hope your tour with <%= match.tourist.name %> was amazing!<p>
           <p><%= match.tourist.name %> can now leave a review for you</p>
         </div>
       <% end %>

@@ -30,7 +30,7 @@
       <% @user.interests.sort_by(&:interest).each do |interest| %>
           <div class="interest-profile align-items-center">
           <span class="me-2"><%= interest.interest %></span>
-          <%= button_to 'ⓧ', remove_interest_path(interest_id: interest.id), method: :delete, class: 'btn-delete' %>
+          <%= button_to 'ⓧ', remove_interest_path(interest_id: interest.id), method: :delete, class: 'btn-delete background-white' %>
         </div>
       <% end %>
     </div>
@@ -39,14 +39,13 @@
       <p class="mt-3">Want to add an interest to your profile?</p>
       <div class="input-button-group">
         <%= f.collection_select :interest_id, @available_interests.sort_by(&:interest), :id, :interest, { prompt: "Select interest"}, class: 'input-field' %>
-        <%= f.submit "Add", class: "submit-button" %>
+        <%= f.submit "Add", class: "submit-button add-button" %>
       </div>
       <% end %>
     <% end %>
 
     <div class="profile-page-border"></div>
 
-    <section class="border-bottom pb-3">
       <% if @user.guide == true %>
 
         <section class="d-flex justify-content-between align-items-center">
@@ -54,12 +53,11 @@
 
           <section data-controller="new-location">
 
-            <button class="submit-button add-button ms-2 d-flex" data-action="new-location#show:prevent">add +</button>
+            <button class="submit-button add-button ms-2 d-flex" data-action="new-location#show:prevent">Add +</button>
             <div class="intromodal d-none" data-new-location-target="canvas">
               <div class="modal-content">
                 <span class="close" data-action="click->new-location#close:stop">&times;</span>
                 <h1>New location</h1>
-
 
                   <%= simple_form_for @location do |f| %>
                     <%= f.input :address, placeholder: "Type address...", label: false, class: "new-location-search", input_html: { data: { action: "input->new-location#fetchSearchResults", new_location_target: "input" }, autocomplete: "off" } %>
@@ -82,15 +80,12 @@
         <ul class="list-group mt-3">
           <% @user.locations.each do |location| %>
             <li class="list-group-item d-flex justify-content-start">
-            <%= button_to 'ⓧ', location_path(location.id, current_user.id), class: "btn-delete me-3", method: :delete %>
+            <%= button_to 'ⓧ', location_path(location.id, current_user.id), class: "btn-delete mt-1 me-2 background-light-gray", method: :delete %>
             <span class="ms-2"><%= location.name %>, <%= location.city %></span>
             </li>
           <% end %>
         </ul>
       <% end %>
-
-    </section>
-
 
       <div class="d-flex justify-content-end">
         <div class="d-flex justify-content-start mt-4">
@@ -98,6 +93,7 @@
           <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-outline-warning ms-2" %>
         </div>
       </div>
+      <br>
 
   <% end %>
 </div>

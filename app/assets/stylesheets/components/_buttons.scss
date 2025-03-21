@@ -18,14 +18,22 @@
 
 .btn-delete {
   border: none;
-  color: gray;
+  color: $gray;
   border-radius: 50%;
   height: 1rem;
   width: 1rem;
-  background-color: white;
+  display: flex;
   align-items: center;
   justify-content: center;
   line-height: 1;
+}
+
+.background-white {
+  background-color: white;
+}
+
+.background-light-gray {
+  background-color: $light-gray;
 }
 
 .add-button {

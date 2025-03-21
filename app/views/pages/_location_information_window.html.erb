@@ -1,7 +1,6 @@
 <div id="location-info">
   <% if location == nil %>
   <% else %>
-  <%= country_to_flag(location.country) %>
 
     <div class="location-info-wrapper" data-controller="map-partial">
       <div class="partial-top-bar">
@@ -10,12 +9,7 @@
       <div class="location-info-container">
         <% if defined?(location) %>
           <div class="location-heading">
-            <h1>
-              <%= location.city %>,
-              <span class="<%= 'wrap-country' if location.country.length > 9 %>">
-                <%= location.country %>
-              </span>
-            </h1>
+            <h1><%= location.city %>, <%= location.country %> <%= country_to_flag(location.country) %></h1>
             <div class="location-divider"></div>
           </div>
         <% end %>

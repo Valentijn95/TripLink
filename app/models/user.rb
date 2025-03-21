@@ -21,7 +21,7 @@ class User < ApplicationRecord
 
   validates :name, :email, presence: true
   validates :password, presence: true, unless: -> { password.blank? }
-  validates :guide_description, :rate, presence: true, if: :guide?
+  validates :guide_description, presence: true, if: :guide?
 
   def users_with_shared_interests
     User.joins(:user_interests)

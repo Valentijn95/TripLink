@@ -1,6 +1,6 @@
 
 <div id="match_<%= match.id %>">
-  <div class="d-flex flex-column border border-3 justify-content-between match-card">
+  <div class="d-flex flex-column border border-3 justify-content-between match-card mb-4">
     <% if incoming %>
       <span class="right status border incoming"><%= incoming %></span>
     <% else %>
@@ -21,8 +21,8 @@
 
       <% elsif match.status == 'accepted' %>
         <h3 class="mt-2"><%= match.tourist.name %></h3>
-        <div class="d-flex justify-content-end">
-          <%= link_to "Chat", match_path(match), class: "btn btn-outline-primary" %>
+        <div class="d-flex justify-content-start">
+          <%= link_to "Chat", match_path(match), class: "btn btn-outline-primary mb-2" %>
         </div>
 
       <% elsif match.status == "finishing" %>

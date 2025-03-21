@@ -6,7 +6,7 @@
       </a>
     <% end %>
     <div class="text-start ms-2 mt-1">
-      <h2><%= link_to match.guide.name, user_path(match.guide) %></h2>
+      <h2> <%= match.guide.name %> </h2>
       <p><%= match.guide.short_description %></p>
       <p>
         <%= "Waiting for confirmation." if match.status === 'pending' %>

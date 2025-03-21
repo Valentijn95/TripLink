@@ -83,7 +83,7 @@
         <p class="text-center"><%= @guide.name %> has no reviews yet...</p>
       <% else %>
         <% @reviews.each do |review| %>
-          <p class="review-content"><%= review.content %></p>
+          <p class="review-content">"<%= review.content %>"</p>
           <p class="review-details"><i>Written by <%= review.user.name %> on <%= review.created_at.strftime("%d-%m-%Y") %></i></p>
           <div class="review-border"></div>
         <% end %>

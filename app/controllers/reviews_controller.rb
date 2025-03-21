@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     @review.match = @match
     @review.user = current_user
     if @review.save
-      redirect_to matches_path, notice: "Review created"
+      redirect_to user_path(@match.guide.id), notice: "Review created"
       @match.broadcast_guide_notification(@match.tourist.name + " wrote a review about you")
     else
       render :new, notice: "Something went wrong"

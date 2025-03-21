@@ -17,7 +17,7 @@
 
         <div class="d-flex justify-content-start">
           <%= link_to "Chat", match_path(match), class: "btn btn-outline-primary mb-3" %>
-          <%= button_to "Finish match", finish_match_path(match), class: "btn btn-outline-warning ms-3 mb-3" %>
+          <%= button_to "Finish tour", finish_match_path(match), class: "btn btn-outline-warning ms-3 mb-3" %>
         </div>
 
       <% elsif match.status == "finished" %>

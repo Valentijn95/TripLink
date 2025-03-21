@@ -8,8 +8,13 @@ export default class extends Controller {
       // Set a timeout...
       setTimeout(function(){
          // Hide the address bar!
-         window.scrollTo(0, 1);
-      }, 0);
+         window.scrollTo({
+          top: 1,
+          left: 0,
+          behavior: "smooth",
+        });
+         //window.scrollTo(0, 1);
+      }, 100);
    });
   }
 }

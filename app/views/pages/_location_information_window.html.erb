@@ -27,7 +27,7 @@
                 <%= link_to user_path(guide, location: location.id), data: { turbo: false }, class: "guide-card-link" do %>
                   <div class="guide-card">
                     <% if guide.photo.key.present? %>
-                      <%= cl_image_tag(guide.photo.key, class: "guide-card-image") %>
+                      <%= cl_image_tag(guide.photo.key, width: 150, height: 150, crop: "fill", gravity: "face") %>
                     <% else %>
                       <%= image_tag 'profile-picture.webp', class: "guide-card-image", alt: 'guide' %>
                     <% end %>

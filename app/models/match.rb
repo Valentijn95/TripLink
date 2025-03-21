@@ -20,12 +20,12 @@ class Match < ApplicationRecord
       broadcast_prepend_to "incomming_matches-#{guide.id}",
                           partial: "matches/guide_match",
                           target: "incomming_matches",
-                          locals: { match: self, incoming: "New incoming match" }
+                          locals: { match: self, incoming: "New request" }
 
       broadcast_replace_to "incomming_matches-#{guide.id}",
                           partial: "matches/guide_match",
                           target: "match_#{id}",
-                          locals: { match: self, incoming: "New incoming match" }
+                          locals: { match: self, incoming: "New request" }
   end
 
   def broadcast_update_guide_match
@@ -42,7 +42,7 @@ class Match < ApplicationRecord
                           locals: { match: self }
   end
 
-  def broadcast_guide_notification(text = "You have a new match!")
+  def broadcast_guide_notification(text = "You have a new connection request!")
     broadcast_replace_to "flashes-#{guide.id}",
                         partial: "shared/flashes",
                         target: "flashes",
